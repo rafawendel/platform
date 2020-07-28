@@ -1,0 +1,60 @@
+{
+  "name": "gedaam-next",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "push": "git push && git push upstream",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install",
+    "start:css": "postcss index.css -o tailwind.css -w",
+    "build:css": "postcss index.css -o tailwind.css --env production",
+    "build:tailwind": "tailwind build pages/index.css -o assets/css/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "reactjs",
+    "material",
+    "material-design",
+    "material-kit",
+    "material-kit-react",
+    "next-material-kit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "next": "^9.4.2",
+    "nextjs-progressbar": "0.0.5",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-jsx": "^3.3.0",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^1.7.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "npm-check-updates": "^6.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.5.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "tailwindcss": "1.1.2"
+  }
+}

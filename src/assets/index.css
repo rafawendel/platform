@@ -1,0 +1,32 @@
+:root {
+  --primary-red: #f6505cff;
+  --primary-dark-blue: #0b132bff;
+  --secondary-dark-blue: #254769ff;
+  --primary-clear-grey: #e7e7e7ff;
+  --secondary-clear-grey: #eeeeffff;
+  --success: #34D09E;
+  --info: #78ADDD;
+  --success: #9CD654;
+  --warning: #F0E22A;
+  --rose: #CC648A;
+  --danger: #F3785E;
+}
+
+@tailwind base;
+@tailwind components;
+
+.btn-blue1 {
+  @apply bg-p-dark-blue text-white font-bold py-2 px-4 rounded;
+}
+
+.hero1 {
+  @apply py-20;
+}
+
+.title1 {
+  @apply text-5xl text-center;
+  color: #333;
+  line-height: 1.15;
+}
+
+@tailwind utilities;
