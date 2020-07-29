@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types';
-import { makeStyles } from './styles';
+import PropTypes from 'prop-types'
+
+import Layout from '../Layout'
+import { makeStyles } from './styles'
 
 export default function Parallax({ children, imageSrc, overlayColor }) {
-  const [content, section] = children;
+  const [content, section] = children
+  const styles = makeStyles({ overlayColor, imageSrc })
   return (
-    <>
-      <div className="parallax-wrapper">
-        <div className="parallax__wrapper" id="parallax-wrapper">
-          <div className="parallax parallax__section">
-            <div className="container">{content}</div>
-          </div>
-          <section>{section}</section>
+    <Layout>
+      <div className="parallax__wrapper">
+        <div className="parallax parallax__section">
+          <div className="content">{content}</div>
         </div>
+        <section>{section}</section>
       </div>
-      <style jsx>{makeStyles({ overlayColor, imageSrc })}</style>
-    </>
-  );
+      <style jsx>{styles}</style>
+    </Layout>
+  )
 }
 
 Parallax.defaultProps = {
-  overlayColor: 'rgba(255, 255, 255, 0)'
-};
+  overlayColor: 'rgba(0, 0, 0, 0)'
+}
 
 Parallax.propTypes = {
   children: [PropTypes.node, PropTypes.node].isRequired,
-  header: PropTypes.func.isRequired,
   imageSrc: PropTypes.string.isRequired,
   overlayColor: PropTypes.string
-};
+}

@@ -1,32 +1,50 @@
 :root {
-  --primary-red: #f6505cff;
-  --primary-dark-blue: #0b132bff;
-  --secondary-dark-blue: #254769ff;
-  --primary-clear-grey: #e7e7e7ff;
-  --secondary-clear-grey: #eeeeffff;
-  --success: #34D09E;
-  --info: #78ADDD;
-  --success: #9CD654;
-  --warning: #F0E22A;
-  --rose: #CC648A;
-  --danger: #F3785E;
+  --color-main-primary: #f6505cff;
+  --color-main-secondary: #2B95AA;
+  --color-dark-primary: #0b132bff;
+  --color-dark-secondary: #254769ff;
+  --color-light-primary: #e7e7e7ff;
+  --color-light-secondary: #eeeeffff;
+  --color-info: #78ADDD;
+  --color-success: #34D09E;
+  --color-warning: #F0E22A;
+  --color-rose: #CC648A;
+  --color-danger: #F3785E;
 }
 
 @tailwind base;
 @tailwind components;
 
-.btn-blue1 {
-  @apply bg-p-dark-blue text-white font-bold py-2 px-4 rounded;
+h1, h2, h3, h4, h5, h6, p, small {
+  @apply text-lighter;
 }
 
-.hero1 {
-  @apply py-20;
+h1 {
+  @apply font-semibold text-5xl;
 }
 
-.title1 {
-  @apply text-5xl text-center;
-  color: #333;
-  line-height: 1.15;
+h3 {
+  @apply text-3xl mb-2 font-semibold leading-normal;
+}
+
+h4 {
+  @apply text-xl font-bold;
+}
+
+h5 {
+  @apply text-xl font-semibold;
+}
+
+h6 {
+  @apply text-lg font-semibold;
+}
+
+p {
+  @apply text-base font-light;
+}
+
+small {
+  @apply text-sm
 }
 
 @tailwind utilities;

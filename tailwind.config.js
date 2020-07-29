@@ -3,17 +3,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': 'var(--primary-red)',
-        'p-dark-blue': 'var(--primary-red)',
-        's-dark-blue': 'var(--primary-red)',
-        'p-clear-grey': 'var(--primary-red)',
-        's-clear-grey': 'var(--primary-red)',
-        'success': 'var(--success)',
-        'info': 'var(--info)',
-        'success': 'var(--success)',
-        'warning': 'var(--warning)',
-        'rose': 'var(--rose)',
-        'danger': 'var(--danger)'
+        primary: 'var(--color-main-primary)',
+        secondary: 'var(--color-main-secondary)',
+        darker: 'var(--color-dark-primary)',
+        dark: 'var(--color-dark-secondary)',
+        light: 'var(--color-light-primary)',
+        lighter: 'var(--color-light-secondary)',
+        info: 'var(--color-info)',
+        success: 'var(--color-success)',
+        warning: 'var(--color-warning)',
+        rose: 'var(--color-rose)',
+        danger: 'var(--color-danger)'
       }
     }
   },

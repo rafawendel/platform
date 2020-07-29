@@ -9,7 +9,7 @@ module.exports = {
         "plugin:react/recommended",
         "prettier",
         "prettier/react",
-        "plugin:react-hooks/recommended",
+        // "plugin:react-hooks/recommended",
         "plugin:import/recommended",
         "plugin:jsx-a11y/recommended"
     ],
@@ -21,17 +21,15 @@ module.exports = {
         "react": {
           "createClass": "createReactClass",
           "pragma": "React",
-          "version": "detect",// Flow version
+          "version": "detect",
           "flowVersion": "0.53"
         },
         "propWrapperFunctions": [
-            // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
             "forbidExtraProps",
             {"property": "freeze", "object": "Object"},
             {"property": "myFavoriteWrapper"}
         ],
         "linkComponents": [
-          // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
           "Hyperlink",
           {"name": "Link", "linkAttribute": "to"}
         ]
@@ -58,6 +56,8 @@ module.exports = {
         "react/jsx-filename-extension": "off",
         "import/prefer-default-export": "off",
         "react/no-array-index-key": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         // "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}],
         "indent": ["error", 2],
         "arrow-parens": ["error", "as-needed"],
