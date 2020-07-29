@@ -15,20 +15,24 @@
 @tailwind base;
 @tailwind components;
 
-h1, h2, h3, h4, h5, h6, p, small {
-  @apply text-lighter;
+@apply text-lighter;
+  h1, h2, h3, h4, h5, h6, p, small {
 }
 
 h1 {
-  @apply font-semibold text-5xl;
+  @apply text-5xl font-semibold;
+}
+
+h2 {
+  @apply text-4xl font-semibold;
 }
 
 h3 {
-  @apply text-3xl mb-2 font-semibold leading-normal;
+  @apply text-3xl font-semibold;
 }
 
 h4 {
-  @apply text-xl font-bold;
+  @apply text-2xl font-semibold;
 }
 
 h5 {
@@ -44,7 +48,7 @@ p {
 }
 
 small {
-  @apply text-sm
+  @apply text-sm;
 }
 
 @tailwind utilities;

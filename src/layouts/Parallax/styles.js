@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css'
 import PropTypes from 'prop-types'
 
-export function makeStyles({ overlayColor, imageSrc, perspective, translate }) {
+export function makeStyles({ overlayColor, src, perspective, translate }) {
   return css`
     .parallax__wrapper {
       height: 100vh;
@@ -10,6 +10,10 @@ export function makeStyles({ overlayColor, imageSrc, perspective, translate }) {
       overflow-y: auto;
       perspective: ${perspective}px;
       transform-style: preserve-3d;
+    }
+
+    .parallax__content {
+      z-index: 2;
     }
 
     .parallax__section {
@@ -22,8 +26,7 @@ export function makeStyles({ overlayColor, imageSrc, perspective, translate }) {
       align-items: center;
     }
 
-    .parallax::before {
-      content: '';
+    .parallax__background-image {
       height: 100vh;
       position: absolute;
       z-index: -2;
@@ -37,7 +40,7 @@ export function makeStyles({ overlayColor, imageSrc, perspective, translate }) {
       background-position: center top;
       background-size: cover;
       background-repeat: no-repeat;
-      background-image: linear-gradient(${overlayColor}, ${overlayColor}), url(${imageSrc});
+      background-image: linear-gradient(${overlayColor}, ${overlayColor}), url(${src});
       transform-style: inherit;
       transform: translate3d(-10px, 0, ${translate}px) scale(${1 - translate / perspective});
     }
@@ -57,7 +60,7 @@ makeStyles.defaultProps = {
 
 makeStyles.propTypes = {
   overlayColor: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
   perspective: PropTypes.number,
   translate: PropTypes.number
 }

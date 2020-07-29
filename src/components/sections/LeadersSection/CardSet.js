@@ -1,4 +1,4 @@
-import PersonCard from '../../../common/Cards/PersonCard'
+import PersonCard from '../../common/Cards/PersonCard'
 
 export default function CardSet() {
   const leaders = [

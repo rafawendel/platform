@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types'
 
-export default function Dent({ height, tailwindColorClass, position }) {
+export default function Dent({ height, marginTop, tailwindColorClass, position }) {
   return (
     <>
-      <div
-        className={`dent ${
-          position === 'bottom' ? 'top-auto bottom-0' : 'bottom-auto top-0'
-        } relative left-0 right-0 w-full absolute pointer-events-none overflow-hidden`}
-      >
+      <div className={`absolute left-0 right-0 w-full pointer-events-none overflow-hidden `}>
         <svg
           className="absolute bottom-0 overflow-hidden"
           xmlns="http://www.w3.org/2000/svg"
@@ -24,24 +20,31 @@ export default function Dent({ height, tailwindColorClass, position }) {
         </svg>
       </div>
       <style jsx>{`
-        .dent {
-          height: ${height}px;
-          margin-top: -${height}px;
-          transform: translateZ(0);
+        div {
+          /* margin-top: ${marginTop}px; */
+          /* transform: translateZ(0); */
+          /* height: 200px; */
+          top: 300px
         }
-      `}</style>
+
+        svg {
+          /* height: 200px; */
+        }
+        `}</style>
     </>
   )
 }
 
 Dent.defaultProps = {
-  height: 70,
+  height: 80,
+  marginTop: -80,
   tailwindColorClass: 'darker',
   position: 'bottom'
 }
 
 Dent.propTypes = {
   height: PropTypes.number,
+  marginTop: PropTypes.number,
   tailwindColorClass: PropTypes.string,
-  position: PropTypes.oneOf('top', 'bottom')
+  position: PropTypes.oneOf(['top', 'bottom'])
 }

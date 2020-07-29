@@ -1,4 +1,4 @@
-import PlainCard from '../../../common/Cards/PlainCard'
+import PlainCard from '../../common/Cards/PlainCard'
 
 export default function Pros() {
   const prosList = [

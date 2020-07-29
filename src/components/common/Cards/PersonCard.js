@@ -1,3 +1,5 @@
+import Bubble from '../Bubbles/Bubble'
+
 export default function PersonCard({ src, name, title, socialNetworks }) {
   return (
     <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
@@ -12,14 +14,8 @@ export default function PersonCard({ src, name, title, socialNetworks }) {
           <h5>{name}</h5>
           <small className="mt-1 uppercase font-semibold">{title}</small>
           <div className="mt-6">
-            {socialNetworks.map(({ faIconClass, bubbleTailwindColor }, i) => (
-              <button
-                key={`${name}-social-${i}`}
-                className={`bg-${bubbleTailwindColor} w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1`}
-                type="button"
-              >
-                <i className={`${faIconClass}`} />
-              </button>
+            {socialNetworks.map((properties, i) => (
+              <Bubble key={`${name}-social-${i}`} size="sm" {...properties} />
             ))}
           </div>
         </div>

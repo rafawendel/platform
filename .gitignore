@@ -1,6 +1,5 @@
 # temporary files
-/.old
-/.tailwind-starter-kit-master
+/.tmp
 
 # dependencies
 /node_modules
