@@ -45,7 +45,7 @@ export default function Landing() {
       bubbleColor: 'info'
     },
     {
-      item: 'O Grupo já atuante na UFMG, UFVJM, UniBH, UNIPAM, PUC, e que não para de crescer',
+      item: 'O Grupo já atuante na UFMG, UFVJM, UniBH, UNIPAM, PUC—e não para de crescer!',
       faIconClass: 'fas fa-fingerprint',
       bubbleColor: 'success'
     }
@@ -75,7 +75,7 @@ export default function Landing() {
       src:
         'https://lh3.googleusercontent.com/pw/ACtC-3fVW-9sDgnLyOZENIXs7VycOybBdtTJLGdeNPf8oHI2DgvZda6z8Dv3gmnCosy5drtRjDbn6sUfJSmAAQF6Mp6H28dlWYjZfOotdmAPbqaNVbkWU73rQR84qO-RnK86gAeIJWtqWFV_Mend470MAkAP=s3072-no?authuser=0',
       name: 'Isabela Cristina',
-      title: 'Pqp desisto',
+      title: 'Técnicas de estudo',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     }
   ]
