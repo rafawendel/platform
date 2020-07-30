@@ -73,9 +73,9 @@ export default function Landing() {
     },
     {
       src:
-        'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
-      name: 'Natália Acherman',
-      title: 'Gestão do tempo',
+        'https://lh3.googleusercontent.com/pw/ACtC-3fVW-9sDgnLyOZENIXs7VycOybBdtTJLGdeNPf8oHI2DgvZda6z8Dv3gmnCosy5drtRjDbn6sUfJSmAAQF6Mp6H28dlWYjZfOotdmAPbqaNVbkWU73rQR84qO-RnK86gAeIJWtqWFV_Mend470MAkAP=s3072-no?authuser=0',
+      name: 'Isabela Cristina',
+      title: 'Pqp desisto',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     }
   ]
