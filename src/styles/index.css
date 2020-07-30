@@ -13,7 +13,6 @@
 }
 
 @tailwind base;
-@tailwind components;
 
 @apply text-lighter;
   h1, h2, h3, h4, h5, h6, p, small {
@@ -55,5 +54,7 @@ input, button {
   @apply bg-lighter;
   transition: all 0.15s ease;
 }
+
+@tailwind components;
 
 @tailwind utilities;
