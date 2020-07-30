@@ -52,7 +52,19 @@ export default function FormSection({
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center lg:-mt-64 -mt-32">
             <FormCard id={id} title={formTitle} subtitle={formSubtitle} colorMode={colorMode}>
-              <SignupForm colorMode={colorMode} />
+              {/* <SignupForm colorMode={colorMode} /> */}
+              <iframe
+                title="Formulário de Inscrição"
+                className="w-full px-4 py-5"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSd4NaSZT4X8NM8jjCcVQ06fmMPE_hcspxMzhPX6WWsXuF3yfQ/viewform?embedded=true"
+                width="640"
+                height="500"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+              >
+                Carregando…
+              </iframe>
             </FormCard>
           </div>
         </div>

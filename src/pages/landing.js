@@ -9,23 +9,24 @@ import InfoSection from '../components/sections/InfoSection'
 export default function Landing() {
   const contents = [
     {
-      title: 'Awarded Agency',
+      title: 'Quem somos?',
       details:
-        'Divide details about your product or agency work into parts. A paragraph describing a feature will be enough.',
+        'O Grupo de Estudos em Didática Aplicada ao Aprendizado de Medicina é um grupo de mentoria entre pares voltado para estudantes da áreas da saúde.',
       customClass: 'lg:pt-12 pt-6',
       bubbleColor: 'info',
       faIconClass: ''
     },
     {
-      title: 'Free Revisions',
+      title: 'Nossa origem',
       details:
-        'Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious.',
-      bubbleColor: 'danger',
+        'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais mais eficiente do que os modelos tradicionais.',
+      bubbleColor: 'warning',
       faIconClass: ''
     },
     {
-      title: '',
-      details: '',
+      title: 'Nossos objetivos',
+      details:
+        'O GEDAAM tem como fundamentos base técnicas de estudo, oratória, técnicas de apresentação e gestão do tempo. Mais recentemente, o grupo está promovendo encontros especializados, com temas como Pesquisa científica, tecnologia e grupos em Inglês',
       customClass: 'pt-6',
       bubbleColor: 'success',
       faIconClass: ''
@@ -99,24 +100,25 @@ export default function Landing() {
   return (
     <>
       <Head>
-        <title>I Semana GEDAAM</title>
+        <title>Ektélesi | I Semana GEDAAM</title>
       </Head>
       <Layout>
         <HeroSection
           id="HeroSection"
-          title="Ektelési"
+          title="Ektélesi"
           subtitle="I Semana GEDAAM"
-          previewText="O melhor evento que você já viu"
-          alt="pine trees"
+          previewText="Viva a faculdade como nunca antes"
+          alt="palestrante com tela dreams"
           src="https://lh3.googleusercontent.com/pw/ACtC-3fGsoLtRhZVUOSjWUGP2iU7kTfPmGXKJ8MrxL0Ci-i5__vfc2MzmNw4OFrYCNTz3BLlkGKY9O1B9OfO_NUfY0v0Wk750jm_GMFX20II91ogKaepRR0G0bRYTphds3vwcn26yeRLrT9EvEc9hMb7Z_mg=w4160-no?authuser=0"
           overlayColor="#00000090"
           dent
         />
         <CardsSection
           id="CardsSection"
-          heading="Working with us is a pleasure"
-          text={`Don't let your uses guess by attaching tooltips and popovers to any element. Just make sure you enable them first via JavaScript.`}
-          cta="Call to action!"
+          heading="Ekté- o quê?"
+          text={`Ektélesi - Derivado do grego, significa "desempenho", sendo o termo perfeito para nomear a semana de eventos promovidos pelo GEDAAM.
+          É daí que vêm palavras como "eclético"`}
+          cta="Junte-se a nós!"
           colorMode="light"
           cardSetContent={contents}
           imgCard={{
