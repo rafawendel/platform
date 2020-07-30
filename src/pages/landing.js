@@ -55,7 +55,7 @@ export default function Landing() {
           title="GEDAAM"
           subtitle="O melhor evento que você já viu"
           alt="pine trees"
-          src="https://lh3.googleusercontent.com/pw/ACtC-3dbrUs-kaZN8lj4yQo8SCKTbyVhpZG_ptV0ijM4CN2mjxg_8soYQJa_xNByGez8DPVI6LsUqPLXPFx1aTxCcvm_J57kQR_tziZBpZNaFf9e5eUj5wn8LRNxgJgJ1uCctk87XiEUgM-PonrANeUkofGO6w=w1000-h477-no"
+          src="https://lh3.googleusercontent.com/pw/ACtC-3fGsoLtRhZVUOSjWUGP2iU7kTfPmGXKJ8MrxL0Ci-i5__vfc2MzmNw4OFrYCNTz3BLlkGKY9O1B9OfO_NUfY0v0Wk750jm_GMFX20II91ogKaepRR0G0bRYTphds3vwcn26yeRLrT9EvEc9hMb7Z_mg=w4160-no?authuser=0"
           overlayColor="#00000090"
           textTailwindColor="light"
           dent
