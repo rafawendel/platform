@@ -82,7 +82,7 @@ export default function Landing() {
       title: 'Gestão do tempo',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     }
-  ]
+  ].sort(() => Math.random())
 
   const infoList = [
     {
