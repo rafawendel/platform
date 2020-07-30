@@ -51,28 +51,34 @@ export default function Landing() {
       src:
         'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
       name: 'Rafael Wendel',
-      title: 'Especialista em técnicas de estudo',
+      title: 'Raciocínio clínico',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
       src:
         'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
-      name: 'Rafael Wendel',
-      title: 'Especialista em técnicas de estudo',
+      name: 'Eduardo Médici',
+      title: 'Oratória',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
       src:
         'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
-      name: 'Rafael Wendel',
-      title: 'Especialista em técnicas de estudo',
+      name: 'Isabela Cristina',
+      title: 'Técnicas de estudo',
+      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+    },
+    {
+      src: '/img/nogueira.jpg',
+      name: 'Vinicius Nogueira',
+      title: 'Técnicas de apresentação',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
       src:
         'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
-      name: 'Rafael Wendel',
-      title: 'Especialista em técnicas de estudo',
+      name: 'Natália Acherman',
+      title: 'Gestão do tempo',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     }
   ]
