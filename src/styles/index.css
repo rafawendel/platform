@@ -1,18 +1,59 @@
-@tailwind base;
-
-/* Write your own custom base styles here */
-
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
-
-/* Write you own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+:root {
+  --color-main-primary: #f6505cff;
+  --color-main-secondary: #2B95AA;
+  --color-dark-primary: #0b132bff;
+  --color-dark-secondary: #254769ff;
+  --color-light-primary: #e7e7e7ff;
+  --color-light-secondary: #eeeeffff;
+  --color-info: #78ADDD;
+  --color-success: #34D09E;
+  --color-warning: #F0E22A;
+  --color-rose: #CC648A;
+  --color-danger: #F3785E;
 }
 
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
+@tailwind base;
+@tailwind components;
 
-/* Your own custom utilities */
+@apply text-lighter;
+  h1, h2, h3, h4, h5, h6, p, small {
+}
+
+h1 {
+  @apply text-5xl font-semibold;
+}
+
+h2 {
+  @apply text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-3xl font-semibold;
+}
+
+h4 {
+  @apply text-2xl font-semibold;
+}
+
+h5 {
+  @apply text-xl font-semibold;
+}
+
+h6 {
+  @apply text-lg;
+}
+
+p {
+  @apply text-base font-light opacity-75;
+}
+
+small {
+  @apply text-sm;
+}
+
+input, button {
+  @apply bg-lighter;
+  transition: all 0.15s ease;
+}
+
+@tailwind utilities;
