@@ -33,9 +33,9 @@ export default function FormSection({
 }) {
   return (
     <section
-      className={`pb-20 relative block ${colorMode === 'dark' ? 'bg-darker' : 'bg-light'} ${
-        colorMode === 'dark' ? 'text-light' : 'text-darker'
-      }`}
+      className={`pb-20 relative block ${
+        colorMode === 'dark' ? 'bg-darker text-light' : 'bg-light text-darker'
+      } `}
     >
       {dent && <Dent />}
 

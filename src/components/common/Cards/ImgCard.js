@@ -13,11 +13,11 @@ const Dent = () => (
   </svg>
 )
 
-export default function ImgCard({ src, alt, title, details, bgColorClass, dent }) {
+export default function ImgCard({ src, alt, title, details, tailwindClass, dent }) {
   return (
     <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
       <div
-        className={`${bgColorClass} relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg`}
+        className={`${tailwindClass} relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg`}
       >
         <img alt={alt} src={src} className="w-full align-middle rounded-t-lg" />
         <blockquote className="relative p-8 mb-4">

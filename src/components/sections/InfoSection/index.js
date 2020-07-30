@@ -24,9 +24,9 @@ const Dent = () => (
 export default function InfoSection({ id, prosList, title, text, pictureSrc, colorMode, dent }) {
   return (
     <section
-      className={`relative py-20 ${colorMode === 'dark' ? 'bg-dark' : 'bg-lighter'} ${
-        colorMode === 'dark' ? 'text-lighter' : 'text-dark'
-      } `}
+      className={`relative py-20 ${
+        colorMode === 'dark' ? 'bg-dark text-lighter' : 'bg-lighter text-dark'
+      }`}
     >
       {dent && <Dent />}
       <div className="container mx-auto px-4">
@@ -34,7 +34,7 @@ export default function InfoSection({ id, prosList, title, text, pictureSrc, col
           <PictureVertical src={pictureSrc} />
           <div className="w-full md:w-5/12 sm:mt-6 ml-auto mr-auto px-4">
             <div id={id} className="md:pr-12">
-              <Bubble size="lg" bubbleBgColorClass="bg-primary" faIconClass="" />
+              <Bubble size="lg" tailwindClass="bg-primary" faIconClass="" />
               <h3>{title}</h3>
               <SplittedParagraphs>{text}</SplittedParagraphs>
               <ProsList prosList={prosList} />

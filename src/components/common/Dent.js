@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default function Dent({ height, marginTop, tailwindColorClass, position }) {
+export default function Dent({ height, marginTop, tailwindClass, position }) {
   return (
     <>
       <div className={`absolute left-0 right-0 w-full pointer-events-none overflow-hidden `}>
@@ -35,13 +35,13 @@ export default function Dent({ height, marginTop, tailwindColorClass, position }
 Dent.defaultProps = {
   height: 80,
   marginTop: -80,
-  tailwindColorClass: 'darker',
+  tailwindClass: 'darker',
   position: 'bottom'
 }
 
 Dent.propTypes = {
   height: PropTypes.number,
   marginTop: PropTypes.number,
-  tailwindColorClass: PropTypes.string,
+  tailwindClass: PropTypes.string,
   position: PropTypes.oneOf(['top', 'bottom'])
 }

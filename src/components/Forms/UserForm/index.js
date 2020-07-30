@@ -1,18 +1,18 @@
 import FormCard from '../../common/Cards/FormCard'
 
-export default function UserForm({ title, details, textColorClass, buttonText }) {
+export default function UserForm({ title, details, tailwindClass, buttonText }) {
   return (
     <FormCard title="Inscreva" details="lorem ipsum dolor sit amet" buttonText="INSCREVER">
       <div className="relative w-full mb-3 mt-8">
         <label
-          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
+          className={`block uppercase ${tailwindClass} text-xs font-bold mb-2`}
           htmlFor="full-name"
         >
           Full Name
         </label>
         <input
           type="text"
-          className={`px-3 py-3 placeholder-dark ${textColorClass.replace(
+          className={`px-3 py-3 placeholder-dark ${tailwindClass.replace(
             'text',
             'placeholder'
           )} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
@@ -22,14 +22,14 @@ export default function UserForm({ title, details, textColorClass, buttonText })
       </div>
       <div className="relative w-full mb-3">
         <label
-          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
+          className={`block uppercase ${tailwindClass} text-xs font-bold mb-2`}
           htmlFor="email"
         >
           Email
         </label>
         <input
           type="email"
-          className={`px-3 py-3 placeholder-dark ${textColorClass.replace(
+          className={`px-3 py-3 placeholder-dark ${tailwindClass.replace(
             'text',
             'placeholder'
           )} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
@@ -39,7 +39,7 @@ export default function UserForm({ title, details, textColorClass, buttonText })
       </div>
       <div className="relative w-full mb-3">
         <label
-          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
+          className={`block uppercase ${tailwindClass} text-xs font-bold mb-2`}
           htmlFor="message"
         >
           Message
