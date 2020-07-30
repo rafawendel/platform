@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Navbar({ transparent, buttonText, buttonHref }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   return (
@@ -115,7 +117,7 @@ export default function Navbar({ transparent, buttonText, buttonHref }) {
                   type="button"
                   href={buttonHref}
                 >
-                  <i className="fas fa-arrow-alt-circle-down" /> {buttonText}
+                  <i className="fas fa-arrow-alt-circle-down">{buttonText}</i>
                 </a>
               </li>
             </ul>
