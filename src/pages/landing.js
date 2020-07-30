@@ -75,22 +75,23 @@ export default function Landing() {
     }
   ]
 
-  const prosList2 = [
+  const infoList = [
     {
-      title: 'Test',
-      details: 'lorem ipsum dolor sit amet, consectetur adip lorem, consectetur adipiscing elit',
+      title: 'Data',
+      details: 'do dia 10 a 15 de agosto',
       faIconClass: '',
       textColor: 'light'
     },
     {
-      title: 'Test',
-      details: 'lorem ipsum dolor sit amet, consectetur adip lorem, consectetur adipiscing elit',
+      title: 'Duração',
+      details: 'A carga horária total será de 8 horas, com certificação gratuita',
       faIconClass: '',
       textColor: 'light'
     },
     {
-      title: 'Test',
-      details: 'lorem ipsum dolor sit amet, consectetur adip lorem, consectetur adipiscing elit',
+      title: 'Formato',
+      details:
+        'Será um evento totalmente online, com momentos síncronos e assíncronos, além do oficinas e discussões em grupo',
       faIconClass: '',
       textColor: 'light'
     }
@@ -146,15 +147,12 @@ export default function Landing() {
 
         <FormSection
           id="Form"
-          heading="Build something"
-          text="
-              Put the potentially record low maximum sea ice extent tihs year down to low ice.
-              According to the National Oceanic and Atmospheric Administration, Ted, Scambos.
-            "
+          heading="Informações do evento"
+          text="Tudo que você precisa saber sobre a I Semana GEDAAM"
           formTitle="Form"
           formSubtitle="alá"
           colorMode="dark"
-          prosList={prosList2}
+          prosList={infoList}
           dent
         />
       </Layout>
