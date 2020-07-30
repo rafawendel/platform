@@ -13,14 +13,14 @@ export default function Landing() {
       details:
         'O Grupo de Estudos em Didática Aplicada ao Aprendizado de Medicina é um grupo de mentoria entre pares voltado para estudantes da áreas da saúde.',
       customClass: 'lg:pt-12 pt-6',
-      bubbleColor: 'info',
+      bubbleBgColorClass: 'bg-info',
       faIconClass: ''
     },
     {
       title: 'Nossa origem',
       details:
         'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais eficiente do que os modelos tradicionais.',
-      bubbleColor: 'warning',
+      bubbleBgColorClass: 'bg-warning',
       faIconClass: ''
     },
     {
@@ -28,7 +28,7 @@ export default function Landing() {
       details:
         'O GEDAAM tem como fundamentos base técnicas de estudo, oratória, técnicas de apresentação e gestão do tempo. Mais recentemente, o grupo está promovendo encontros especializados, com temas como Pesquisa científica, tecnologia e grupos em Inglês',
       customClass: 'pt-6',
-      bubbleColor: 'success',
+      bubbleBgColorClass: 'bg-success',
       faIconClass: ''
     }
   ]
@@ -37,17 +37,17 @@ export default function Landing() {
     {
       item: 'Oficinas e apresentações voltadas para estudantes da área da saúde',
       faIconClass: 'fas fa-fingerprint',
-      bubbleColor: 'secondary'
+      bubbleBgColorClass: 'bg-secondary'
     },
     {
       item: 'Oportunidade para se tornar um membro do GEDAAM',
       faIconClass: 'fas fa-fingerprint',
-      bubbleColor: 'info'
+      bubbleBgColorClass: 'bg-info'
     },
     {
       item: 'O Grupo já atuante na UFMG, UFVJM, UniBH, UNIPAM, PUC—e não para de crescer!',
       faIconClass: 'fas fa-fingerprint',
-      bubbleColor: 'success'
+      bubbleBgColorClass: 'bg-success'
     }
   ]
 
@@ -56,31 +56,31 @@ export default function Landing() {
       src: 'img/wendel.jpg',
       name: 'Rafael Wendel',
       title: 'Raciocínio clínico',
-      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+      socialNetworks: [{ faIconClass: 'fad', bubbleBgColorClass: 'bg-info' }]
     },
     {
       src: 'img/medici.jpeg',
       name: 'Eduardo Médici',
       title: 'Oratória',
-      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+      socialNetworks: [{ faIconClass: 'fad', bubbleBgColorClass: 'bg-info' }]
     },
     {
       src: 'img/nogueira.jpeg',
       name: 'Vinicius Nogueira',
       title: 'Técnicas de apresentação',
-      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+      socialNetworks: [{ faIconClass: 'fad', bubbleBgColorClass: 'bg-info' }]
     },
     {
       src: 'img/bela.jpg',
       name: 'Isabela Cristina',
       title: 'Técnicas de estudo',
-      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+      socialNetworks: [{ faIconClass: 'fad', bubbleBgColorClass: 'bg-info' }]
     },
     {
       src: 'img/nat.jpeg',
       name: 'Natália Acherman',
       title: 'Gestão do tempo',
-      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+      socialNetworks: [{ faIconClass: 'fad', bubbleBgColorClass: 'bg-info' }]
     }
   ] // .sort((_a, _b) => 0.5 - Math.random())
 
@@ -89,20 +89,20 @@ export default function Landing() {
       title: 'Data',
       details: 'do dia 10 a 15 de agosto',
       faIconClass: '',
-      textColor: 'light'
+      textColorClass: 'text-light'
     },
     {
       title: 'Formato',
       details:
         'Totalmente online, com momentos síncronos e assíncronos, além do oficinas e discussões em grupo',
       faIconClass: '',
-      textColor: 'light'
+      textColorClass: 'text-light'
     },
     {
       title: 'Duração',
       details: 'A carga horária total será de 8 horas, com certificação gratuita',
       faIconClass: '',
-      textColor: 'light'
+      textColorClass: 'text-light'
     }
   ]
   return (
@@ -135,7 +135,7 @@ export default function Landing() {
               'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
             title: 'GEDAAM',
             details: 'Um grupo feito por E para estudantes',
-            colorClass: 'primary'
+            bgColorClass: 'primary'
           }}
         />
         <InfoSection

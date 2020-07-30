@@ -28,8 +28,8 @@ export default function SignupForm({ colorMode }) {
         <TextInput label="Email Address" name="email" type="email" placeholder="jane@formik.com" />
         <div className="text-center mt-6">
           <button
-            className={`bg-${colorMode === 'dark' ? 'darker' : 'dark'} text-${
-              colorMode === 'dark' ? 'light' : 'lighter'
+            className={`${colorMode === 'dark' ? 'bg-darker' : 'bg-dark'} ${
+              colorMode === 'dark' ? 'text-light' : 'text-lighter'
             } active:opacity-75 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1`}
             type="submit"
           >

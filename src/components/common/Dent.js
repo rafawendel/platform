@@ -13,10 +13,7 @@ export default function Dent({ height, marginTop, tailwindColorClass, position }
           x="0"
           y="0"
         >
-          <polygon
-            className={`text-${tailwindColorClass} fill-current`}
-            points="2560 0 2560 100 0 100"
-          />
+          <polygon className="text-dark fill-current" points="2560 0 2560 100 0 100" />
         </svg>
       </div>
       <style jsx>{`

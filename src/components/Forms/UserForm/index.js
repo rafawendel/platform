@@ -1,39 +1,45 @@
 import FormCard from '../../common/Cards/FormCard'
 
-export default function UserForm({ title, details, textTailwindColor, buttonText }) {
+export default function UserForm({ title, details, textColorClass, buttonText }) {
   return (
     <FormCard title="Inscreva" details="lorem ipsum dolor sit amet" buttonText="INSCREVER">
       <div className="relative w-full mb-3 mt-8">
         <label
-          className={`block uppercase text-${textTailwindColor} text-xs font-bold mb-2`}
+          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
           htmlFor="full-name"
         >
           Full Name
         </label>
         <input
           type="text"
-          className={`px-3 py-3 placeholder-${textTailwindColor} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
+          className={`px-3 py-3 placeholder-dark ${textColorClass.replace(
+            'text',
+            'placeholder'
+          )} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
           placeholder="Full Name"
           style={{ transition: 'all .15s ease' }}
         />
       </div>
       <div className="relative w-full mb-3">
         <label
-          className={`block uppercase text-${textTailwindColor} text-xs font-bold mb-2`}
+          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
           htmlFor="email"
         >
           Email
         </label>
         <input
           type="email"
-          className={`px-3 py-3 placeholder-${textTailwindColor} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
+          className={`px-3 py-3 placeholder-dark ${textColorClass.replace(
+            'text',
+            'placeholder'
+          )} placeholder-opacity-75 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full`}
           placeholder="Email"
           style={{ transition: 'all .15s ease' }}
         />
       </div>
       <div className="relative w-full mb-3">
         <label
-          className={`block uppercase text-${textTailwindColor} text-xs font-bold mb-2`}
+          className={`block uppercase ${textColorClass} text-xs font-bold mb-2`}
           htmlFor="message"
         >
           Message

@@ -12,12 +12,12 @@ export default function CardsSection({
   imgCard
 }) {
   return (
-    <section id={id} className={`pb-20 bg-${colorMode === 'dark' ? 'darker' : 'light'} -mt-24`}>
+    <section id={id} className={`pb-20 ${colorMode === 'dark' ? 'bg-darker' : 'bg-light'} -mt-24`}>
       <div className="container mx-auto px-4">
         <CardSet contents={cardSetContent} colorMode={colorMode} />
         <div
-          className={`flex flex-wrap items-center mt-16 text-${
-            colorMode === 'dark' ? 'light' : 'darker'
+          className={`flex flex-wrap items-center mt-16 ${
+            colorMode === 'dark' ? 'text-light' : 'text-darker'
           }`}
         >
           <div className="w-full md:w-5/12 sm:mb-8 px-4 mr-auto ml-auto">
