@@ -19,7 +19,7 @@ export default function Landing() {
     {
       title: 'Nossa origem',
       details:
-        'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais mais eficiente do que os modelos tradicionais.',
+        'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais eficiente do que os modelos tradicionais.',
       bubbleColor: 'warning',
       faIconClass: ''
     },
