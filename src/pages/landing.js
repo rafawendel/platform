@@ -88,15 +88,15 @@ export default function Landing() {
       textColor: 'light'
     },
     {
-      title: 'Duração',
-      details: 'A carga horária total será de 8 horas, com certificação gratuita',
+      title: 'Formato',
+      details:
+        'Totalmente online, com momentos síncronos e assíncronos, além do oficinas e discussões em grupo',
       faIconClass: '',
       textColor: 'light'
     },
     {
-      title: 'Formato',
-      details:
-        'Será um evento totalmente online, com momentos síncronos e assíncronos, além do oficinas e discussões em grupo',
+      title: 'Duração',
+      details: 'A carga horária total será de 8 horas, com certificação gratuita',
       faIconClass: '',
       textColor: 'light'
     }
