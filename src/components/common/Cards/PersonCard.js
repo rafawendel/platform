@@ -12,10 +12,10 @@ export default function PersonCard({ src, name, title, socialNetworks }) {
         />
         <div className="pt-6 text-center">
           <h5>{name}</h5>
-          <small className="mt-1 uppercase font-semibold">{title}</small>
+          <small className="mt-1 uppercase font-semibold opacity-75">{title}</small>
           <div className="mt-6">
             {socialNetworks.map((properties, i) => (
-              <Bubble key={`${name}-social-${i}`} size="sm" {...properties} />
+              <Bubble key={`${name}-social-${i + 1}`} size="sm" {...properties} />
             ))}
           </div>
         </div>

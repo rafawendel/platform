@@ -21,7 +21,16 @@ const Dent = () => (
   </div>
 )
 
-export default function FormSection({ heading, text, prosList, colorMode, dent }) {
+export default function FormSection({
+  id,
+  heading,
+  text,
+  prosList,
+  colorMode,
+  formTitle,
+  formSubtitle,
+  dent
+}) {
   return (
     <section
       className={`pb-20 relative block bg-${colorMode === 'dark' ? 'darker' : 'light'} text-${
@@ -32,7 +41,7 @@ export default function FormSection({ heading, text, prosList, colorMode, dent }
 
       <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
         <div className="flex flex-wrap text-center justify-center">
-          <div className="w-full lg:w-6/12 px-4">
+          <div className="w-full lg:w-8/12 px-4 sm:mt-8">
             <h2>{heading}</h2>
             <p className="text-lg leading-relaxed mt-4 mb-4">{text}</p>
           </div>
@@ -41,8 +50,8 @@ export default function FormSection({ heading, text, prosList, colorMode, dent }
       </div>
       <div className="relative block py-24 lg:pt-0">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-            <FormCard title="Form" details="there they are" colorMode={colorMode}>
+          <div className="flex flex-wrap justify-center lg:-mt-64 -mt-32">
+            <FormCard id={id} title={formTitle} subtitle={formSubtitle} colorMode={colorMode}>
               <SignupForm colorMode={colorMode} />
             </FormCard>
           </div>

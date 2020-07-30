@@ -5,7 +5,7 @@ import Footer from '../../components/common/Footer'
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar transparent />
+      <Navbar buttonHref="#Form" transparent />
       <main>{children}</main>
       <Footer />
     </>

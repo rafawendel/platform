@@ -6,7 +6,7 @@ import '../assets/index.css'
 function App({ Component, pageProps }) {
   return (
     <>
-      <Head>{/* ADD SEO HERE */}</Head>
+      <Head>{}</Head>
       <Component {...pageProps} />
     </>
   )

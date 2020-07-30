@@ -1,4 +1,4 @@
-export default function FormCard({ title, details, colorMode, children }) {
+export default function FormCard({ title, subtitle, colorMode, children }) {
   return (
     <div className={`w-full lg:w-6/12 px-4 text-${colorMode === 'dark' ? 'lighter' : 'darker'} `}>
       <div
@@ -8,7 +8,7 @@ export default function FormCard({ title, details, colorMode, children }) {
       >
         <div className="flex-auto p-5 lg:p-10">
           <h4>{title}</h4>
-          <p className="leading-relaxed font-normal mt-1 mb-4 opacity-75">{details}</p>
+          <p className="leading-relaxed font-normal mt-1 mb-4 opacity-75">{subtitle}</p>
           {children}
         </div>
       </div>

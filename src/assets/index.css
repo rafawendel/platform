@@ -40,7 +40,7 @@ h5 {
 }
 
 h6 {
-  @apply text-lg font-semibold;
+  @apply text-lg;
 }
 
 p {

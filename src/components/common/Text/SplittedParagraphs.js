@@ -1,9 +1,6 @@
-export default function SplittedParagraphs({ text, textTailwindColor }) {
-  return text.split('\n').map((paragraph, i) => (
-    <p
-      key={`paragraph-${i + 1}`}
-      className={`text-${textTailwindColor} text-lg leading-relaxed ${i || 'mt-4'} mb-4`}
-    >
+export default function SplittedParagraphs({ children }) {
+  return children.split('\n').map((paragraph, i) => (
+    <p key={`paragraph-${i + 1}`} className="text-lg leading-relaxed first:mt-2 mb-4">
       {paragraph}
     </p>
   ))

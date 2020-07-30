@@ -18,6 +18,7 @@ module.exports = {
     }
   },
   variants: {
+    margin: ['responsive', 'hover', 'focus', 'first'],
     opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover']
   },
   plugins: []
