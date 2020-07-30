@@ -38,23 +38,35 @@ export default function Landing() {
       bubbleTailwindColor: 'pink-300'
     }
   ]
+
+  const prosList2 = [
+    {
+      title: 'Test',
+      details: 'lorem ipsum dolor sit amet, consectetur adip',
+      faIconClass: '',
+      tailwindTextColor: 'white',
+      tailwindColorClass: 'darker'
+    }
+  ]
   return (
     <>
       <Layout>
         <HeroSection
           title="GEDAAM"
           subtitle="O melhor evento que você já viu"
-          src="https://lh3.googleusercontent.com/pw/ACtC-3dbrUs-kaZN8lj4yQo8SCKTbyVhpZG_ptV0ijM4CN2mjxg_8soYQJa_xNByGez8DPVI6LsUqPLXPFx1aTxCcvm_J57kQR_tziZBpZNaFf9e5eUj5wn8LRNxgJgJ1uCctk87XiEUgM-PonrANeUkofGO6w=w1000-h477-no"
           alt="pine trees"
+          src="https://lh3.googleusercontent.com/pw/ACtC-3dbrUs-kaZN8lj4yQo8SCKTbyVhpZG_ptV0ijM4CN2mjxg_8soYQJa_xNByGez8DPVI6LsUqPLXPFx1aTxCcvm_J57kQR_tziZBpZNaFf9e5eUj5wn8LRNxgJgJ1uCctk87XiEUgM-PonrANeUkofGO6w=w1000-h477-no"
+          overlayColor="#00000090"
+          textTailwindColor="light"
           dent
         />
         <CardsSection
-          cardSetContent={contents}
-          tailwindColorClass="light"
-          textTailwindColor="darker"
           heading="Working with us is a pleasure"
           text={`Don't let your uses guess by attaching tooltips and popovers to any element. Just make sure you enable them first via JavaScript.`}
           cta="Call to action!"
+          tailwindColorClass="light"
+          textTailwindColor="darker"
+          cardSetContent={contents}
           imgCard={{
             alt: '...',
             src:
@@ -68,25 +80,21 @@ export default function Landing() {
           prosList={prosList}
           textTailwindColor="darker"
           text={`The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.`}
+          pictureSrc="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+          dent
         />
         <LeadersSection />
-        <div
-          className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-          style={{ height: '80px', transform: 'translateZ(0)' }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon className="text-gray-900 fill-current" points="2560 100 0 100" />
-          </svg>
-        </div>
-        <FormSection />
+
+        <FormSection
+          heading="Build something"
+          text="
+              Put the potentially record low maximum sea ice extent tihs year down to low ice.
+              According to the National Oceanic and Atmospheric Administration, Ted, Scambos.
+            "
+          colorMode="dark"
+          prosList={prosList2}
+          dent
+        />
       </Layout>
     </>
   )

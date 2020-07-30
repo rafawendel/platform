@@ -17,19 +17,8 @@ module.exports = {
       }
     }
   },
-  variants: [
-    'responsive',
-    'group-hover',
-    // 'focus-within', // this one is a motherfucking error-causer
-    'first',
-    'last',
-    'odd',
-    'even',
-    'hover',
-    'focus',
-    'active',
-    'visited',
-    'disabled'
-  ],
+  variants: {
+    opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover']
+  },
   plugins: []
 }

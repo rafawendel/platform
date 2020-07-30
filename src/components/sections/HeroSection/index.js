@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types'
 import HeroText from './HeroText'
 
-export default function HeroSection({ title, subtitle, src, alt, overlayColor, dent }) {
+export default function HeroSection({
+  title,
+  subtitle,
+  src,
+  alt,
+  overlayColor,
+  textTailwindColor,
+  dent
+}) {
   return (
     <>
       <div className="hero-wrapper relative pt-16 pb-32 flex content-center items-center justify-center">
@@ -10,7 +18,7 @@ export default function HeroSection({ title, subtitle, src, alt, overlayColor, d
           aria-label={alt}
           className="bg-image absolute top-0 w-full h-full bg-center bg-cover"
         />
-        <HeroText title={title} subtitle={subtitle} />
+        <HeroText title={title} subtitle={subtitle} textTailwindColor={textTailwindColor} />
         {dent && (
           <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"

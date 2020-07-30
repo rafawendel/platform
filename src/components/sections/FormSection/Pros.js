@@ -1,13 +1,10 @@
 import PlainCard from '../../common/Cards/PlainCard'
 
-export default function Pros() {
-  const prosList = [
-    { title: 'Test', details: 'lorem ipsum dolor sit amet, consectetur adip', faIconClass: '' }
-  ]
+export default function Pros({ prosList }) {
   return (
     <div className="flex flex-wrap mt-12 justify-center">
       {prosList.map((properties, i) => (
-        <PlainCard key={i} {...properties} />
+        <PlainCard key={i + 1} {...properties} />
       ))}
     </div>
   )

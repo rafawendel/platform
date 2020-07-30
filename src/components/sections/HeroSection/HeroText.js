@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 
-export default function HeroText({ title, subtitle }) {
+export default function HeroText({ title, subtitle, textTailwindColor }) {
   return (
     <div className="container relative mx-auto">
       <div className="items-center flex flex-wrap">
         <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-          <div className="pr-12">
+          <div className={`text-${textTailwindColor} pr-12}`}>
             <h1>{title}</h1>
-            <p className="text-light text-xl mt-4">{subtitle}</p>
+            <h6 className="text-xl mt-4">{subtitle}</h6>
           </div>
         </div>
       </div>

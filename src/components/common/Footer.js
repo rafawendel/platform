@@ -1,12 +1,34 @@
+import PropTypes from 'prop-types'
+
 import Bubble from './Bubbles/Bubble'
 
-export default function Footer() {
+const Dent = () => (
+  <div
+    className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+    style={{ height: '80px' }}
+  >
+    <svg
+      className="absolute bottom-0 overflow-hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+      viewBox="0 0 2560 100"
+      x="0"
+      y="0"
+    >
+      <polygon className="text-gray-300 fill-current" points="2560 0 2560 100 0 100" />
+    </svg>
+  </div>
+)
+
+export default function Footer({ dent }) {
   const socialNetworks = [{ faIconClass: 'fad', bubbleTailwindColor: 'white' }]
   const usefulLinks = [{ name: 'About Us', href: '#' }]
   const otherResources = [{ name: 'About Us', href: '#' }]
   return (
     <>
       <footer className="relative bg-gray-300 pt-8 pb-6">
+        {dent && <Dent />}
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-6/12 px-4">
@@ -71,4 +93,12 @@ export default function Footer() {
       </footer>
     </>
   )
+}
+
+Footer.defaultProps = {
+  dent: true
+}
+
+Footer.propTypes = {
+  dent: PropTypes.bool
 }
