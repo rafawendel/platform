@@ -1,6 +1,9 @@
-export default function FormCard({ title, subtitle, colorMode, children }) {
+export default function FormCard({ title, subtitle, colorMode, children, ...props }) {
   return (
-    <div className={`w-full lg:w-8/12 px-4 text-${colorMode === 'dark' ? 'lighter' : 'darker'} `}>
+    <div
+      className={`w-full lg:w-8/12 px-4 text-${colorMode === 'dark' ? 'lighter' : 'darker'} `}
+      {...props}
+    >
       <div
         className={`relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-${
           colorMode === 'dark' ? 'dark' : 'light'

@@ -26,11 +26,10 @@ export default function Footer({ dent }) {
   const usefulLinks = [{ name: 'About Us', href: '#' }]
   const otherResources = [{ name: 'About Us', href: '#' }]
   return (
-    <>
-      <footer className="relative bg-gray-300 pt-8 pb-6">
-        {dent && <Dent />}
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap">
+    <footer className="relative bg-light text-darker pt-8 pb-6">
+      {dent && <Dent />}
+      <div className="container mx-auto px-4">
+        {/* <div className="flex flex-wrap">
             <div className="w-full lg:w-6/12 px-4">
               <h4>Let's keep in touch!</h4>
               <h6 className="mt-0 mb-2">
@@ -80,18 +79,17 @@ export default function Footer({ dent }) {
                 </div>
               </div>
             </div>
-          </div>
-          <hr className="my-6 border-gray-400" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-              <div className="text-sm text-gray-600 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} GEDAAM.
-              </div>
+          </div> */}
+        <hr className="my-6 border-darker opacity-25" />
+        <div className="flex flex-wrap items-center md:justify-between justify-center">
+          <div className="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div className="text-sm font-semibold py-1">
+              Copyright © {new Date().getFullYear()} GEDAAM.
             </div>
           </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   )
 }
 
