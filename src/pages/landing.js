@@ -146,7 +146,7 @@ export default function Landing() {
         <LeadersSection
           id="LeadersSection"
           heading="Apresentadores de primeira"
-          text="According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum."
+          text="Desde a sua criação, o GEDAAM capacitou dezenas de estudantes para apresentações e design. Quer ver a força disso? Conheça os palestrantes!"
           colorMode="dark"
           leaders={leaders}
         />
