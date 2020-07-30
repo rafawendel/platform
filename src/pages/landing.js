@@ -35,14 +35,19 @@ export default function Landing() {
 
   const prosList = [
     {
-      item: 'Carefully crafted components',
+      item: 'Oficinas e apresentações voltadas para estudantes da área da saúde',
       faIconClass: 'fas fa-fingerprint',
-      bubbleColor: 'pink-300'
+      bubbleColor: 'secondary'
     },
     {
-      item: 'Carefully crafted components',
+      item: 'Oportunidade para se tornar um membro do GEDAAM',
       faIconClass: 'fas fa-fingerprint',
-      bubbleColor: 'pink-300'
+      bubbleColor: 'info'
+    },
+    {
+      item: 'O Grupo já atuante na UFMG, UFVJM, UniBH, UNIPAM, PUC, e que não para de crescer',
+      faIconClass: 'fas fa-fingerprint',
+      bubbleColor: 'success'
     }
   ]
 
@@ -124,8 +129,8 @@ export default function Landing() {
             alt: '...',
             src:
               'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
-            title: 'Título',
-            details: 'lorem ipsum dolor sit amet, consectet',
+            title: 'GEDAAM',
+            details: 'Um grupo feito por E para estudantes',
             colorClass: 'primary'
           }}
         />
@@ -133,7 +138,8 @@ export default function Landing() {
           id="InfoSection"
           prosList={prosList}
           colorMode="dark"
-          text={`The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.`}
+          title="Por que participar do Ektélesi?"
+          text="Uma semana repleta de atrações que podem mudar os rumos da sua trajetória acadêmica."
           pictureSrc="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
           dent
         />

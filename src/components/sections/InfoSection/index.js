@@ -21,7 +21,7 @@ const Dent = () => (
     </svg>
   </div>
 )
-export default function InfoSection({ id, prosList, text, pictureSrc, colorMode, dent }) {
+export default function InfoSection({ id, prosList, title, text, pictureSrc, colorMode, dent }) {
   return (
     <section
       className={`relative py-20 bg-${colorMode === 'dark' ? 'dark' : 'lighter'} text-${
@@ -35,7 +35,7 @@ export default function InfoSection({ id, prosList, text, pictureSrc, colorMode,
           <div className="w-full md:w-5/12 sm:mt-6 ml-auto mr-auto px-4">
             <div id={id} className="md:pr-12">
               <Bubble size="lg" bubbleColor="primary" faIconClass="" />
-              <h3>A growing company</h3>
+              <h3>{title}</h3>
               <SplittedParagraphs>{text}</SplittedParagraphs>
               <ProsList prosList={prosList} />
             </div>
