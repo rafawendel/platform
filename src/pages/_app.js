@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 
-import '../assets/index.css'
+import '../styles/index.css'
 
 function App({ Component, pageProps }) {
   return (
