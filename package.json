@@ -21,12 +21,7 @@
     "next",
     "nextjs",
     "react",
-    "reactjs",
-    "material",
-    "material-design",
-    "material-kit",
-    "material-kit-react",
-    "next-material-kit"
+    "reactjs"
   ],
   "author": "",
   "license": "MIT",
@@ -34,7 +29,6 @@
   "dependencies": {
     "formik": "^2.1.5",
     "next": "^9.4.2",
-    "nextjs-progressbar": "0.0.5",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -58,6 +52,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
     "stylelint": "^13.5.0",
+    "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "1.1.2"
   }

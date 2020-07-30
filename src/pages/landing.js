@@ -53,8 +53,7 @@ export default function Landing() {
 
   const leaders = [
     {
-      src:
-        'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
+      src: 'img/wendel.jpg',
       name: 'Rafael Wendel',
       title: 'Raciocínio clínico',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
@@ -72,10 +71,15 @@ export default function Landing() {
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
-      src:
-        'https://lh3.googleusercontent.com/pw/ACtC-3fVW-9sDgnLyOZENIXs7VycOybBdtTJLGdeNPf8oHI2DgvZda6z8Dv3gmnCosy5drtRjDbn6sUfJSmAAQF6Mp6H28dlWYjZfOotdmAPbqaNVbkWU73rQR84qO-RnK86gAeIJWtqWFV_Mend470MAkAP=s3072-no?authuser=0',
+      src: 'img/bela.jpg',
       name: 'Isabela Cristina',
       title: 'Técnicas de estudo',
+      socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
+    },
+    {
+      src: 'img/nat.jpeg',
+      name: 'Natália Acherman',
+      title: 'Gestão do tempo',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     }
   ]
