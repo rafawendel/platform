@@ -55,8 +55,7 @@ export default function Landing() {
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
-      src:
-        'https://lh3.googleusercontent.com/pw/ACtC-3czwYnvdvd9uK3St26yj-Ns8aFUEGrHztv33k_x3kawINWwV9F7H1dWAnW693rEPig52vkKQWXi7ZPz8UIs5-3Lg-9Hv8_-cn29WIQtBVjlnKimjBexPP5b06P8Au0Q5Xr1lsgIljO86rXdcyL8px3mJA=s2427-no?authuser=0',
+      src: 'img/medici.jpeg',
       name: 'Eduardo Médici',
       title: 'Oratória',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
@@ -69,7 +68,7 @@ export default function Landing() {
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
     },
     {
-      src: '/img/nogueira.jpg',
+      src: 'img/nogueira.jpeg',
       name: 'Vinicius Nogueira',
       title: 'Técnicas de apresentação',
       socialNetworks: [{ faIconClass: 'fad', bubbleColor: 'info' }]
@@ -146,7 +145,7 @@ export default function Landing() {
         />
         <LeadersSection
           id="LeadersSection"
-          heading="Here are our heroes"
+          heading="Apresentadores de primeira"
           text="According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum."
           colorMode="dark"
           leaders={leaders}
