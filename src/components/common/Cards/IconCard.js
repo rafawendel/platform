@@ -1,8 +1,8 @@
 import Bubble from '../Bubbles/Bubble'
 
-export default function IconCard({ title, details, tailwindClass, colorMode, ...props }) {
+export default function IconCard({ title, details, colorMode, ...props }) {
   return (
-    <div className={`${tailwindClass} w-full md:w-4/12 px-4 text-center`}>
+    <div className="w-full md:w-4/12 px-4 text-center">
       <div
         className={`${
           colorMode === 'dark' ? 'bg-dark text-light' : 'bg-lighter text-darker'

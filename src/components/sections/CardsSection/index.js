@@ -25,7 +25,7 @@ export default function CardsSection({
             <SplittedParagraphs>{text}</SplittedParagraphs>
             <p className="font-bold mt-8 opacity-100">{cta}</p>
           </div>
-          <ImgCard {...imgCard} dent colorMode={colorMode} />
+          <ImgCard {...imgCard} dent />
         </div>
       </div>
     </section>
