@@ -12,23 +12,23 @@ export default function Landing() {
       title: 'Quem somos?',
       details:
         'O Grupo de Estudos em Didática Aplicada ao Aprendizado de Medicina é um grupo de mentoria entre pares voltado para estudantes da áreas da saúde.',
-      customClass: 'lg:pt-12 pt-6',
-      tailwindClass: 'bg-info',
+      tailwindClass: 'lg:pt-12 pt-6',
+      bubbleTailwindClass: 'bg-info',
       faIconClass: ''
     },
     {
       title: 'Nossa origem',
       details:
         'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais eficiente do que os modelos tradicionais.',
-      tailwindClass: 'bg-warning',
+      bubbleTailwindClass: 'bg-warning',
       faIconClass: ''
     },
     {
       title: 'Nossos objetivos',
       details:
         'O GEDAAM tem como fundamentos base técnicas de estudo, oratória, técnicas de apresentação e gestão do tempo. Mais recentemente, o grupo está promovendo encontros especializados, com temas como Pesquisa científica, tecnologia e grupos em Inglês',
-      customClass: 'pt-6',
-      tailwindClass: 'bg-success',
+      tailwindClass: 'pt-6',
+      bubbleTailwindClass: 'bg-success',
       faIconClass: ''
     }
   ]
