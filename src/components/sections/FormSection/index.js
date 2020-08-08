@@ -46,7 +46,7 @@ export default function FormSection({
             <p className="text-lg leading-relaxed mt-4 mb-4">{text}</p>
           </div>
         </div>
-        <Pros prosList={prosList} />
+        <Pros prosList={prosList} colorMode={colorMode} />
       </div>
       <div className="relative block py-24 lg:pt-0">
         <div className="container mx-auto px-4">

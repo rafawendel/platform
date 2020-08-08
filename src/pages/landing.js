@@ -14,7 +14,7 @@ export default function Landing() {
         'O Grupo de Estudos em Didática Aplicada ao Aprendizado de Medicina é um grupo de mentoria entre pares voltado para estudantes da áreas da saúde.',
       tailwindClass: 'lg:pt-12 pt-6',
       bubbleTailwindClass: 'bg-info',
-      faIconClass: ''
+      faIconClass: 'fas fa-coffee'
     },
     {
       title: 'Nossa origem',
@@ -88,20 +88,20 @@ export default function Landing() {
     {
       title: 'Data',
       details: 'do dia 10 a 15 de agosto',
-      faIconClass: '',
+      faIconClass: 'coffee',
       tailwindClass: 'text-light'
     },
     {
       title: 'Formato',
       details:
         'Totalmente online, com momentos síncronos e assíncronos, além do oficinas e discussões em grupo',
-      faIconClass: '',
+      faIconClass: 'coffee',
       tailwindClass: 'text-light'
     },
     {
       title: 'Duração',
       details: 'A carga horária total será de 8 horas, com certificação gratuita',
-      faIconClass: '',
+      faIconClass: 'coffee',
       tailwindClass: 'text-light'
     }
   ]

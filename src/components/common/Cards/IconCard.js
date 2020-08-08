@@ -5,8 +5,7 @@ export default function IconCard({
   details,
   tailwindClass,
   colorMode,
-  bubbleTailwindClass,
-  ...props
+  bubbleTailwindClass
 }) {
   return (
     <div className={`w-full md:w-4/12 px-4 text-center ${tailwindClass}`}>
@@ -16,7 +15,12 @@ export default function IconCard({
         } relative flex flex-col min-w-0 break-words w-full mb-8 shadow-lg rounded-lg`}
       >
         <div className="px-5 py-5 flex-auto overflow-hidden">
-          <Bubble size="md" tailwindClass={bubbleTailwindClass} {...props} />
+          <Bubble
+            size="md"
+            tailwindClass={`${bubbleTailwindClass} ${
+              colorMode === 'dark' ? 'text-dark' : 'text-lighter'
+            }`}
+          />
           <h6>{title}</h6>
           <p className="mt-2 mb-4">{details}</p>
         </div>

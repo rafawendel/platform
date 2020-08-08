@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import '../styles/index.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 function App({ Component, pageProps }) {
   return (
@@ -13,7 +14,7 @@ function App({ Component, pageProps }) {
 }
 
 App.propTypes = {
-  Component: PropTypes.element.isRequired,
+  Component: PropTypes.func.isRequired,
   pageProps: PropTypes.objectOf(PropTypes.any).isRequired
 }
 

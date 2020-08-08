@@ -10,7 +10,7 @@ export default function Bubble({ size, faIconClass, tailwindClass }) {
       } rounded-full outline-none focus:outline-none shadow-lg text-center inline-flex items-center justify-center`}
       type="button"
     >
-      <i className={`${faIconClass}`} />
+      <i className={faIconClass} />
     </button>
   )
 }
