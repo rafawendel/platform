@@ -32,9 +32,11 @@ export default function Event() {
       <Head>
         <title>Ektélesi</title>
       </Head>
-      <VideoSection />
-      <SourceSection contents={contents} colorMode="dark" />
-      <SponsorSection />
+      <main className="w-full">
+        <VideoSection />
+        <SourceSection contents={contents} colorMode="dark" />
+        <SponsorSection />
+      </main>
     </>
   )
 }
