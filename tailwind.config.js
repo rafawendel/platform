@@ -14,12 +14,17 @@ module.exports = {
         warning: 'var(--color-warning)',
         rose: 'var(--color-rose)',
         danger: 'var(--color-danger)'
+      },
+      spacing: {
+        '1/2': '2px'
       }
     }
   },
   variants: {
+    visibility: ['responsive', 'first'],
     margin: ['responsive', 'hover', 'focus', 'first'],
-    opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover']
+    opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'active']
   },
   plugins: []
 }
