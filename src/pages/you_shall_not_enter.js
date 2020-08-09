@@ -27,6 +27,30 @@ export default function Event() {
       faIconClass: ''
     }
   ]
+
+  const sponsorList = [
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    }
+  ]
+
   return (
     <>
       <Head>
@@ -35,8 +59,8 @@ export default function Event() {
       <main className="w-full">
         <VideoSection />
         <SourceSection contents={contents} colorMode="dark" />
-        <SponsorSection />
       </main>
+      <SponsorSection sponsorList={sponsorList} />
     </>
   )
 }

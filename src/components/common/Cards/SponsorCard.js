@@ -1,9 +1,17 @@
-export default function SponsorCard() {
+export default function SponsorCard({ logo, alt, href }) {
   return (
-    <div className="bg-darker h-20 rounded flex items-center justify-center">
-      <div className="w-10">
-        <img src="https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg" />
-      </div>
+    <div className="h-20 flex items-center justify-center">
+      <button className="w-full h-full p-2 bg-darker rounded-md overflow-hidden" type="button">
+        <div className="logo h-full" role="img" aria-label={alt} />
+      </button>
+      <style jsx>{`
+        .logo {
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-image: url(${logo});
+        }
+      `}</style>
     </div>
   )
 }

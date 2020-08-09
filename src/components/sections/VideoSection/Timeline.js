@@ -7,32 +7,22 @@ export default function Timeline() {
     },
     {
       title: 'Dia 2',
-      date: '10/08',
+      date: '11/08',
       handler: () => null
     },
     {
-      title: 'Dia 1',
-      date: '10/08',
+      title: 'Dia 4',
+      date: '12/08',
       handler: () => null
     },
     {
-      title: 'Dia 1',
-      date: '10/08',
+      title: 'Dia 5',
+      date: '13/08',
       handler: () => null
     },
     {
-      title: 'Dia 1',
-      date: '10/08',
-      handler: () => null
-    },
-    {
-      title: 'Dia 1',
-      date: '10/08',
-      handler: () => null
-    },
-    {
-      title: 'Dia 1 sadjfjsdj fsnkdf mnasad',
-      date: '10/08',
+      title: 'Dia 6',
+      date: '14/08',
       handler: () => null
     }
   ]
