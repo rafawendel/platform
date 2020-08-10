@@ -1,8 +1,31 @@
 import SponsorCard from '../../common/Cards/SponsorCard'
 
-export default function SponsorSection({ sponsorList }) {
+export default function SponsorSection() {
+  const sponsorList = [
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    },
+    {
+      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+      alt: 'Sanarflix',
+      href: ''
+    }
+  ]
+
   return (
-    <section className="bg-dark w-screen h-full pb-4 overflow-x-hidden">
+    <section className="bg-dark w-full h-full pb-4 overflow-hidden">
       <div className="container px-4 md:mx-auto">
         <div className="flex justify-center py-8">
           <h4>Apoio</h4>

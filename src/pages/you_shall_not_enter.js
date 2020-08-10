@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import SponsorSection from '../components/sections/SponsorSection'
+import dynamic from 'next/dynamic'
 import SourceSection from '../components/sections/SourceSection'
 import VideoSection from '../components/sections/VideoSection'
 
@@ -28,39 +28,25 @@ export default function Event() {
     }
   ]
 
-  const sponsorList = [
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    }
-  ]
+
+  const SponsorSection = dynamic(
+    () => (
+      import('../components/sections/SponsorSection')
+    ),
+    { ssr: false }
+  )
 
   return (
     <>
       <Head>
         <title>Ektélesi</title>
       </Head>
-      <main className="w-full">
+      <main className="w-full bg-darker text-light text-center">
         <VideoSection />
+        <h2 className="pb-4">Ektélesi</h2>
         <SourceSection contents={contents} colorMode="dark" />
       </main>
-      <SponsorSection sponsorList={sponsorList} />
+      <SponsorSection />
     </>
   )
 }
