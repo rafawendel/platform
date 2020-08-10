@@ -23,6 +23,6 @@ export async function getStaticProps() {
     props: {
       eventSettings: getEventProps()
     },
-    revalidate: 1
+    unstable_revalidate: 1
   }
 }

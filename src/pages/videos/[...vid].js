@@ -65,6 +65,6 @@ export async function getStaticProps({ params }) {
       contents: getContent().contentList,
       sponsorList: getSponsors().sponsorList
     },
-    revalidate: 1
+    unstable_revalidate: 1
   }
 }
