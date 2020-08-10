@@ -1,29 +1,6 @@
 import SponsorCard from '../../common/Cards/SponsorCard'
 
-export default function SponsorSection() {
-  const sponsorList = [
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    },
-    {
-      logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-      alt: 'Sanarflix',
-      href: ''
-    }
-  ]
-
+export default function SponsorSection({ sponsorList }) {
   return (
     <section className="bg-dark w-full h-full pb-4 overflow-hidden">
       <div className="container px-4 md:mx-auto">

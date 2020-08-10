@@ -1,6 +1,6 @@
-import YouTube from 'react-youtube'
+import dynamic from 'next/dynamic'
 
-export default function Video({ videoId }) {
+export default function Video({ youtubeId, title }) {
   const width = Math.min((2 / 3) * window.innerWidth || 640, 720)
 
   const opts = {
@@ -13,10 +13,16 @@ export default function Video({ videoId }) {
     console.log(e.target)
   }
 
+  const YouTube = dynamic(
+    () => import('react-youtube'),
+    { loading: () => <div>...</div>, ssr: false }
+  )
+
   return (
     <>
       <div className="video bg-light">
-        <YouTube videoId={videoId} opts={opts} onReady={onReady} />
+        <YouTube videoId={youtubeId} opts={opts} onReady={onReady} />
+        <span role="presentation" aria-label={title} />
       </div>
       <style jsx>{`
         .video {

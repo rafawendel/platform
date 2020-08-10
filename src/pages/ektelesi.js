@@ -1,21 +1,25 @@
-import Head from 'next/head'
-import Countdown from 'react-countdown'
+import { getEventProps, getContent, getSponsors } from './api/event'
+import { getVideos } from './api/videos'
+import Building from '../layouts/Workshop/Building'
+import Workshop from '../layouts/Workshop'
 
-export default function Building() {
-  return (
-    <>
-      <Head>
-        <title>Aguarde...</title>
-      </Head>
-      <div className="w-full min-h-screen bg-darker text-light flex flex-col justify-center items-center">
-        <h2>Já estamos quase!</h2>
-        <h1>
-          Tempo para o evento:{' '}
-          <Countdown
-            date={new Date('Mon Aug 10 2020 19:00:00 GMT-0300 (Brasilia Standard Time)').getTime()}
-          />
-        </h1>
-      </div>
-    </>
+export default function Ektelesi({ eventSettings, ...props }) {
+  return eventSettings.eventDidBegin ? (
+    <Workshop eventSettings={eventSettings} {...props} />
+  ) : (
+    <Building {...eventSettings} />
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      title: 'Ektélesi | 1ª Semana GEDAAM',
+      colorMode: 'dark',
+      eventSettings: getEventProps(),
+      videos: getVideos().videos,
+      contents: getContent().contentList,
+      sponsorList: getSponsors().sponsorList
+    }
+  }
 }
