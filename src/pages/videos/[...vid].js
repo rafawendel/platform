@@ -64,6 +64,7 @@ export async function getStaticProps({ params }) {
       videoData,
       contents: getContent().contentList,
       sponsorList: getSponsors().sponsorList
-    }
+    },
+    revalidate: 1
   }
 }
