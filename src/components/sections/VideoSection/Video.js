@@ -10,7 +10,7 @@ export default function Video({ youtubeId, title }) {
   }
 
   const onReady = e => {
-    console.log(e.target)
+    
   }
 
   const YouTube = dynamic(

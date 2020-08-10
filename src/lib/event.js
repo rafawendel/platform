@@ -2,7 +2,8 @@ export function getEventProps() {
   const startDateAndTime = new Date('Mon Aug 10 2020 19:00:00 GMT-0300 (Brasilia Standard Time)')
 
   return {
-    eventDidBegin: false, // eventSettings.day0TimeInMs > Date.now()
+    eventDidBegin: Date.now() > startDateAndTime.getTime(),
+    openingVideoId: '1',
     durationInDays: 6,
     day0TimeInMs: startDateAndTime.getTime()
   }

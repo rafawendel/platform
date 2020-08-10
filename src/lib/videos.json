@@ -1,0 +1,50 @@
+[
+  {
+     "id":"1",
+     "title":"Abertura",
+     "slug":"intro",
+     "root":"/videos",
+     "youtubeId":"D8T0QNqb4hU",
+     "premiereDay":"0"
+  },
+  {
+     "id":"2",
+     "title":"Oficina 1",
+     "slug":"workshop_1",
+     "root":"/videos",
+     "youtubeId":"",
+     "premiereDay":"1"
+  },
+  {
+     "id":"3",
+     "title":"Inteligência Emocional",
+     "slug":"soft_skills",
+     "root":"/videos",
+     "youtubeId":"",
+     "premiereDay":"2"
+  },
+  {
+     "id":"4",
+     "title":"Oficina 2",
+     "slug":"workshop_2",
+     "root":"/videos",
+     "youtubeId":"",
+     "premiereDay":"3"
+  },
+  {
+     "id":"5",
+     "title":"Mindfulness",
+     "slug":"mindfulness",
+     "root":"/videos",
+     "youtubeId":"",
+     "premiereDay":"4"
+  },
+  {
+     "id":"6",
+     "title":"Atividade Síncrona",
+     "slug":"sync_activity",
+     "root":"/videos",
+     "youtubeId":"",
+     "premiereDay":"5"
+  }
+]

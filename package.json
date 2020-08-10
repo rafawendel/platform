@@ -28,6 +28,7 @@
   "homepage": "",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "axios": "^0.19.2",
     "formik": "^2.1.5",
     "next": "^9.4.2",
     "nprogress": "^0.2.0",

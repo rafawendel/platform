@@ -5,9 +5,7 @@ import SourceSection from '../../components/sections/SourceSection'
 
 export default function Workshop(props) {
   const SponsorSection = dynamic(
-    () => (
-      import('../../components/sections/SponsorSection')
-    ),
+    () => import('../../components/sections/SponsorSection'),
     { ssr: false }
   )
 
@@ -18,7 +16,7 @@ export default function Workshop(props) {
       </Head>
       <main className="w-full bg-darker text-light text-center">
         <VideoSection {...props} />
-        <h2 className="pb-4">{props.title}</h2>
+        <h2 className="my-4 pb-4">{props.title}</h2>
         <SourceSection {...props} />
       </main>
       <SponsorSection  {...props} />
