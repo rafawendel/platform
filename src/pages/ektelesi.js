@@ -6,7 +6,7 @@ import Building from '../layouts/Workshop/Building'
 export default function Ektelesi({ eventSettings }) {
   const router = useRouter()
   const redirect = () => {
-    if (eventSettings.eventDidBegin) {
+    if (eventSettings.eventDidBegin || true) {
       router.push(`/videos/${eventSettings.openingVideoId}`)
     }
   }
@@ -22,7 +22,6 @@ export async function getStaticProps() {
   return {
     props: {
       eventSettings: getEventProps()
-    },
-    unstable_revalidate: 1
+    }
   }
 }

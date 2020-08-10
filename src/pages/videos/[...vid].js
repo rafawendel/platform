@@ -30,7 +30,7 @@ export default function Event({ eventSettings, user, ...props }) {
     }
   }, [isLoggedIn, eventSettings, router])
 
-  return eventSettings.eventDidBegin ? (
+  return eventSettings.eventDidBegin || true ? (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {/* <PlainModal /> */}
       <Workshop eventSettings={eventSettings} {...props} />
@@ -64,7 +64,6 @@ export async function getStaticProps({ params }) {
       videoData,
       contents: getContent().contentList,
       sponsorList: getSponsors().sponsorList
-    },
-    unstable_revalidate: 1
+    }
   }
 }
