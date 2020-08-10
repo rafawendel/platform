@@ -16,10 +16,10 @@ export default function Workshop(props) {
       </Head>
       <main className="w-full bg-darker text-light text-center">
         <VideoSection {...props} />
-        <h2 className="my-4 pb-4">{props.title}</h2>
-        <SourceSection {...props} />
+        <h2 className="py-4">{props.title}</h2>
+        {/* <SourceSection {...props} /> */}
       </main>
-      <SponsorSection  {...props} />
+      {/* <SponsorSection  {...props} /> */}
     </>
   )
 }

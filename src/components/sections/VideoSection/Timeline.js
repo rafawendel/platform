@@ -28,7 +28,7 @@ export default function Timeline({ eventSettings, videos }) {
     const href = eventDay ? `${eventDay.root}/[id]` : '/videos/[id]'
     const as = eventDay ? `${eventDay.root}/${eventDay.id}` : '/videos/1'
     return {
-      title: `Dia ${day + 1}${eventDay ? ` | ${eventDay.title}` : ''}`,
+      title: eventDay ? eventDay.title : `Dia ${day + 1}`,
       date: formattedDate,
       isPast: eventDate.getTime() <= Date.now(),
       isActive: day === +activeVideo.premiereDay,
