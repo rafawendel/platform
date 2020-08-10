@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function PlainModal({ colorMode, title, children, buttons }) {
+export default function PlainModal({ colorMode, title, children, buttons, redirect }) {
   const [showModal, setShowModal] = useState(true)
   const dismissOnInternalClick = false
   const [acceptBtn, dismissBtn] = buttons
@@ -8,7 +8,6 @@ export default function PlainModal({ colorMode, title, children, buttons }) {
   return (
     showModal && (
       <>
-        {' '}
         <div
           className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           onClick={() => setShowModal(false)}
@@ -41,7 +40,10 @@ export default function PlainModal({ colorMode, title, children, buttons }) {
                   className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                   type="button"
                   style={{ transition: 'all .15s ease' }}
-                  onClick={() => setShowModal(false)}
+                  onClick={() => {
+                    setShowModal(false)
+                    redirect()
+                  }}
                 >
                   {acceptBtn}
                 </button>
