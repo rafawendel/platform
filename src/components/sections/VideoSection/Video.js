@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 
-export default function Video({ youtubeId, title, errorMsg }) {
+export default function Video({ youtubeId, title, errorMsg, playerVars }) {
   const width = Math.min((2 / 3) * window.innerWidth || 640, 720)
 
   const opts = {
     width,
     height: width * (9 / 16),
-    autoplay: 0
+    playerVars: {
+      autoplay: 0,
+      ...playerVars
+    }
   }
 
   const onReady = e => {}
@@ -25,8 +28,8 @@ export default function Video({ youtubeId, title, errorMsg }) {
             <span role="presentation" aria-label={title} />
           </>
         ) : (
-          <div className="bg-darker w-full h-full px-10 text-center flex items-center justify-center">
-            <h3>{errorMsg}</h3>
+          <div className="bg-darker w-full h-full px-10 text-center flex items-center justify-center overflow-hidden">
+            <h5>{errorMsg}</h5>
           </div>
         )}
       </div>
@@ -41,11 +44,13 @@ export default function Video({ youtubeId, title, errorMsg }) {
 }
 
 Video.defaultProps = {
-  errorMsg: 'Disponível em breve'
+  errorMsg: 'Disponível em breve',
+  playerVars: {}
 }
 
 Video.propTypes = {
   youtubeId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  errorMsg: PropTypes.string
+  errorMsg: PropTypes.string,
+  playerVars: PropTypes.object
 }

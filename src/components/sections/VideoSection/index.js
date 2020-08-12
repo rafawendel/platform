@@ -4,7 +4,7 @@ import Timeline from './Timeline'
 export default function VideoSection({ activeVideo, ...props }) {
   const Video = dynamic(
     () => import('./Video'),
-    { loading: () => <h3 className="text-center">Aguarde...</h3>, ssr: false }
+    { loading: () => <h5 className="text-center">Aguarde...</h5>, ssr: false }
   )
 
   return (

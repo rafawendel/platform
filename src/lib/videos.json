@@ -69,7 +69,11 @@
      "slug":"workshop_clinic",
      "youtubeId":"CqDNfRSJrlg",
      "premiereDay":"3",
-     "isOpen":false
+     "isOpen":false,
+     "playerVars": {
+        "listType":"playlist",
+        "list":"PLEckt8bHlgkRwIpaIe2GX8KzOHc9OmQ3y"
+     }
   },
   {
      "id":"10",
