@@ -1,18 +1,20 @@
-import Timeline from './Timeline'
 import dynamic from 'next/dynamic'
+import Timeline from './Timeline'
 
-export default function VideoSection({ videoData, ...props }) {
+export default function VideoSection({ activeVideo, ...props }) {
   const Video = dynamic(
     () => import('./Video'),
-    { ssr: false }
+    { loading: () => <h3 className="text-center">Aguarde...</h3>, ssr: false }
   )
 
   return (
     <section className="text-gray-500 min-h-screen w-full overflow-x-hidden">
-      <div className="pt-10">
+      <div className="py-4">
         <div className="flex flex-wrap-reverse justify-center items-center">
-          <Video {...videoData} />
-          <Timeline {...props} />
+          <div>
+            <Video {...activeVideo} />
+          </div>
+          <Timeline activeVideo={activeVideo} {...props} />
         </div>
       </div>
     </section>

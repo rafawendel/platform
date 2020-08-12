@@ -3,48 +3,130 @@
      "id":"1",
      "title":"Abertura",
      "slug":"intro",
-     "root":"/videos",
      "youtubeId":"D8T0QNqb4hU",
-     "premiereDay":"0"
+     "premiereDay":"0",
+     "isOpen":true
   },
   {
      "id":"2",
-     "title":"Oficina 1",
-     "slug":"workshop_1",
-     "root":"/videos",
-     "youtubeId":"",
-     "premiereDay":"1"
+     "title":"Inteligência Emocional",
+     "slug":"soft_skills",
+     "youtubeId":"nYdriQHOsTk",
+     "premiereDay":"2",
+     "isOpen":true
   },
   {
      "id":"3",
-     "title":"Inteligência Emocional",
-     "slug":"soft_skills",
-     "root":"/videos",
+     "title":"Mindfulness",
+     "slug":"mindfulness",
      "youtubeId":"",
-     "premiereDay":"2"
+     "premiereDay":"4",
+     "isOpen":true
   },
   {
      "id":"4",
-     "title":"Oficina 2",
-     "slug":"workshop_2",
-     "root":"/videos",
+     "title":"Atividade Síncrona",
+     "slug":"sync_activity",
      "youtubeId":"",
-     "premiereDay":"3"
+     "premiereDay":"5",
+     "isOpen":true
   },
   {
      "id":"5",
-     "title":"Mindfulness",
-     "slug":"mindfulness",
-     "root":"/videos",
-     "youtubeId":"",
-     "premiereDay":"4"
+     "title":"O GEDAAM na UniPam",
+     "slug":"special_1",
+     "youtubeId":"DCFH25cNcgw",
+     "premiereDay":"0",
+     "isOpen":true
   },
   {
      "id":"6",
-     "title":"Atividade Síncrona",
-     "slug":"sync_activity",
-     "root":"/videos",
+     "title":"O GEDAAM na Psicologia",
+     "slug":"special_2",
+     "youtubeId":"foMkeYjXW6s",
+     "premiereDay":"0",
+     "isOpen":true
+  },
+  {
+     "id":"7",
+     "title":"O GEDAAM na UFVJM",
+     "slug":"special_3",
+     "youtubeId":"fFWSD4i2HqY",
+     "premiereDay":"0",
+     "isOpen":true
+  },
+  {
+     "id":"8",
+     "title":"O GEDAAM na UniBH",
+     "slug":"special_4",
      "youtubeId":"",
-     "premiereDay":"5"
+     "premiereDay":"0",
+     "isOpen":true
+  },
+  {
+     "id":"9",
+     "title":"Raciocínio Clínico",
+     "slug":"workshop_clinic",
+     "youtubeId":"CqDNfRSJrlg",
+     "premiereDay":"3",
+     "isOpen":false
+  },
+  {
+     "id":"10",
+     "title":"Oratória",
+     "slug":"workshop_speaking",
+     "youtubeId":"rheQI9zSmH4",
+     "premiereDay":"3",
+     "isOpen":false
+  },
+  {
+     "id":"11",
+     "title":"Técnicas de Apresentação",
+     "slug":"workshop_presentation",
+     "youtubeId":"6V3voptHSd0",
+     "premiereDay":"3",
+     "isOpen":false
+  },
+  {
+     "id":"12",
+     "title":"Técnicas de Estudo",
+     "slug":"workshop_study",
+     "youtubeId":"SSepU-7hYwo",
+     "premiereDay":"3",
+     "isOpen":false
+  },
+  {
+     "id":"13",
+     "title":"Gestão do Tempo",
+     "slug":"workshop_time_mng",
+     "youtubeId":"xTLcFeLj__E",
+     "premiereDay":"3",
+     "isOpen":false
+  },
+  {
+     "id":"14",
+     "title":"Oficina 1",
+     "slug":"workshop_1",
+     "youtubeId":"",
+     "premiereDay":"1",
+     "isOpen":true,
+     "errorMsg":"Você precisa estar logado para ver este conteúdo"
+  },
+  {
+     "id":"15",
+     "title":"Oficina 2",
+     "slug":"workshop_2",
+     "youtubeId":"",
+     "premiereDay":"3",
+     "isOpen":true,
+     "errorMsg":"Você precisa estar logado para ver este conteúdo"
+  },
+  {
+     "id":"0",
+     "title":"Check-in",
+     "slug":"checkin",
+     "youtubeId":"",
+     "premiereDay":"0",
+     "isOpen":true
   }
 ]

@@ -58,6 +58,7 @@ module.exports = {
         "react/no-array-index-key": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
+        "no-nested-ternary": "off",
         // "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}],
         // "indent": ["error", 2],
         "arrow-parens": ["error", "as-needed"],

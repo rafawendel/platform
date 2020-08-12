@@ -1,11 +1,14 @@
+import { dateDiffInDays } from '../utils/date'
+
 export function getEventProps() {
-  const startDateAndTime = new Date('Mon Aug 10 2020 19:00:00 GMT-0300 (Brasilia Standard Time)')
+  const startDateAndTime = new Date('Mon Aug 10 2020 07:00:00 GMT-0300 (Brasilia Standard Time)')
 
   return {
     eventDidBegin: Date.now() > startDateAndTime.getTime(),
     openingVideoId: '1',
     durationInDays: 6,
-    day0TimeInMs: startDateAndTime.getTime()
+    day0TimeInMs: startDateAndTime.getTime(),
+    currentEventDay: dateDiffInDays(new Date(), startDateAndTime)
   }
 }
 
@@ -14,25 +17,25 @@ export function getContent() {
     contentList: [
       {
         title: 'Quem somos?',
-        details:
-          'O Grupo de Estudos em Didática Aplicada ao Aprendizado de Medicina é um grupo de mentoria entre pares voltado para estudantes da áreas da saúde.',
-        bubbleTailwindClass: 'bg-info',
-        faIconClass: 'fas fa-coffee'
+        details: 'O GEDAAM é uma comunidade de alunos inquietos. Quer juntar-se a nós?',
+        bubbleTailwindClass: 'bg-secondary',
+        faIconClass: 'fas fa-graduation-cap text-gray-400',
+        href: 'https://gedaam.now.sh/'
       },
       {
-        title: 'Nossa origem',
-        details:
-          'O GEDAAM foi fundado em 2013 por estudantes da UFMG que acreditavam no potencial dos estudantes de promover o aprendizado mais eficiente do que os modelos tradicionais.',
-        bubbleTailwindClass: 'bg-warning',
-        faIconClass: ''
-      },
-      {
-        title: 'Nossos objetivos',
-        details:
-          'O GEDAAM tem como fundamentos base técnicas de estudo, oratória, técnicas de apresentação e gestão do tempo. Mais recentemente, o grupo está promovendo encontros especializados, com temas como Pesquisa científica, tecnologia e grupos em Inglês',
-        bubbleTailwindClass: 'bg-success',
-        faIconClass: ''
+        title: 'Comunidade',
+        details: 'Montamos uma comunidade exclusiva no Discord, venha participar!',
+        bubbleTailwindClass: 'bg-indigo-900',
+        faIconClass: 'fab fa-discord text-gray-400',
+        href: 'https://discord.gg/y96hfmU'
       }
+      // {
+      //   title: 'Materiais',
+      //   details: 'Aqui estão as apostilas que a equipe GEDAAM preparou com carinho!',
+      //   bubbleTailwindClass: 'bg-pink-800',
+      //   faIconClass: 'fas fa-book-medical text-gray-400',
+      //   href: ''
+      // }
     ]
   }
 }
@@ -41,24 +44,35 @@ export function getSponsors() {
   return {
     sponsorList: [
       {
-        logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-        alt: 'Sanarflix',
-        href: ''
+        logo:
+          'https://www.medicina.ufmg.br/wp-content/themes/medicinaufmg_2019/img/logos/med-cabecalho.png',
+        alt: 'Faculdade de Medicina da UFMG',
+        href: 'https://www.medicina.ufmg.br/',
+        stylingClass: 'py-2'
       },
       {
-        logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-        alt: 'Sanarflix',
-        href: ''
+        logo: 'https://dexpertio.com.br/wp-content/uploads/2020/07/dexpertio-logo_transparente.png',
+        alt: 'Dexpertio',
+        href: 'https://dexpertio.com.br/',
+        stylingClass: 'py-3'
       },
       {
-        logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
-        alt: 'Sanarflix',
-        href: ''
+        logo: 'https://www.wemeds.com.br/wp-content/uploads/2020/03/wemeds-logo-semihor.png',
+        alt: 'WeMEDS',
+        href: 'https://www.wemeds.com.br/',
+        stylingClass: 'py-4'
       },
       {
-        logo: 'https://pbs.twimg.com/profile_images/1098948672727990272/TtDcMwaR.jpg',
+        logo: 'https://sanarflix.com.br/home/images/sanarflix_logo.svg',
         alt: 'Sanarflix',
-        href: ''
+        href: 'https://sanarflix.com.br/',
+        stylingClass: 'py-5'
+      },
+      {
+        logo: 'https://drive.google.com/uc?export=view&id=1pli_UpF2CIRjUrJv-gvrMG7GWPtBZ3Th',
+        alt: 'MedBeta',
+        href: 'https://medbeta.com.br/',
+        stylingClass: 'py-3'
       }
     ]
   }

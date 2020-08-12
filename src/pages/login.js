@@ -1,9 +1,38 @@
+import { useRouter } from 'next/router'
+import axios from 'axios'
+import { useContext, useEffect } from 'react'
 import LoginForm from '../components/Forms/Login'
+import { AuthContext } from '../context/auth'
 
-export default function LoginPage() {
+export default function LoginPage({ setLoading }) {
+  const router = useRouter()
+  const { isLoggedIn, login, logout, user, setUser } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      setLoading(false)
+      alert(`Bem vindo, ${user.fullname.split(' ')[0]}!`)
+      router.push('/videos/[id]', `/videos/${user.currentVideo.id}`)
+    }
+  }, [isLoggedIn, router, user, setLoading])
+
   const onSubmit = async (values, { setSubmitting }) => {
-    await new Promise(r => setTimeout(r, 500))
-    alert(JSON.stringify(values))
+    setLoading(true)
+
+    await axios
+      .post('/api/login', values)
+      .then(res => {
+        const { user } = res.data
+        console.log(user)
+        if (user) {
+          setUser({ ...user })
+          login()
+        } else {
+          logout()
+        }
+      })
+      .catch(e => alert('Os dados inseridos são inválidos'))
+    setLoading(false)
     setSubmitting(false)
   }
 
@@ -11,7 +40,7 @@ export default function LoginPage() {
     <main className="w-full min-h-screen">
       <div className="bg-dark px-16">
         <div className="flex flex-col items-center justify-center min-h-screen">
-          <h3>Faça seu Login</h3>
+          <h3>Fazer Check-in</h3>
           <div className="w-1/2">
             <LoginForm colorMode="dark" onSubmit={onSubmit} />
           </div>

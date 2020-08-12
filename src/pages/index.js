@@ -6,14 +6,14 @@ export default function Home() {
   const router = useRouter()
   return (
     <>
-      <PlainModal
+      {/* <PlainModal
         buttons={['Ir até lá', 'Mais tarde']}
         redirect={() => {
           router.push('/ektelesi')
         }}
       >
         <p>O evento já começou! Entre já na página inicial!</p>
-      </PlainModal>
+      </PlainModal> */}
       <Landing />
     </>
   )

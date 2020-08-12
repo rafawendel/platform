@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Countdown from 'react-countdown'
 
-export default function Building({ eventDidBegin, day0TimeInMs, ...props }) {
+export default function Building({ day0TimeInMs, ...props }) {
   return (
     <>
       <Head>

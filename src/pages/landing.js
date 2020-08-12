@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Layout from '../layouts/Layout'
 import CardsSection from '../components/sections/CardsSection'
 import LeadersSection from '../components/sections/LeadersSection'
@@ -108,9 +107,6 @@ export default function Landing() {
   ]
   return (
     <>
-      <Head>
-        <title>Ektélesi | I Semana GEDAAM</title>
-      </Head>
       <Layout>
         <HeroSection
           id="HeroSection"

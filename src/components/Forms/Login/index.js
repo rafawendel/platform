@@ -7,11 +7,15 @@ export default function LoginForm({ colorMode, onSubmit }) {
     <Formik
       initialValues={{
         email: '',
-        register: null
+        register: ''
       }}
       validationSchema={Yup.object({
-        email: Yup.string().email('Endereço de e-mail inválido').required('Exigido'),
-        register: Yup.number().integer('Deve ser inteiro').required('Exigido')
+        email: Yup.string()
+          .email('Endereço de e-mail inválido')
+          .required('Não pode ser deixado em branco'),
+        register: Yup.number()
+          .integer('Deve ser um número inteiro, sem pontos ou traços')
+          .required('Deve ser um número inteiro, sem pontos ou traços')
       })}
       onSubmit={onSubmit}
     >
@@ -26,7 +30,7 @@ export default function LoginForm({ colorMode, onSubmit }) {
           label="Registro Acadêmico"
           name="register"
           type="number"
-          placeholder="2020000000"
+          placeholder={`${new Date().getFullYear()}000000`}
         />
         <div className="text-center mt-6">
           <button

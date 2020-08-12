@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function TimelineButton({ title, date, isPast, isActive, onClick }) {
+export default function TimelineButton({ title, date, isPast, isActive, isPremiered, onClick }) {
   return (
     <>
       <li className="flex-auto md:m-1">
@@ -10,6 +10,7 @@ export default function TimelineButton({ title, date, isPast, isActive, onClick 
             isActive && 'bg-opacity-25 bg-black'
           } hover:bg-opacity-25 hover:bg-black active:text-light w-full h-full`}
           onClick={onClick}
+          disabled={!isPremiered}
         >
           <div
             className={`flex flex-col justify-start items-center lg:flex-row-reverse lg:justify-between w-full h-full lg:h-20 p-1 md:p-3 lg:p-6 overflow-hidden ${
@@ -29,7 +30,7 @@ export default function TimelineButton({ title, date, isPast, isActive, onClick 
             <div className={`line ${isPast && 'bg-primary'} bg-gray-500 h-1/2 lg:h-full`} />
             <div
               className={`bubble ${
-                isActive ? 'bg-darker border-primary' : 'bg-transparent border-transparent'
+                isActive ? 'bg-dark border-primary' : 'bg-transparent border-transparent'
               } border-2 h-4 w-4 rounded-full`}
             >
               <div className={`bullet ${isPast && 'bg-primary'} bg-current h-2 w-2 rounded-full`} />

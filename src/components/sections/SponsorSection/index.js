@@ -2,7 +2,7 @@ import SponsorCard from '../../common/Cards/SponsorCard'
 
 export default function SponsorSection({ sponsorList }) {
   return (
-    <section className="bg-dark w-full h-full pb-4 overflow-hidden">
+    <section className="bg-dark w-full h-full pb-10 overflow-hidden">
       <div className="container px-4 md:mx-auto">
         <div className="flex justify-center py-8">
           <h4>Apoio</h4>
