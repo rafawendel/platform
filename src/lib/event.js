@@ -65,7 +65,7 @@ export function getSponsors() {
       {
         logo: 'https://sanarflix.com.br/home/images/sanarflix_logo.svg',
         alt: 'Sanarflix',
-        href: 'https://sanarflix.com.br/',
+        href: 'https://www.sanarflix.com.br/assine/?imb_id=UFVJM_Mucuri',
         stylingClass: 'py-5'
       },
       {
