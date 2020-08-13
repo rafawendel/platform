@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function TimelineButton({ title, date, isPast, isActive, isPremiered, onClick }) {
   return (
     <>
-      <li className="flex-1 md:m-1">
+      <li className="flex-1 m-px md:m-1">
         <button
           type="button"
           className={`bg-transparent rounded-md ${
