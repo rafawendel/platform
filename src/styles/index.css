@@ -61,10 +61,10 @@ input, button {
 
 button:disabled,
 button[disabled] {
-  filter: grayscale(.3) opacity(.5) invert(.2) !important;
+  filter: grayscale(.3) opacity(.5) invert(.2);
   border: 1px solid #333;
   text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
-  cursor: not-allowed;
+  cursor: wait;
   pointer-events: none;
 }
 

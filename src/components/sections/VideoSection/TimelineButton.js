@@ -17,9 +17,9 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
               isActive && 'border-b-2 md:border-b-0'
             } border-primary`}
           >
-            <h6 className={`md:text-xl ${isActive && 'text-primary'}`}>{date}</h6>
+            <h6 className={`md:text-lg lg:text-xl ${isActive && 'text-primary'}`}>{date}</h6>
             <p
-              className={`hidden md:block font-semibold mt-1 lg:m-0 lg:w-1/2 lg:text-left ${
+              className={`hidden md:block font-semibold text-sm lg:text-base mt-1 lg:m-0 lg:w-1/2 lg:text-left ${
                 isActive && 'text-lighter'
               } opacity-100`}
             >
@@ -31,7 +31,7 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
             <div
               className={`bubble ${
                 isActive ? 'bg-dark border-primary' : 'bg-transparent border-transparent'
-              } border-2 h-4 w-4 rounded-full`}
+              } border-2 rounded-full`}
             >
               <div className={`bullet ${isPast && 'bg-primary'} bg-current h-2 w-2 rounded-full`} />
             </div>
@@ -40,11 +40,13 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
       </li>
       <style jsx>{`
         .line__container {
-          width: 110%;
+          width: 105%;
           margin-left: 50%;
         }
 
         .bubble {
+          height: 1rem;
+          width: 1rem;
           margin-top: calc(-0.5rem - 1px);
           margin-left: -0.5rem;
         }
@@ -61,12 +63,20 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
           color: var(--color-main-primary);
         }
 
+        button[disabled] {
+          filter: none;
+          border: none;
+          text-shadow: none;
+          cursor: not-allowed;
+          pointer-events: auto;
+        }
+
         @media screen and (min-width: 1024px) {
           .line__container {
-            width: 0.125rem;
-            margin-left: -0.125rem;
+            width: 2px;
+            margin-left: -2px;
             height: 5.5rem;
-            margin-top: calc(-5.5rem / 2 + 0.5rem / 2);
+            margin-top: calc((-5.5rem + 0.5rem) / 2);
             transform: rotate(180deg);
           }
 

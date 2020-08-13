@@ -22,7 +22,7 @@ export const TextInput = ({ label, tooltip, ...props }) => {
     <>
       <div className="first:mt-8 relative w-full mb-3">
         {tooltip && (
-          <ReactTooltip id={`tooltip-${props.id}`} aria-haspopup="true" {...tooltip}>
+          <ReactTooltip id={`tooltip-${props.id}`} {...tooltip}>
             <p className="text-xs font-normal">{tooltip.content}</p>
           </ReactTooltip>
         )}

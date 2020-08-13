@@ -31,7 +31,7 @@ export default function Timeline({ eventSettings, videos, activeVideo }) {
 
   return (
     <>
-      <section className="px-4 pb-8 lg:py-0 lg:pl-8 flex-auto md:mx-4 lg:max-w-md">
+      <section className="pb-8 flex-auto lg:max-w-sm">
         <ul className="flex lg:flex-col justify-center">
           {buttons.map(({ id, ...btnProps }) => (
             <TimelineButton key={`video-${id}`} {...btnProps} />
