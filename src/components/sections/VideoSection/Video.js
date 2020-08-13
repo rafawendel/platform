@@ -2,11 +2,10 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 
 export default function Video({ youtubeId, title, errorMsg, playerVars }) {
-  const width = Math.min((2 / 3) * window.innerWidth || 640, 720)
 
   const opts = {
-    width,
-    height: width * (9 / 16),
+    height: 720,
+    width: 1280,
     playerVars: {
       autoplay: 0,
       ...playerVars
@@ -16,15 +15,17 @@ export default function Video({ youtubeId, title, errorMsg, playerVars }) {
   const onReady = e => {}
 
   const YouTube = dynamic(
-    () => import('react-youtube')
+    () => import('react-youtube'), {
+      loading: () => <h4>Carregando...</h4>
+    }
   )
 
   return (
     <>
-      <div className="video bg-black">
+      <div className="video bg-black flex items-center justify-center">
         {youtubeId ? (
           <>
-            <YouTube videoId={youtubeId} opts={opts} onReady={onReady} />
+            <YouTube className="video bg-black z-10" videoId={youtubeId} opts={opts} onReady={onReady} />
             <span role="presentation" aria-label={title} />
           </>
         ) : (
@@ -33,10 +34,18 @@ export default function Video({ youtubeId, title, errorMsg, playerVars }) {
           </div>
         )}
       </div>
+
       <style jsx>{`
         .video {
-          height: ${opts.height}px;
-          width: ${opts.width}px;
+          height: 45vw;
+          width: 80vw;
+        }
+
+        @media screen and (min-width: 1024px) {
+          .video {
+            height: 31.5vw;
+            width: 56vw;
+          }
         }
       `}</style>
     </>

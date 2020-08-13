@@ -18,7 +18,7 @@ export default function Event({ eventSettings, initialVideos, ...props }) {
   const [activeVideo, setActiveVideo] = useState(firstVideo)
 
   const setActiveVideoRoute = video => {
-    setActiveVideo(video)
+    setActiveVideo(video) // this is a fallback
     router.push('/videos/[id]', `/videos/${video.id}`, { shallow: true })
   }
 
