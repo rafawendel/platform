@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Landing from './landing'
+import Ektelesi from './ektelesi'
 import PlainModal from '../components/common/Modals/PlainModal'
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       >
         <p>O evento já começou! Entre já na página inicial!</p>
       </PlainModal> */}
-      <Landing />
+      <Ektelesi />
     </>
   )
 }

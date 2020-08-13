@@ -42,8 +42,6 @@ export default async (req, res) => {
             ? '5'
             : user.college === 'UFVJM'
             ? '7'
-            : user.college === 'UniBH'
-            ? '8'
             : ''
 
         const { day0TimeInMs } = getEventProps()
