@@ -1,7 +1,11 @@
 import { useRouter } from 'next/router'
+import Landing from './landing'
 
 export default function Home() {
   const router = useRouter()
-  router.push('/ektelesi')
-  return <div />
+
+  useEffect(() => {
+    router.push('/ektelesi')
+  }, [])
+  return <Landing />
 }
