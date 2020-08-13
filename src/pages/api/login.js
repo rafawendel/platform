@@ -9,7 +9,10 @@ export default async (req, res) => {
     try {
       const schema = yup.object().shape({
         email: yup.string().email().required(),
-        register: yup.number().integer().required()
+        register: yup
+          .string()
+          .matches(/^[0-9]{4,20}$/)
+          .required()
       })
 
       const isValid = await schema.isValid(req.body)

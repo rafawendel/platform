@@ -51,26 +51,33 @@ small {
 }
 
 input, button {
-  @apply bg-lighter;
+  @apply bg-lighter outline-none;
   transition: all 0.2s ease;
 }
 
-input::-webkit-outer-spin-button,
+*:focus, *:active {
+  outline: 0 !important;
+}
+
+button:disabled,
+button[disabled] {
+  filter: grayscale(.3) opacity(.5) invert(.2) !important;
+  border: 1px solid #333;
+  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
-}
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
-  outline: none;
-}
+    -moz-appearance:textfield;
+} */
 
 @tailwind components;
 

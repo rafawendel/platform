@@ -37,13 +37,11 @@ export default function LoginPage({ setLoading }) {
   }
 
   return (
-    <main className="w-full min-h-screen">
-      <div className="bg-dark px-16">
-        <div className="flex flex-col items-center justify-center min-h-screen">
-          <h3>Fazer Check-in</h3>
-          <div className="w-1/2">
-            <LoginForm colorMode="dark" onSubmit={onSubmit} />
-          </div>
+    <main className="bg-dark text-darker w-full min-h-screen">
+      <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
+        <h3>Fazer Check-in</h3>
+        <div className="w-full md:w-1/2">
+          <LoginForm colorMode="dark" onSubmit={onSubmit} />
         </div>
       </div>
     </main>
