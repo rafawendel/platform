@@ -20,21 +20,25 @@ export function getContent() {
         details: 'O GEDAAM é uma comunidade de alunos inquietos. Quer juntar-se a nós?',
         bubbleTailwindClass: 'bg-secondary',
         faIconClass: 'fas fa-graduation-cap text-gray-400',
-        href: 'https://gedaam.now.sh/'
+        href: 'https://gedaam.now.sh/',
+        isOpen: true
       },
       {
         title: 'Comunidade',
         details: 'Montamos uma comunidade exclusiva no Discord, venha participar!',
         bubbleTailwindClass: 'bg-indigo-900',
         faIconClass: 'fab fa-discord text-gray-400',
-        href: 'https://discord.gg/y96hfmU'
+        href: 'https://discord.gg/y96hfmU',
+        isOpen: true
       },
       {
         title: 'Materiais',
         details: 'Aqui estão as apostilas que a equipe GEDAAM preparou com carinho!',
         bubbleTailwindClass: 'bg-pink-800',
         faIconClass: 'fas fa-book-medical text-gray-400',
-        href: 'https://drive.google.com/drive/folders/15KVjzFzb40ZVT6WA7_GGPvzQK8ng8O1B?usp=sharing'
+        href:
+          'https://drive.google.com/drive/folders/15KVjzFzb40ZVT6WA7_GGPvzQK8ng8O1B?usp=sharing',
+        isOpen: false
       }
     ]
   }

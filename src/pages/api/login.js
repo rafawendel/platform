@@ -61,7 +61,8 @@ export default async (req, res) => {
             ...user,
             events: null,
             videos,
-            extraVideo: extraVideoId && getVideoData(extraVideoId),
+            extraVideo:
+              extraVideoId && validateVideoPremieres(getVideoData(extraVideoId), day0TimeInMs)[0],
             currentVideo
           }
         })

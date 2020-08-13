@@ -24,6 +24,9 @@ export function getInitialVideos() {
 }
 
 export function validateVideoPremieres(videos, day0TimeInMs) {
+  // eslint-disable-next-line no-param-reassign
+  if (!(Symbol.iterator in videos)) videos = [videos]
+
   return videos.map(video => {
     const isPremiered =
       Date.now() >= new Date(day0TimeInMs + video.premiereDay * 24 * 60 * 60 * 1000).getTime()

@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 
-export default function Video({ youtubeId, title, errorMsg, playerVars }) {
+export default function Video({ youtubeId, title, errorMsg, playerVars, widthInVw }) {
+  const heightInVw = widthInVw * 9 / 16
+  const lgScreenFactor = 1.5
 
   const opts = {
     height: 720,
@@ -22,29 +24,31 @@ export default function Video({ youtubeId, title, errorMsg, playerVars }) {
 
   return (
     <>
-      <div className="video bg-black flex items-center justify-center">
-        {youtubeId ? (
-          <>
-            <YouTube className="video bg-black z-10" videoId={youtubeId} opts={opts} onReady={onReady} />
-            <span role="presentation" aria-label={title} />
-          </>
-        ) : (
-          <div className="bg-darker w-full h-full px-10 text-center flex items-center justify-center overflow-hidden">
-            <h5>{errorMsg}</h5>
-          </div>
-        )}
+      <div className="flex justify-around">
+        <div className="video bg-darker flex items-center justify-center">
+          {youtubeId ? (
+            <div>
+              <YouTube className="video" videoId={youtubeId} opts={opts} onReady={onReady} />
+              <span role="presentation" aria-label={title} />
+            </div>
+          ) : (
+            <div className="w-full h-full px-10 text-center flex items-center justify-center overflow-hidden">
+              <h5>{errorMsg}</h5>
+            </div>
+          )}
+        </div>
       </div>
 
       <style jsx>{`
         .video {
-          height: 45vw;
-          width: 80vw;
+          width: ${widthInVw}vw;
+          height: ${heightInVw}vw;
         }
 
         @media screen and (min-width: 1024px) {
           .video {
-            height: 31.5vw;
-            width: 56vw;
+            width: ${widthInVw / lgScreenFactor}vw;
+            height: ${heightInVw / lgScreenFactor}vw;
           }
         }
       `}</style>
@@ -54,12 +58,14 @@ export default function Video({ youtubeId, title, errorMsg, playerVars }) {
 
 Video.defaultProps = {
   errorMsg: 'Disponível em breve',
-  playerVars: {}
+  playerVars: {},
+  widthInVw: 80
 }
 
 Video.propTypes = {
   youtubeId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   errorMsg: PropTypes.string,
-  playerVars: PropTypes.object
+  playerVars: PropTypes.object,
+  widthInVw: PropTypes.number
 }

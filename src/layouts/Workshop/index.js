@@ -4,9 +4,10 @@ import SourceSection from '../../components/sections/SourceSection/DarkSourceSec
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth'
 import Link from 'next/link'
+import ExtraVideoSection from '../../components/sections/ExtraVideoSection'
 
 export default function Workshop(props) {
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn, user } = useContext(AuthContext)
 
   const SponsorSection = dynamic(
     () => import('../../components/sections/SponsorSection')
@@ -27,6 +28,7 @@ export default function Workshop(props) {
           </Link>}
         </div>
         <VideoSection {...props} />
+        {user.extraVideo && <ExtraVideoSection video={user.extraVideo} />}
         <h2 className="pb-4 md:pb-8 text-center">{props.title}</h2>
         <SourceSection className="bg-dark" {...props} />
       </main>

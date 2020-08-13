@@ -22,6 +22,8 @@ export default function Event({ eventSettings, initialVideos, contentList, ...pr
   //   router.push('/videos/[id]', `/videos/${video.id}`, { shallow: true })
   // }
 
+  const contents = contentList.filter(content => content.isOpen || isLoggedIn)
+
   useEffect(() => {
     const currentVideo = videos.find(({ id }) => +id === +currentVideoId) || firstVideo
     setActiveVideo(currentVideo)
@@ -46,7 +48,6 @@ export default function Event({ eventSettings, initialVideos, contentList, ...pr
         videos={videos}
         activeVideo={activeVideo}
         contents={contents}
-        // setActiveVideoRoute={setActiveVideoRoute}
         {...props}
       />
     </>
@@ -71,7 +72,7 @@ export async function getStaticProps() {
     props: {
       eventSettings,
       initialVideos,
-      contents: getContent().contentList,
+      contentList: getContent().contentList,
       sponsorList: getSponsors().sponsorList
     }
   }
