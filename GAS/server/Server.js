@@ -3,69 +3,66 @@
  */
 const SHEET_NAME = 'Database'
 const SCRIPT_PROP = PropertiesService.getScriptProperties()
-function doPost(e) {
-  return handleResponse(e, (event, sheet) => {
-    // const nextRow = sheet.getLastRow() + 1
 
-    const { postData } = event
-    if (!postData.type.includes('json')) throw new Error('Invalid data type')
-    if (postData.length <= 0) throw new Error('Empty payload')
-    const payload = JSON.parse(postData.contents)
-
-    // const row = headers.map(header => {
-    //   if (header === 'time_stamp') return new Date()
-    //   return typeof payload[header] === 'object' ? JSON.stringify(payload[header]) : payload[header]
-    // })
-
-    // sheet.appendRow(row)
-
-    const dataRange = sheet.getDataRange()
-    const [headers, ...sheetData] = dataRange.getValues()
-    const users = getUsers(headers, sheetData)
-    const user = getUserByRegister(users, payload.register)
-    const eventsRange = sheet.getRange(user.id + 1, headers.indexOf('events') + 1)
-    const events = JSON.parse(eventsRange.getValues()[0][0])
-    events.push(new Date())
-    eventsRange.setValue(JSON.stringify(events))
-
-    return { message: 'success', user }
+function validateUser(user, validatorObj = {}) {
+  Object.entries(validatorObj).forEach(([key, value]) => {
+    if (!value) return
+    if (!(key in user)) return
+    if (user[key] != value) throw new Error('User is inconsistent')
   })
 }
 
 function getUserByRegister(users, register) {
-  const user = users.find(user => user.register === register)
+  const user = users.find(user => +user.register === +register)
   if (!user) throw new Error('User not found')
+
+  return { user }
+}
+
+function getDataAsObj(headers, sheetData) {
+  const dataObj = sheetData.reduce((objList, row, j) => {
+    if (!row[0]) return acc // skips empty rows (first cell in row is reference)
+
+    objList[j] = headers.reduce((datum, header, i) => {
+      if (i === 0) datum.row = j + 2 // this adds a "row" property that points to the actual sheet row of origin
+      datum[header] = row[i]
+      return datum
+    }, {})
+
+    return objList
+  }, [])
+
+  return dataObj
+}
+
+function getRequestedUser(payload, sheetDataAsObj) {
+  const user = getUserByRegister(users, payload.register)
+  validateUser(user, { email: payload.email })
 
   return user
 }
 
-function getUsers(headers, sheetData) {
-  const users = sheetData.reduce((acc, row, j) => {
-    if (!row[0]) return acc
-    acc[j] = headers.reduce((user, header, i) => {
-      user[header] = row[i]
-      return user
-    }, {})
-    return acc
-  }, [])
-
-  return users
+function registerEvent(row, col) {
+  const eventsRange = sheet.getRange(row, col)
+  const events = JSON.parse(range.getValues()[0][0])
+  events.push(new Date())
+  range.setValue(JSON.stringify(events))
 }
 
-function doGet(e) {
-  return handleResponse(e, (event, sheet) => {
-    const dataRange = sheet.getDataRange().getValues()
-    const [headers] = dataRange
+function postWithSheet(event, sheet) {
+  const { postData } = event
+  if (!postData.type.includes('json')) throw new Error('Invalid data type')
+  if (postData.length <= 0) throw new Error('Empty payload')
+  const payload = JSON.parse(postData.contents)
 
-    const { parameters } = event
-    if (!Object.keys(parameters).includes('ip')) throw new Error('Invalid request')
+  const dataRange = sheet.getDataRange()
+  const [headers, ...sheetData] = dataRange.getValues()
 
-    const ipCol = headers.indexOf('ip')
-    const ips = dataRange.map(row => row[ipCol].toString())
-    const isIpOnList = ips.includes(parameters.ip.toString())
+  const users = getDataAsObj(headers, sheetData)
+  const user = getRequestedUser(payload, users)
+  registerEvent(user.row, headers.indexOf('events') + 1)
 
-    return { message: 'success', auth: !isIpOnList }
-  })
+  return { user }
 }
 
 function handleResponse(event, withSheetCb) {
@@ -78,9 +75,9 @@ function handleResponse(event, withSheetCb) {
 
     const res = withSheetCb(event, sheet)
 
-    return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(
-      ContentService.MimeType.JSON
-    )
+    return ContentService.createTextOutput(
+      JSON.stringify({ message: 'success', ...res })
+    ).setMimeType(ContentService.MimeType.JSON)
   } catch (err) {
     return ContentService.createTextOutput(
       JSON.stringify({ message: 'error', error: err.message, auth: false })
@@ -89,3 +86,23 @@ function handleResponse(event, withSheetCb) {
     lock.releaseLock()
   }
 }
+
+function doPost(e) {
+  return handleResponse(e, postWithSheet)
+}
+
+// function doGet(e) {
+//  return handleResponse(e, (event, sheet) => {
+//    const dataRange = sheet.getDataRange().getValues()
+//    const [headers] = dataRange
+//
+//    const { parameters } = event
+//    if (!Object.keys(parameters).includes('ip')) throw new Error('Invalid request')
+//
+//    const ipCol = headers.indexOf('ip')
+//    const ips = dataRange.map(row => row[ipCol].toString())
+//    const isIpOnList = ips.includes(parameters.ip.toString())
+//
+//    return { message: 'success', auth: !isIpOnList }
+//  })
+// }
