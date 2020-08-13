@@ -7,7 +7,7 @@ import Building from '../../layouts/Workshop/Building'
 import Workshop from '../../layouts/Workshop'
 import { AuthContext } from '../../context/auth'
 
-export default function Event({ eventSettings, initialVideos, ...props }) {
+export default function Event({ eventSettings, initialVideos, contentList, ...props }) {
   const router = useRouter()
   const currentVideoId = router.query.id
 
@@ -17,10 +17,10 @@ export default function Event({ eventSettings, initialVideos, ...props }) {
   const firstVideo = initialVideos.find(({ id }) => +id === +eventSettings.openingVideoId)
   const [activeVideo, setActiveVideo] = useState(firstVideo)
 
-  const setActiveVideoRoute = video => {
-    setActiveVideo(video) // this is a fallback
-    router.push('/videos/[id]', `/videos/${video.id}`, { shallow: true })
-  }
+  // const setActiveVideoRoute = video => {
+  //   setActiveVideo(video) // this is a fallback
+  //   router.push('/videos/[id]', `/videos/${video.id}`, { shallow: true })
+  // }
 
   useEffect(() => {
     const currentVideo = videos.find(({ id }) => +id === +currentVideoId) || firstVideo
@@ -43,10 +43,11 @@ export default function Event({ eventSettings, initialVideos, ...props }) {
       </Head>
       <Workshop
         eventSettings={eventSettings}
-        {...props}
         videos={videos}
         activeVideo={activeVideo}
-        setActiveVideoRoute={setActiveVideoRoute}
+        contents={contents}
+        // setActiveVideoRoute={setActiveVideoRoute}
+        {...props}
       />
     </>
   ) : (

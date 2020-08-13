@@ -9,8 +9,7 @@ export default function Workshop(props) {
   const { isLoggedIn } = useContext(AuthContext)
 
   const SponsorSection = dynamic(
-    () => import('../../components/sections/SponsorSection'),
-    { ssr: false }
+    () => import('../../components/sections/SponsorSection')
   )
 
   return (
