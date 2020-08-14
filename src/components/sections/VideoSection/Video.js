@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 
-export default function Video({ youtubeId, title, errorMsg, playerVars, widthInVw }) {
+export default function Video({ youtubeId, title, errorMsg, playerVars, widthInVw, ...props }) {
   const heightInVw = widthInVw * 9 / 16
   const lgScreenFactor = 1.5
 
@@ -28,7 +28,7 @@ export default function Video({ youtubeId, title, errorMsg, playerVars, widthInV
         <div className="video bg-darker flex items-center justify-center">
           {youtubeId ? (
             <div>
-              <YouTube className="video" videoId={youtubeId} opts={opts} onReady={onReady} />
+              <YouTube className="video" videoId={youtubeId} opts={opts} onReady={onReady} {...props} />
               <span role="presentation" aria-label={title} />
             </div>
           ) : (
