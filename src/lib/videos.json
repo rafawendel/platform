@@ -21,7 +21,9 @@
      "slug":"mindfulness",
      "youtubeId":"",
      "premiereDay":"4",
-     "isOpen":true
+     "isOpen":true,
+     "errorMsg":"Esta atividade está acontecendo online",
+     "href":"https://meet.google.com/taf-exvz-nmg"
   },
   {
      "id":"4",
