@@ -47,12 +47,12 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
         .bubble {
           height: 1rem;
           width: 1rem;
-          margin-top: calc(-0.5rem - 1px);
-          margin-left: -0.5rem;
+          margin-top: -0.5625rem;
+          margin-left: -0.5625rem;
         }
 
         .bullet {
-          transform: translate(2px, 2px);
+          transform: translate(0.125rem, 0.125rem);
         }
 
         li:last-child .line {
@@ -73,15 +73,15 @@ export default function TimelineButton({ title, date, isPast, isActive, isPremie
 
         @media screen and (min-width: 1024px) {
           .line__container {
-            width: 2px;
-            margin-left: -2px;
+            width: 0.125rem;
+            margin-left: -0.125rem;
             height: 5.5rem;
             margin-top: calc((-5.5rem + 0.5rem) / 2);
             transform: rotate(180deg);
           }
 
           .bubble {
-            margin-left: calc(-0.375rem - 1px);
+            margin-left: -0.4375rem;
           }
         }
       `}</style>

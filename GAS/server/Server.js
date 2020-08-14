@@ -13,7 +13,7 @@ function validateUser(user, validatorObj = {}) {
 }
 
 function getUserByRegister(users, register) {
-  const user = users.find(user => +user.register === +register)
+  const user = users.find(user => user.register.toString() === register.toString())
   if (!user) throw new Error('User not found')
 
   return { user }
