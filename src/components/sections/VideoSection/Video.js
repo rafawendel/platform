@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 
-export default function Video({ youtubeId, title, errorMsg, playerVars, widthInVw, ...props }) {
-  const heightInVw = widthInVw * 9 / 16
+export default function Video({ youtubeId, title, errorMsg, playerVars, widthInVw, fallbackHref }) {
+  const heightInVw = (widthInVw * 9) / 16
   const lgScreenFactor = 1.5
 
   const opts = {
@@ -28,13 +28,15 @@ export default function Video({ youtubeId, title, errorMsg, playerVars, widthInV
         <div className="video bg-darker flex items-center justify-center">
           {youtubeId ? (
             <div>
-              <YouTube className="video" videoId={youtubeId} opts={opts} onReady={onReady} {...props} />
+              <YouTube className="video" videoId={youtubeId} opts={opts} onReady={onReady} />
               <span role="presentation" aria-label={title} />
             </div>
           ) : (
-            <div className="w-full h-full px-10 text-center flex items-center justify-center overflow-hidden">
-              <h5>{errorMsg}</h5>
-            </div>
+            <a href={fallbackHref} className="w-full h-full">
+              <div className="w-full h-full px-10 text-center flex items-center justify-center overflow-hidden">
+                <h5>{errorMsg}</h5>
+              </div>
+            </a>
           )}
         </div>
       </div>

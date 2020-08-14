@@ -23,7 +23,7 @@
      "premiereDay":"4",
      "isOpen":true,
      "errorMsg":"Esta atividade está acontecendo online",
-     "href":"https://meet.google.com/taf-exvz-nmg"
+     "fallbackHref":"https://meet.google.com/taf-exvz-nmg"
   },
   {
      "id":"4",
