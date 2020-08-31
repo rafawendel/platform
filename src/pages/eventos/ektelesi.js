@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useCallback } from 'react'
-import { getEventProps } from '../lib/event'
-import Building from '../layouts/Workshop/Building'
+import { getEventProps } from '../../lib/event'
+import Building from '../../layouts/Workshop/Building'
 
 export default function Ektelesi({ eventSettings }) {
   const router = useRouter()
