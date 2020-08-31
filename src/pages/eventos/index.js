@@ -1,10 +1,10 @@
-import Layout from '../layouts/Layout'
-import CardsSection from '../components/sections/CardsSection'
-import LeadersSection from '../components/sections/LeadersSection'
-import FormSection from '../components/sections/FormSection'
-import HeroSection from '../components/sections/HeroSection'
-import InfoSection from '../components/sections/InfoSection'
-import PlainModal from '../components/common/Modals/PlainModal'
+import Layout from '../../layouts/Layout'
+import CardsSection from '../../components/sections/CardsSection'
+import LeadersSection from '../../components/sections/LeadersSection'
+import FormSection from '../../components/sections/FormSection'
+import HeroSection from '../../components/sections/HeroSection'
+import InfoSection from '../../components/sections/InfoSection'
+// import PlainModal from '../components/common/Modals/PlainModal'
 
 export default function Landing() {
   const contents = [
