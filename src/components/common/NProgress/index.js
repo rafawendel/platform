@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
-import { makeStyles } from './styles'
 
 export default function NextProgress({
   startPosition,
