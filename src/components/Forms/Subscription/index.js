@@ -1,14 +1,24 @@
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FormField, FormTypes } from '../Fields'
 import { NextButton, SubmitButton } from '../Buttons'
 
 const fields = [
   {
     type: FormTypes.INPUT,
+    name: 'name',
+    label: 'Primeiramente, como você se chama?',
+    description: 'Seu nome completo',
+    formType: 'text',
+    validator: Yup.string().required('Não pode ser deixado em branco'),
+    placeholder: 'José Silva',
+    autoComplete: 'name'
+  },
+  {
+    type: FormTypes.INPUT,
     name: 'email',
-    label: 'Endereço de e-mail',
+    label: 'Qual é o seu melhor e-mail?',
     formType: 'email',
     validator: Yup.string()
       .email('Endereço de e-mail inválido')
@@ -19,15 +29,62 @@ const fields = [
   {
     type: FormTypes.INPUT,
     name: 'register',
-    label: 'Registro acadêmico',
+    label: 'Qual é o seu Registro Acadêmico?',
+    description: 'Seu número de matrícula, sem pontos ou traços',
     formType: 'text',
     validator: Yup.string()
       .matches(/^[0-9]{4,20}$/, {
-        message: 'Deve ser um número inteiro, sem pontos ou traços, entre 4 e 20 caracteres'
+        message: 'Um número inteiro, sem pontos ou traços, entre 4 e 20 caracteres'
       })
       .required('Não pode ser deixado em branco'),
-    placeholder: `${new Date().getFullYear()}000000`,
-    inputMode: 'numeric'
+    placeholder: ''
+  },
+  {
+    type: FormTypes.DROPDOWN,
+    name: 'sex'
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'cpf',
+    label: 'Qual é o seu CPF?',
+    description: 'Será usado para certificação',
+    formType: 'text',
+    validator: Yup.string()
+      .matches(/^[0-9]{11}$/, {
+        message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
+      })
+      .required('Não pode ser deixado em branco'),
+    placeholder: ''
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'phoneNumber',
+    label: 'Qual é o seu número de celular?',
+    description: 'Seu coordenador entrará em contato via WhatsApp',
+    formType: 'tel',
+    validator: Yup.string()
+      .matches(/^[0-9]{11}$/, {
+        message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
+      })
+      .required('Não pode ser deixado em branco'),
+    placeholder: ''
+  },
+  {
+    type: FormTypes.DROPDOWN,
+    name: 'course'
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'semester',
+    label: 'Qual é o período em que você faz a maioria das matérias?',
+    description: 'Seu período ou semestre',
+    formType: 'tel',
+    validator: Yup.string()
+      .matches(/^[0-9]{11}$/, {
+        message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
+      })
+      .required('Não pode ser deixado em branco'),
+    placeholder: ''
   }
 ]
 export default function SubscriptionForm() {

@@ -10,22 +10,18 @@ export const FormTypes = {
 }
 
 export const FormField = ({ type, formType, ...props }) => {
-  const Field = properties => {
-    switch (type) {
-      case FormTypes.DRAG_AND_DROP:
-        return <div {...properties} />
-      case FormTypes.DROPDOWN:
-        return <div {...properties} />
-      case FormTypes.AREA:
-        return <div {...properties} />
-      case FormTypes.CHECKBOX:
-        return <div {...properties} />
-      case FormTypes.RADIO:
-        return <div {...properties} />
-      default:
-        return <TypeInput {...properties} />
-    }
+  switch (type) {
+    case FormTypes.DRAG_AND_DROP:
+      return <div type={formType} {...props} />
+    case FormTypes.DROPDOWN:
+      return <div type={formType} {...props} />
+    case FormTypes.AREA:
+      return <div type={formType} {...props} />
+    case FormTypes.CHECKBOX:
+      return <div type={formType} {...props} />
+    case FormTypes.RADIO:
+      return <div type={formType} {...props} />
+    default:
+      return <TypeInput type={formType} {...props} />
   }
-
-  return <Field type={formType} {...props} />
 }
