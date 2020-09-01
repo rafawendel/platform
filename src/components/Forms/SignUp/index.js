@@ -1,8 +1,6 @@
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-import FormCard from '../../common/Cards/FormCard'
-import { TextInput } from '../Fields'
+import { TextInput } from '../Fields/Inputs'
 
 export default function SignupForm({ colorMode }) {
   return (
