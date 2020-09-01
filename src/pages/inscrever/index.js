@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import * as Yup from 'yup'
-import SubscriptionForm from '../../components/Forms/Subscription/SubscriptionForm'
+import SubscriptionForm from '../../components/Forms/Subscription'
 import { AuthContext } from '../../context/auth'
 import { FormTypes } from '../../components/Forms/Fields'
 
