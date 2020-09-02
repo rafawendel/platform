@@ -54,24 +54,24 @@ const fields = [
   //   ],
   //   validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required()
   // },
-  // {
-  //   type: FormTypes.INPUT,
-  //   name: 'cpf',
-  //   label: 'Qual é o seu CPF?',
-  //   description: 'Será usado para certificação',
-  //   formType: 'text',
-  //   validator: Yup.string()
-  //     .matches(/^[0-9]{11}$/, {
-  //       message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
-  //     })
-  //     // .test(
-  //     //   'CPF válido',
-  //     //   'O CPF inserido é inválido',
-  //     //   async cpf => (await validateCPFAsync(cpf)) === 'Valid CPF'
-  //     // )
-  //     .required('Não pode ser deixado em branco'),
-  //   placeholder: '11111111111'
-  // },
+  {
+    type: FormTypes.INPUT,
+    name: 'cpf',
+    label: 'Qual é o seu CPF?',
+    description: 'Será usado para certificação',
+    formType: 'text',
+    validator: Yup.string()
+      .matches(/^[0-9]{11}$/, {
+        message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
+      })
+      .test('CPF válido', 'O CPF inserido é inválido', async cpf =>
+        validateCPFAsync(cpf)
+          .catch(_e => false)
+          .then(v => v === 'Valid CPF')
+      )
+      .required('Não pode ser deixado em branco'),
+    placeholder: '11111111111'
+  },
   // {
   //   type: FormTypes.INPUT,
   //   name: 'phoneNumber',

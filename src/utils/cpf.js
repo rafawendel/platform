@@ -1,17 +1,17 @@
 export function validateCPF(cpf) {
   const type = typeof cpf
-  if (type !== 'string' && type !== 'number') throw 'Invalid type'
+  if (type !== 'string' && type !== 'number') throw new Error('Invalid type')
 
   const normalizedCpf = (type === 'number' ? cpf.toString() : cpf).replace(/[^0-9]+/g, '')
   const cpfDigits = Array.from(normalizedCpf).map(i => +i)
-  if (cpfDigits.includes(NaN)) throw 'Invalid digit in the CPF'
-  if (cpfDigits.length !== 11) throw 'Please enter a CPF with a valid size'
+  if (cpfDigits.includes(NaN)) throw new Error('Invalid digit in the CPF')
+  if (cpfDigits.length !== 11) throw new Error('Please enter a CPF with a valid size')
 
   const repeatedDigitTester = cpfDigits.reduce(
     (verifier, d) => verifier && cpfDigits[0] === d,
     true
   )
-  if (repeatedDigitTester) throw 'A CPF cannot be a sequence of a single number'
+  if (repeatedDigitTester) throw new Error('A CPF cannot be a sequence of a single number')
 
   const parse10Or11As0 = num => (num === 10 || num === 11 ? 0 : num)
 
@@ -35,7 +35,8 @@ export function validateCPF(cpf) {
 export function validateCPFAsync(cpf) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(validateCPF(cpf))
+      const validator = validateCPF(cpf)
+      resolve(validator)
     } catch (_e) {
       reject(_e)
     }
