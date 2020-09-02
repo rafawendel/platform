@@ -1,9 +1,8 @@
 import { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
-import * as Yup from 'yup'
-import SubscriptionForm from '../../components/Forms/Subscription'
-import { AuthContext } from '../../context/auth'
-import { FormTypes } from '../../components/Forms/Fields'
+import Head from 'next/head'
+import SubscriptionForm from '../components/Forms/Subscription'
+import { AuthContext } from '../context/auth'
 
 export default function Subscribe({ fields }) {
   const router = useRouter()
@@ -38,14 +37,19 @@ export default function Subscribe({ fields }) {
   }
 
   return (
-    <main className="bg-light text-darker w-full min-h-screen">
-      <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
-        <h5>Inscrição GEDAAM</h5>
-        <div className="w-full md:w-3/4">
-          <SubscriptionForm onSubmit={onSubmit} fields={fields} />
+    <>
+      <Head>
+        <title>Inscreva-se no GEDAAM</title>
+      </Head>
+      <main className="bg-light text-darker w-full min-h-screen">
+        <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
+          <h5>Inscrição GEDAAM</h5>
+          <div className="w-full md:w-3/4 lg:w-1/2">
+            <SubscriptionForm onSubmit={onSubmit} fields={fields} />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

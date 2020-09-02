@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ErrorMessage } from '../Messages'
 import { useKeyPress } from '../../../hooks/useKeyPress'
 
@@ -39,39 +39,35 @@ export const TextInput = ({ label, tooltip, ...props }) => {
   )
 }
 
-export const TypeInput = ({
-  className,
-  label,
-  description,
-  children,
-  keyPressHandler,
-  isSubmitting,
-  ...props
-}) => {
-  const [field, meta] = useField(props)
+export const TypeInput = ({ id, name, children, keyPressHandler, isSubmitting, ...props }) => {
+  const [field, meta, helper] = useField(name)
+  const [isFirstRender, setFirstRender] = useState(true)
 
   const enterPressHandler = () => {
     if (!meta.error && !meta.initialError) keyPressHandler(isSubmitting)
   }
   useKeyPress('Enter', enterPressHandler)
 
+  useEffect(() => {
+    if (isFirstRender) {
+      helper.setValue(window.sessionStorage.getItem(name))
+      setFirstRender(false)
+    }
+    window.sessionStorage.setItem(name, meta.value)
+  }, [meta.value, name])
+
   return (
-    <div className={className}>
-      <div className="flex flex-col items-start first:mt-8 relative w-full mb-3">
-        <label className="mb-2" htmlFor={props.id || props.name}>
-          <h5>{label}</h5>
-          <p>{description}</p>
-        </label>
-        <input
-          className=" text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm w-full focus:outline-none shadow-none"
-          {...field}
-        />
-        {(meta.value || meta.touched) && (
-          <div className="ml-px w-full">
-            {meta.error ? <ErrorMessage>{meta.error}</ErrorMessage> : children}
-          </div>
-        )}
-      </div>
-    </div>
+    <>
+      <input
+        className="text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm w-full focus:outline-none shadow-none"
+        {...field}
+        {...props}
+      />
+      {(meta.value || meta.touched) && (
+        <div className="ml-px w-full">
+          {meta.error ? <ErrorMessage>{meta.error}</ErrorMessage> : children}
+        </div>
+      )}
+    </>
   )
 }

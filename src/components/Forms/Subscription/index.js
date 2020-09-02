@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import { useState } from 'react'
 import { FormField, FormTypes } from '../Fields'
 import { NextButton, SubmitButton } from '../Buttons'
+import { validateCPFAsync } from '../../../utils/cpf'
 
 const fields = [
   {
@@ -41,7 +42,7 @@ const fields = [
     placeholder: ''
   },
   {
-    type: FormTypes.INPUT,
+    type: FormTypes.RADIO,
     name: 'sex',
     label: 'Sexo',
     description: 'Seu nome completo',
@@ -59,8 +60,13 @@ const fields = [
       .matches(/^[0-9]{11}$/, {
         message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
       })
+      // .test(
+      //   'CPF válido',
+      //   'O CPF inserido é inválido',
+      //   async cpf => (await validateCPFAsync(cpf)) === 'Valid CPF'
+      // )
       .required('Não pode ser deixado em branco'),
-    placeholder: ''
+    placeholder: '11111111111'
   },
   {
     type: FormTypes.INPUT,
@@ -73,7 +79,7 @@ const fields = [
         message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
       })
       .required('Não pode ser deixado em branco'),
-    placeholder: ''
+    placeholder: '319XXXXXXXX'
   },
   {
     type: FormTypes.INPUT,
@@ -91,7 +97,11 @@ const fields = [
     description: 'A sua faculdade ou universidade',
     formType: 'text',
     validator: Yup.string().required('Não pode ser deixado em branco'),
-    placeholder: ''
+    placeholder: 'UFMG'
+    // () => {
+    //   const rnd = Math.random()
+    //   return rnd >= 1 / 3 ? 'UFMG' : rnd <= 2 / 3 ? 'UniBH' : 'UFVJM'
+    // }
   },
   {
     type: FormTypes.INPUT,
