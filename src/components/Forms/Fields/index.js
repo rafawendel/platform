@@ -5,6 +5,7 @@ import { RadioField } from './Radio'
 import { useKeyPress } from '../../../hooks/useKeyPress'
 import { PrimaryActionButton, SecondaryActionButton } from '../Buttons'
 import { Dropdown } from './Dropdown'
+import { Checkbox } from './Checkbox'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -114,7 +115,7 @@ export const FormField = ({ type, formType, ...props }) => {
       case FormTypes.AREA:
         return <div type={formType} />
       case FormTypes.CHECKBOX:
-        return <div type={formType} />
+        return <Checkbox type={formType} />
       case FormTypes.RADIO:
         return <RadioField type={formType} />
       default:

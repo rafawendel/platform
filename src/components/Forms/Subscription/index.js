@@ -134,6 +134,20 @@ const fields = [
   //     .required(),
   //   placeholder: '1'
   // },
+  // {
+  //   type: FormTypes.CHECKBOX,
+  //   name: 'isNewbie',
+  //   label: 'Você é novato no GEDAAM?',
+  //   options: [
+  //     { label: 'Sim, estou conhecendo neste semestre', value: 'first' },
+  //     { label: 'Não, já conhecia o Grupo', value: 'second' }
+  //   ],
+  //   initialValue: [],
+  //   formType: 'checkbox',
+  //   validator: Yup.array()
+  //     .of(Yup.string().oneOf(['zoeira']))
+  //     .required()
+  // },
   {
     type: FormTypes.RADIO,
     name: 'isNewbie',
