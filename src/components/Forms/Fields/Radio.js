@@ -1,20 +1,17 @@
 import { Field } from 'formik'
 import { useEffect } from 'react'
 
-export function RadioField({ options, name, meta }) {
-  useEffect(() => {
-    console.log(meta.value)
-  }, [meta])
+export function RadioField({ options, name }) {
   return (
-    <div role="group" aria-labelledby={`${name}-radio-group`} className="flex flex-col">
-      {options.map(({ label, value }) => (
-        <div className="inline">
-          <Field type="radio" name={name} value={value} />
-          <label key={value} htmlFor={name}>
+    <>
+      <div role="group" aria-labelledby={`${name}-radio-group`} className="flex flex-col w-full">
+        {options.map(({ label, value }) => (
+          <label key={value} htmlFor={name} className="py-1 text-darker text-base">
+            <Field type="radio" name={name} value={value} className="mr-2" />
             {label}
           </label>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   )
 }

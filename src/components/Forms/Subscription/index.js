@@ -44,7 +44,7 @@ const fields = [
   {
     type: FormTypes.RADIO,
     name: 'sex',
-    label: 'Sexo',
+    label: 'Com qual gênero você se identifica?',
     formType: 'radio',
     initialValue: 'male',
     options: [
@@ -52,8 +52,7 @@ const fields = [
       { label: 'Masculino', value: 'male' },
       { label: 'Não-binário', value: 'nonbinary' }
     ],
-    validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required(),
-    placeholder: 'José Silva'
+    validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required()
   },
   {
     type: FormTypes.INPUT,
@@ -90,7 +89,7 @@ const fields = [
     type: FormTypes.INPUT,
     name: 'course',
     label: 'Qual é o seu curso?',
-    description: 'Curso em que você está regularmente matriculado',
+    description: 'Curso em que você está matriculado',
     formType: 'text',
     validator: Yup.string().required('Não pode ser deixado em branco'),
     placeholder: 'Medicina'
@@ -107,6 +106,18 @@ const fields = [
     //   const rnd = Math.random()
     //   return rnd >= 1 / 3 ? 'UFMG' : rnd <= 2 / 3 ? 'UniBH' : 'UFVJM'
     // }
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'isRegular',
+    label: 'Você está regular?',
+    options: [
+      { label: 'Estou regular', value: 'true' },
+      { label: 'Estou irregular', value: 'false' }
+    ],
+    initialValue: 'true',
+    formType: 'text',
+    validator: Yup.string().oneOf(['true', 'false']).required()
   },
   {
     type: FormTypes.INPUT,
