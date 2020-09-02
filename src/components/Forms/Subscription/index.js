@@ -67,7 +67,7 @@ const fields = [
     name: 'phoneNumber',
     label: 'Qual é o seu número de celular?',
     description: 'Seu coordenador entrará em contato via WhatsApp',
-    formType: 'tel',
+    formType: 'tel-national',
     validator: Yup.string()
       .matches(/^[0-9]{11}$/, {
         message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
@@ -156,7 +156,7 @@ export default function SubscriptionForm() {
               <FormField
                 key={`input-${i + 1}`}
                 className={i !== activeFieldIndex ? 'hidden' : ''}
-                autoFocus={!!(i === activeFieldIndex)}
+                autoFocus={i === 0}
                 keyPressHandler={keyPressHandler}
                 isSubmitting={isSubmitting}
                 {...properties}
