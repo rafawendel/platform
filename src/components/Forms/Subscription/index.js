@@ -101,11 +101,10 @@ const fields = [
   //   description: 'A sua faculdade ou universidade',
   //   formType: 'text',
   //   validator: Yup.string().required('Não pode ser deixado em branco'),
-  //   placeholder: 'UFMG'
-  //   // () => {
-  //   //   const rnd = Math.random()
-  //   //   return rnd >= 1 / 3 ? 'UFMG' : rnd <= 2 / 3 ? 'UniBH' : 'UFVJM'
-  //   // }
+  //   placeholder: () => {
+  //     const rnd = Math.random()
+  //     return rnd >= 2 / 3 ? 'UFMG' : rnd >= 1 / 3 ? 'UniBH' : 'UFVJM'
+  //   }
   // },
   // {
   //   type: FormTypes.RADIO,
@@ -196,8 +195,11 @@ export default function SubscriptionForm() {
   }
 
   const keyPressHandler = isSubmitting => {
-    if (!isSubmitting && activeFieldIndex >= fields.length - 1) onSubmit()
-    advanceForm()
+    if (!isSubmitting && activeFieldIndex >= fields.length - 1) {
+      onSubmit()
+    } else {
+      advanceForm()
+    }
   }
 
   return (

@@ -30,6 +30,7 @@ export const FieldWrapper = ({
   showRecedeButton,
   onlyShowIf,
   children,
+  options,
   ...props
 }) => {
   const { values } = useFormikContext()
@@ -66,15 +67,15 @@ export const FieldWrapper = ({
     }
   }, [isFieldHidden])
 
-  // const properties = props
-  // Object.entries(props).reduce((newProps, [key, value]) => {
-  //   newProps[key] = typeof value === 'function' ? value() : value
-  //   if (typeof newProps[key] === 'object') delete newProps[key]
-  //   return newProps
-  // }, {})
+  const plainProps = Object.entries(props).reduce((newProps, [key, value]) => {
+    newProps[key] = typeof value === 'function' ? value() : value
+    if (typeof newProps[key] === 'object') delete newProps[key]
+    return newProps
+  }, {})
 
   const enterPressHandler = () => {
-    if (!meta.error) keyPressHandler(isSubmitting)
+    console.log(meta)
+    if (!meta.error && meta.value) keyPressHandler(isSubmitting)
   }
   useKeyPress('Enter', enterPressHandler)
 
@@ -85,7 +86,7 @@ export const FieldWrapper = ({
           <h5>{label}</h5>
           <p>{description}</p>
         </label>
-        {React.cloneElement(children, { ...props, field, meta, helper, name })}
+        {React.cloneElement(children, { ...plainProps, options, field, meta, helper, name })}
         <div className="flex justify-between items-center mt-3 w-full">
           {showSubmitButton ? (
             <PrimaryActionButton type="submit" disabled={isSubmitting || !meta.value || meta.error}>

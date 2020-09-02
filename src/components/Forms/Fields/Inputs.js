@@ -1,7 +1,5 @@
 import { useField } from 'formik'
-import { useEffect, useState, useRef } from 'react'
 import { ErrorMessage } from '../Messages'
-import { useKeyPress } from '../../../hooks/useKeyPress'
 
 export const TextInput = ({ label, tooltip, ...props }) => {
   const [field, meta] = useField(props)
