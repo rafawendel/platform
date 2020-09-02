@@ -8,10 +8,10 @@ export function useKeyPress(targetKey, onKeyDown) {
   const [keyPressed, setKeyPressed] = useState(false)
 
   useEffect(() => {
-    function downHandler(e) {
-      if (e.key === targetKey) {
+    function downHandler({ key }) {
+      if (key === targetKey) {
         setKeyPressed(true)
-        if (typeof onKeyDown === 'function') onKeyDown(e)
+        if (typeof onKeyDown === 'function') onKeyDown()
       }
     }
 

@@ -1,7 +1,9 @@
 export const ErrorMessage = ({ children }) => {
   return (
     <>
-      <div className="error text-red-600 text-xs mt-1 w-auto">{children}</div>
+      <div className="error text-red-600 text-xs pt-1 w-full h-full overflow-hidden">
+        {children}
+      </div>
       <style jsx>{`
         .error::before {
           content: '⚠️ '; /* ❌ */

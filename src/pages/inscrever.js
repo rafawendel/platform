@@ -41,7 +41,7 @@ export default function Subscribe({ fields }) {
       <Head>
         <title>Inscreva-se no GEDAAM</title>
       </Head>
-      <main className="bg-light text-darker w-full min-h-screen">
+      <main className="bg-light text-darker w-full min-h-screen pt-20">
         <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
           <h5>Inscrição GEDAAM</h5>
           <div className="w-full md:w-3/4 lg:w-1/2">

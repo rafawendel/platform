@@ -39,35 +39,17 @@ export const TextInput = ({ label, tooltip, ...props }) => {
   )
 }
 
-export const TypeInput = ({ id, name, children, keyPressHandler, isSubmitting, ...props }) => {
-  const [field, meta, helper] = useField(name)
-  const [isFirstRender, setFirstRender] = useState(true)
-
-  const enterPressHandler = () => {
-    if (!meta.error && !meta.initialError) keyPressHandler(isSubmitting)
-  }
-  useKeyPress('Enter', enterPressHandler)
-
-  useEffect(() => {
-    if (isFirstRender) {
-      helper.setValue(window.sessionStorage.getItem(name))
-      setFirstRender(false)
-    }
-    window.sessionStorage.setItem(name, meta.value)
-  }, [meta.value, name])
-
+export const TypeInput = ({ children, field, meta, ...props }) => {
   return (
-    <>
+    <div className="w-full">
       <input
         className="text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm w-full focus:outline-none shadow-none"
         {...field}
         {...props}
       />
-      {(meta.value || meta.touched) && (
-        <div className="ml-px w-full">
-          {meta.error ? <ErrorMessage>{meta.error}</ErrorMessage> : children}
-        </div>
-      )}
-    </>
+      <div className="ml-px w-full h-12 md:h-6">
+        {(meta.value || meta.touched) && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
+      </div>
+    </div>
   )
 }

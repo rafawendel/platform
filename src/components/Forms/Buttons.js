@@ -1,10 +1,10 @@
-export const SubmitButton = ({ isSubmitting, children }) => {
+export const PrimaryActionButton = ({ children, className, type, ...props }) => {
   return (
-    <div className="text-center mt-6">
+    <div className={`${className} text-center`}>
       <button
-        className="bg-dark text-lighter active:opacity-75 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg"
-        type="submit"
-        disabled={isSubmitting}
+        className="bg-dark text-lighter text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg"
+        type={type || 'button'}
+        {...props}
       >
         {children}
       </button>
@@ -12,12 +12,12 @@ export const SubmitButton = ({ isSubmitting, children }) => {
   )
 }
 
-export const NextButton = ({ children, className, ...props }) => {
+export const SecondaryActionButton = ({ children, className, type, ...props }) => {
   return (
-    <div className={`${className} text-center mt-6`}>
+    <div className={`${className} text-center`}>
       <button
-        className="bg-dark text-lighter active:opacity-75 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg"
-        type="button"
+        className="bg-transparent text-dark border-2 border-dark hover:bg-dark hover:text-light text-xs font-bold uppercase rounded px-3 py-3"
+        type={type || 'button'}
         {...props}
       >
         {children}

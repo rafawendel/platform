@@ -2,7 +2,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
 import { FormField, FormTypes } from '../Fields'
-import { NextButton, SubmitButton } from '../Buttons'
+import { PrimaryActionButton, SubmitButton, SecondaryActionButton } from '../Buttons'
 import { validateCPFAsync } from '../../../utils/cpf'
 
 const fields = [
@@ -45,9 +45,14 @@ const fields = [
     type: FormTypes.RADIO,
     name: 'sex',
     label: 'Sexo',
-    description: 'Seu nome completo',
-    formType: 'text',
-    validator: Yup.string().required('Não pode ser deixado em branco'),
+    formType: 'radio',
+    initialValue: 'male',
+    options: [
+      { label: 'Feminino', value: 'female' },
+      { label: 'Masculino', value: 'male' },
+      { label: 'Não-binário', value: 'nonbinary' }
+    ],
+    validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required(),
     placeholder: 'José Silva'
   },
   {
@@ -108,25 +113,21 @@ const fields = [
     name: 'semester',
     label: 'Qual é o período em que você faz a maioria das matérias?',
     description: 'Seu período ou semestre',
-    formType: 'number',
+    formType: 'text',
+    inputMode: 'numeric',
     validator: Yup.string()
       .matches(/^[0-9]{1}$/, {
-        message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
+        message: 'Somente números'
       })
       .required('Não pode ser deixado em branco'),
-    placeholder: ''
+    placeholder: '1'
   },
   {
     type: FormTypes.INPUT,
-    name: 'semester',
+    name: 'knewGedaam',
     label: 'Você já conhecia o GEDAAM?',
     formType: 'text',
-    validator: Yup.string()
-      .matches(/^[0-9]$/, {
-        message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
-      })
-      .required('Não pode ser deixado em branco'),
-    placeholder: ''
+    validator: Yup.string().required('Não pode ser deixado em branco')
   }
 ]
 export default function SubscriptionForm() {
@@ -135,8 +136,10 @@ export default function SubscriptionForm() {
   const advanceForm = () => setActiveFieldIndex(previous => previous + 1)
   const recedeForm = () => setActiveFieldIndex(previous => previous - 1)
 
-  const onSubmit = () => {
-    setTimeout(alert('http-request'), 2000)
+  const onSubmit = values => {
+    setTimeout(() => {
+      alert(JSON.stringify(values))
+    }, 2)
   }
 
   const keyPressHandler = isSubmitting => {
@@ -160,32 +163,21 @@ export default function SubscriptionForm() {
     >
       {({ isSubmitting }) => (
         <Form>
-          {fields.map((properties, i) => {
-            return (
-              // changing state will cause every field to re-render, which is not optimal
-              <FormField
-                key={`input-${i + 1}`}
-                className={i !== activeFieldIndex ? 'hidden' : ''}
-                autoFocus={i === 0}
-                keyPressHandler={keyPressHandler}
-                isSubmitting={isSubmitting}
-                {...properties}
-              >
-                <div className="flex justify-between">
-                  {activeFieldIndex >= fields.length - 1 ? (
-                    <SubmitButton isSubmitting={isSubmitting}>Enviar</SubmitButton>
-                  ) : (
-                    <NextButton onClick={advanceForm}>Ok</NextButton>
-                  )}
-                  {activeFieldIndex > 0 && (
-                    <NextButton className="opacity-75 hover:opacity-100" onClick={recedeForm}>
-                      &lt;
-                    </NextButton>
-                  )}
-                </div>
-              </FormField>
-            )
-          })}
+          {fields.map((properties, i) => (
+            // changing state will cause every field to re-render, which is not optimal
+            <FormField
+              key={properties.id || properties.name}
+              className={i !== activeFieldIndex ? 'hidden' : ''}
+              keyPressHandler={keyPressHandler}
+              isSubmitting={isSubmitting}
+              autoFocus={i === 0}
+              showSubmitButton={activeFieldIndex >= fields.length - 1}
+              showRecedeButton={activeFieldIndex > 0}
+              advanceForm={advanceForm}
+              recedeForm={recedeForm}
+              {...properties}
+            />
+          ))}
         </Form>
       )}
     </Formik>
