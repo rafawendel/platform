@@ -1,5 +1,4 @@
 import { Field } from 'formik'
-import { useEffect } from 'react'
 
 export function RadioField({ options, name }) {
   return (

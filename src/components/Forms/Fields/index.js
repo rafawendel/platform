@@ -6,6 +6,7 @@ import { useKeyPress } from '../../../hooks/useKeyPress'
 import { PrimaryActionButton, SecondaryActionButton } from '../Buttons'
 import { Dropdown } from './Dropdown'
 import { Checkbox } from './Checkbox'
+import { DiscreteSlider } from './Slider'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -13,6 +14,7 @@ export const FormTypes = {
   RADIO: 'RADIO',
   CHECKBOX: 'CHECKBOX',
   DROPDOWN: 'DROPDOWN',
+  SLIDER: 'SLIDER',
   DRAG_AND_DROP: 'DRAG_AND_DROP'
 }
 
@@ -119,6 +121,8 @@ export const FormField = ({ type, formType, ...props }) => {
         return <Checkbox type={formType} />
       case FormTypes.RADIO:
         return <RadioField type={formType} />
+      case FormTypes.SLIDER:
+        return <DiscreteSlider type={formType} />
       default:
         return <TypeInput type={formType} />
     }

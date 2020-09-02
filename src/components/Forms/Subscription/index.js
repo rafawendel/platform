@@ -54,24 +54,24 @@ const fields = [
   //   ],
   //   validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required()
   // },
-  {
-    type: FormTypes.INPUT,
-    name: 'cpf',
-    label: 'Qual é o seu CPF?',
-    description: 'Será usado para certificação',
-    formType: 'text',
-    validator: Yup.string()
-      .matches(/^[0-9]{11}$/, {
-        message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
-      })
-      .test('CPF válido', 'O CPF inserido é inválido', async cpf =>
-        validateCPFAsync(cpf)
-          .catch(_e => false)
-          .then(v => v === 'Valid CPF')
-      )
-      .required('Não pode ser deixado em branco'),
-    placeholder: '11111111111'
-  },
+  // {
+  //   type: FormTypes.INPUT,
+  //   name: 'cpf',
+  //   label: 'Qual é o seu CPF?',
+  //   description: 'Será usado para certificação',
+  //   formType: 'text',
+  //   validator: Yup.string()
+  //     .matches(/^[0-9]{11}$/, {
+  //       message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
+  //     })
+  //     .test('CPF válido', 'O CPF inserido é inválido', async cpf =>
+  //       validateCPFAsync(cpf)
+  //         .catch(_e => false)
+  //         .then(v => v === 'Valid CPF')
+  //     )
+  //     .required('Não pode ser deixado em branco'),
+  //   placeholder: '11111111111'
+  // },
   // {
   //   type: FormTypes.INPUT,
   //   name: 'phoneNumber',
@@ -118,21 +118,21 @@ const fields = [
   //   formType: 'radio',
   //   validator: Yup.string().oneOf(['true', 'false']).required()
   // },
-  // {
-  //   type: FormTypes.RADIO,
-  //   name: 'semester',
-  //   label: 'Qual é o período em que você faz a maioria das matérias?',
-  //   description: 'Seu período ou semestre',
-  //   options: [...Array(12).keys()].map(i => ({
-  //     label: `${i + 1}° período`,
-  //     value: `${i + 1}`
-  //   })),
-  //   formType: 'radio',
-  //   validator: Yup.string()
-  //     .matches(/^[0-9]{1,2}$/)
-  //     .required(),
-  //   placeholder: '1'
-  // },
+  {
+    type: FormTypes.DROPDOWN,
+    name: 'semester',
+    label: 'Qual é o período em que você faz a maioria das matérias?',
+    description: 'Seu período ou semestre',
+    options: [...Array(12).keys()].map(i => ({
+      label: `${i + 1}° período`,
+      value: `${i + 1}`
+    })),
+    formType: 'radio',
+    validator: Yup.string()
+      .matches(/^[0-9]{1,2}$/)
+      .required(),
+    placeholder: 'Seu período'
+  },
   // {
   //   type: FormTypes.CHECKBOX,
   //   name: 'isNewbie',
@@ -148,7 +148,7 @@ const fields = [
   //     .required()
   // },
   {
-    type: FormTypes.RADIO,
+    type: FormTypes.SLIDER,
     name: 'isNewbie',
     label: 'Você é novato no GEDAAM?',
     options: [
