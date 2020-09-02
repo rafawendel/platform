@@ -120,7 +120,7 @@ const fields = [
     validator: Yup.string().oneOf(['true', 'false']).required()
   },
   {
-    type: FormTypes.INPUT,
+    type: FormTypes.DROPDOWN,
     name: 'semester',
     label: 'Qual é o período em que você faz a maioria das matérias?',
     description: 'Seu período ou semestre',

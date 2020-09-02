@@ -4,6 +4,7 @@ import { TypeInput } from './Inputs'
 import { RadioField } from './Radio'
 import { useKeyPress } from '../../../hooks/useKeyPress'
 import { PrimaryActionButton, SecondaryActionButton } from '../Buttons'
+import { Dropdown } from './Dropdown'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -68,7 +69,7 @@ export const FieldWrapper = ({
           <h5>{label}</h5>
           <p>{description}</p>
         </label>
-        {React.cloneElement(children, { ...props, field, meta, name })}
+        {React.cloneElement(children, { ...props, field, meta, helper, name })}
         <div className="flex justify-between items-center mt-3 w-full">
           {showSubmitButton ? (
             <PrimaryActionButton type="submit" disabled={isSubmitting || !meta.value || meta.error}>
@@ -94,7 +95,7 @@ export const FormField = ({ type, formType, ...props }) => {
       case FormTypes.DRAG_AND_DROP:
         return <div type={formType} />
       case FormTypes.DROPDOWN:
-        return <div type={formType} />
+        return <Dropdown color="white" type={formType} />
       case FormTypes.AREA:
         return <div type={formType} />
       case FormTypes.CHECKBOX:
