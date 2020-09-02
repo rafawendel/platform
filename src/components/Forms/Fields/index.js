@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useField } from 'formik'
+import { useField, useFormikContext } from 'formik'
 import { TypeInput } from './Inputs'
 import { RadioField } from './Radio'
 import { useKeyPress } from '../../../hooks/useKeyPress'
@@ -17,8 +17,8 @@ export const FormTypes = {
 
 export const FieldWrapper = ({
   id,
+  activeFieldIndex,
   name,
-  className,
   label,
   description,
   keyPressHandler,
@@ -27,10 +27,25 @@ export const FieldWrapper = ({
   isSubmitting,
   showSubmitButton,
   showRecedeButton,
+  onlyShowIf,
   children,
   ...props
 }) => {
+  const { values } = useFormikContext()
+  const [isFieldHidden, setFieldHidden] = useState(true)
   const [field, meta, helper] = useField(name)
+
+  useEffect(() => {
+    if (id === activeFieldIndex) {
+      if (typeof onlyShowIf === 'function' && !onlyShowIf(values)) {
+        advanceForm()
+      } else {
+        setFieldHidden(false)
+      }
+    } else {
+      setFieldHidden(true)
+    }
+  }, [activeFieldIndex, id, values])
 
   const [isFirstRender, setFirstRender] = useState(true)
   useEffect(() => {
@@ -44,11 +59,11 @@ export const FieldWrapper = ({
   const fieldRef = useRef(null)
   useEffect(() => {
     const childInput = fieldRef.current && fieldRef.current.querySelector('input')
-    if (childInput && !className.includes('hidden')) {
+    if (childInput && !isFieldHidden) {
       childInput.focus()
       childInput.select()
     }
-  }, [className])
+  }, [isFieldHidden])
 
   // const properties = props
   // Object.entries(props).reduce((newProps, [key, value]) => {
@@ -63,7 +78,7 @@ export const FieldWrapper = ({
   useKeyPress('Enter', enterPressHandler)
 
   return (
-    <div className={className}>
+    <div className={isFieldHidden ? 'hidden' : ''}>
       <div ref={fieldRef} className="flex flex-col items-start mt-16 w-full">
         <label className="mb-2" htmlFor={id || name}>
           <h5>{label}</h5>
