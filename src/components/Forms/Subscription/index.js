@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { useState, useCallback, useEffect } from 'react'
-import { FormField } from '../Fields'
+import { FormField } from '../TypingForm'
 import { fields } from './fields'
 
 export default function SubscriptionForm() {

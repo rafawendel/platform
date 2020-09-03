@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { FormTypes } from '../Fields'
+import { FormTypes } from '../TypingForm'
 import { validateCPFAsync } from '../../../utils/cpf'
 import { getGroups } from './groups'
 
