@@ -31,17 +31,6 @@ export default function SubscriptionForm() {
     setShowSubmitButton(activeFieldIndex >= fields.length - 1)
   }, [activeFieldIndex])
 
-  const keyPressHandler = useCallback(
-    isSubmitting => {
-      if (!isSubmitting && showSubmitButton) {
-        onSubmit()
-      } else {
-        advanceForm()
-      }
-    },
-    [advanceForm, showSubmitButton]
-  )
-
   return (
     <>
       <Formik
@@ -66,14 +55,11 @@ export default function SubscriptionForm() {
                 id={i}
                 activeFieldIndex={activeFieldIndex}
                 previousFieldIndex={previousFieldIndex}
-                keyPressHandler={keyPressHandler}
                 isSubmitting={isSubmitting}
                 autoFocus={i === 0}
-                showSubmitButton={showSubmitButton}
-                showRecedeButton={activeFieldIndex > 0}
+                buttonProps={{ showSubmitButton, showRecedeButton: activeFieldIndex > 0 }}
                 advanceForm={advanceForm}
                 recedeForm={recedeForm}
-                validateField={i === 0 && validateField}
                 {...properties}
               />
             ))}

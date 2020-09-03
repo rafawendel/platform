@@ -48,7 +48,8 @@ export const fields = [
     options: [
       { label: 'Feminino', value: 'female' },
       { label: 'Masculino', value: 'male' },
-      { label: 'Não-binário', value: 'nonbinary' }
+      { label: 'Não-binário', value: 'nonbinary' },
+      { label: 'Prefiro não identificar', value: 'n/a' }
     ],
     validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required()
   },
@@ -113,7 +114,6 @@ export const fields = [
       { label: 'Estou irregular', value: 'false' }
     ],
     initialValue: 'true',
-    formType: 'radio',
     validator: Yup.string().oneOf(['true', 'false']).required()
   },
   {
@@ -125,7 +125,6 @@ export const fields = [
       label: `${i + 1}° período`,
       value: `${i + 1}`
     })),
-    formType: 'radio',
     validator: Yup.string()
       .matches(/^[0-9]{1,2}$/)
       .required(),
@@ -147,7 +146,7 @@ export const fields = [
     name: 'semestersInvolved',
     label: 'Há quantos semestres você tem algum envolvimento com o grupo?',
     description: 'Considere envolvimento a participação como membro, coordenadora ou diretora',
-    onlyShowIf: values => values.isNewbie === 'false', // a conditional element can never be the last element
+    onlyDisplayIf: values => values.isNewbie === 'false', // a conditional element can never be the last element
     formType: 'number',
     min: 0,
     validator: Yup.string()
@@ -161,27 +160,51 @@ export const fields = [
     type: FormTypes.DROPDOWN,
     name: 'medium',
     label: 'Como você chegou até o GEDAAM?',
-    options: []
-  }
-]
-const follow = [
-  // Fim da identificação
+    options: [
+      { label: 'Instagram', value: 'Instagram' },
+      { label: 'WhatsApp', value: 'WhatsApp' },
+      { label: 'Facebook', value: 'Facebook' },
+      { label: 'Recepção de calouros', value: 'Recepção de calouros' },
+      { label: 'Eventos do GEDAAM', value: 'Eventos do GEDAAM' },
+      { label: 'Outros eventos', value: 'Outros eventos' },
+      { label: 'Colegas', value: 'Colegas' },
+      { label: 'Amostra do DAAB', value: 'Amostra do DAAB' }
+    ]
+  },
   {
     type: FormTypes.DROPDOWN,
-    name: 'medium',
-    label: 'Como você chegou até o GEDAAM?',
-    options: []
+    name: 'topicsOfInterest',
+    label: 'Quais dos seguintes tópicos você gostaria de uma abordagem no seu percurso GEDAAM?',
+    description: 'Isso poderá ser usado para orientação do seu coordenador',
+    options: [
+      { label: 'Apresentações', value: 'Apresentações' },
+      { label: 'Oratória', value: 'Oratória' },
+      { label: 'Organização', value: 'Organização' },
+      { label: 'Gestão do tempo', value: 'Gestão do tempo' },
+      { label: 'Técnicas de estudos', value: 'Técnicas de estudos' },
+      { label: 'Liderança', value: 'Liderança' },
+      { label: 'Raciocínio clínico', value: 'Raciocínio clínico' },
+      { label: 'Dinâmicas de grupo', value: 'Dinâmicas de grupo' },
+      { label: 'Tutoria e orientação', value: 'Tutoria e orientação' },
+      { label: 'Saúde mental', value: 'Saúde mental' }
+    ] /* ,
+    withValuesOptionsCb: (_, options) => {
+      return options.sort(() => Math.random() > 0.5)
+    } */
   },
-  // The groups go here
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
     options: getGroups(),
-    withValuesOptionsCb: (values, options) => {
-      // here add the logic that changes the options according to the values
-      return options
-    }
-  },
+    // withValuesOptionsCb: (values, options) => {
+    //   // here add the logic that changes the options according to the values
+    //   return options
+    // },
+    validator: Yup.array().min(2, 'Selecione duas opções').required()
+  }
+]
+export const research = [
+  // The groups go here
   {
     type: FormTypes.CHECKBOX,
     name: 'ingressoFaculdade',
