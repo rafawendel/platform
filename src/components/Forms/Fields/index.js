@@ -34,6 +34,7 @@ export const FieldWrapper = ({
   onlyShowIf,
   children,
   options,
+  withValuesOptionsCb,
   ...props
 }) => {
   const { values } = useFormikContext()
@@ -89,7 +90,17 @@ export const FieldWrapper = ({
           <h5>{label}</h5>
           <p>{description}</p>
         </label>
-        {React.cloneElement(children, { ...plainProps, options, field, meta, helper, name })}
+        {React.cloneElement(children, {
+          ...plainProps,
+          options:
+            typeof withValuesOptionsCb === 'function'
+              ? withValuesOptionsCb(values, options)
+              : options,
+          field,
+          meta,
+          helper,
+          name
+        })}
         <div className="flex justify-between items-center mt-3 w-full">
           {showSubmitButton ? (
             <PrimaryActionButton type="submit" disabled={isSubmitting || !meta.value || meta.error}>

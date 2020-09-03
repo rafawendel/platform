@@ -62,7 +62,9 @@ const fields = [
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
     options: getGroups(),
-    withValuesRenderFn: (values, options) => {
+    withValuesOptionsCb: (values, options) => {
+      // here add the logic that changes the options according to the values
+      console.log(values)
       return options
     }
   }

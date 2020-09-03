@@ -1,5 +1,5 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import { useState, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 function DragHandle(props) {
   return (
@@ -44,18 +44,15 @@ export function Group({ group, index, isOrdered }) {
   )
 }
 
-export function List({ list, groups }) {
+export function List({ list, groups, isDropDisabled }) {
   return (
     <div className="w-full py-2 flex flex-col">
-      <Droppable
-        droppableId={list.id}
-        isDropDisabled={list.id === 'selected' && list.groupIds.length >= 2}
-      >
+      <Droppable droppableId={list.id} isDropDisabled={isDropDisabled}>
         {(provided, snapshot) => (
           <>
             <div
               className={`${
-                snapshot.isDraggingOver ? 'bg-secondary' : 'bg-dark'
+                isDropDisabled ? 'bg-primary' : snapshot.isDraggingOver ? 'bg-secondary' : 'bg-dark'
               } rounded transition-colors duration-100 ease-out p-4`}
               ref={provided.innerRef}
               {...provided.droppableProps}
@@ -104,59 +101,81 @@ const changeLists = (originList, destinationList, startIndex, endIndex) => {
 
   return [originIds, destinationIds]
 }
-export function DragAndDrop({ options }) {
+export function DragAndDrop({ options, helper }) {
   const [lists, setLists] = useState(options.lists)
   const [groups, setGroups] = useState(options.groups)
+  const [draggableOrigin, setDraggableOrigin] = useState(null)
 
-  const onDragEnd = result => {
-    const { destination, source } = result
-    if (!destination) return
-    if (destination.droppableId === source.droppableId && destination.index === source.index) return
+  useEffect(() => {
+    helper.setValue(lists.selected.groupIds)
+  }, [lists.selected.groupIds])
 
-    const startList = lists[source.droppableId]
-    const finishList = lists[destination.droppableId]
-
-    if (startList === finishList) {
-      const newGroupIds = reorder(startList.groupIds, source.index, destination.index)
-      const newList = {
-        ...startList,
-        groupIds: newGroupIds
-      }
-
-      setLists(l => ({
-        ...l,
-        [newList.id]: newList
-      }))
-    } else {
-      const [newStartIds, newFinishIds] = changeLists(
-        startList.groupIds,
-        finishList.groupIds,
-        source.index,
-        destination.index
-      )
-
-      const newStartList = {
-        ...startList,
-        groupIds: newStartIds
-      }
-
-      const newFinishList = {
-        ...finishList,
-        groupIds: newFinishIds
-      }
-
-      setLists(l => ({
-        ...l,
-        [newStartList.id]: newStartList,
-        [newFinishList.id]: newFinishList
-      }))
-    }
+  const onDragStart = start => {
+    setDraggableOrigin(start.source.droppableId)
   }
 
+  const onDragEnd = useCallback(
+    result => {
+      setDraggableOrigin(null)
+
+      const { destination, source } = result
+      if (!destination) return
+      if (destination.droppableId === source.droppableId && destination.index === source.index)
+        return
+
+      const startList = lists[source.droppableId]
+      const finishList = lists[destination.droppableId]
+
+      if (startList === finishList) {
+        const newGroupIds = reorder(startList.groupIds, source.index, destination.index)
+        const newList = {
+          ...startList,
+          groupIds: newGroupIds
+        }
+
+        setLists(l => ({
+          ...l,
+          [newList.id]: newList
+        }))
+      } else {
+        const [newStartIds, newFinishIds] = changeLists(
+          startList.groupIds,
+          finishList.groupIds,
+          source.index,
+          destination.index
+        )
+
+        const newStartList = {
+          ...startList,
+          groupIds: newStartIds
+        }
+
+        const newFinishList = {
+          ...finishList,
+          groupIds: newFinishIds
+        }
+
+        setLists(l => ({
+          ...l,
+          [newStartList.id]: newStartList,
+          [newFinishList.id]: newFinishList
+        }))
+      }
+    },
+    [lists]
+  )
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
       {Object.values(lists).map(list => (
-        <List key={list.id} list={list} groups={groups} />
+        <List
+          key={list.id}
+          list={list}
+          groups={groups}
+          isDropDisabled={
+            list.id === 'selected' && list.groupIds.length >= 2 && draggableOrigin !== 'selected'
+          }
+        />
       ))}
     </DragDropContext>
   )
