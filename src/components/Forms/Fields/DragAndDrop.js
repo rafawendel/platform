@@ -13,7 +13,11 @@ function DragHandle(props) {
     </>
   )
 }
-export function Group({ group, index }) {
+export function Group({ group, index, isOrdered }) {
+  const clickHandler = () => {
+    alert(group.details)
+  }
+
   return (
     <div className="my-2">
       <Draggable draggableId={group.id} index={index}>
@@ -26,9 +30,12 @@ export function Group({ group, index }) {
             ref={provided.innerRef}
             {...provided.draggableProps}
           >
-            <div role="button" onClick={() => alert('yea')} className="text-left px-6 pl-8 py-2 ">
+            <div role="button" onClick={clickHandler} className="text-left px-6 pl-8 py-2 ">
               <DragHandle {...provided.dragHandleProps} />
-              <h6>{group.label}</h6>
+              <h6>
+                {isOrdered && <strong>{`${index + 1}. `}</strong>}
+                {group.label}
+              </h6>
             </div>
           </div>
         )}
@@ -40,7 +47,10 @@ export function Group({ group, index }) {
 export function List({ list, groups }) {
   return (
     <div className="w-full py-2 flex flex-col">
-      <Droppable droppableId={list.id}>
+      <Droppable
+        droppableId={list.id}
+        isDropDisabled={list.id === 'selected' && list.groupIds.length >= 2}
+      >
         {(provided, snapshot) => (
           <>
             <div
@@ -53,7 +63,16 @@ export function List({ list, groups }) {
               <h5 className="text-light pb-2">{list.title}</h5>
               {list.groupIds.map((groupId, index) => {
                 const group = groups.find(g => g.id === groupId)
-                return group && <Group key={group.id} group={group} index={index} />
+                return (
+                  group && (
+                    <Group
+                      key={group.id}
+                      group={group}
+                      index={index}
+                      isOrdered={list.id === 'selected'}
+                    />
+                  )
+                )
               })}
               {provided.placeholder}
             </div>

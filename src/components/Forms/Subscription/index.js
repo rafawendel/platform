@@ -11,19 +11,23 @@ const getGroupOptions = () => {
   return [
     {
       id: '2020201',
-      label: 'Hello'
+      label: 'Hello',
+      details: 'fuck yea'
     },
     {
       id: '2020202',
-      label: 'Hello2'
+      label: 'Hello2',
+      details: 'fuck yea'
     },
     {
       id: '2020203',
-      label: 'Hello3'
+      label: 'Hello3',
+      details: 'fuck yea'
     },
     {
       id: '2020204',
-      label: 'Hello4'
+      label: 'Hello4',
+      details: 'fuck yea'
     }
   ]
 }
