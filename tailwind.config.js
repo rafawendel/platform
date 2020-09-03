@@ -20,9 +20,12 @@ module.exports = {
       }
     }
   },
+  corePlugins: {
+    backgroundOpacity: true
+  },
   variants: {
     visibility: ['responsive', 'first'],
-    margin: ['responsive', 'hover', 'focus', 'first'],
+    margin: ['responsive', 'hover', 'focus', 'first', 'last'],
     opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     textColor: ['responsive', 'hover', 'focus', 'active']
   },

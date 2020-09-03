@@ -7,6 +7,7 @@ import { PrimaryActionButton, SecondaryActionButton } from '../Buttons'
 import { Dropdown } from './Dropdown'
 import { Checkbox } from './Checkbox'
 import { DiscreteSlider } from './Slider'
+import { DragAndDrop } from './DragAndDrop'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -112,17 +113,17 @@ export const FormField = ({ type, formType, ...props }) => {
   const getField = () => {
     switch (type) {
       case FormTypes.DRAG_AND_DROP:
-        return <div type={formType} />
-      case FormTypes.DROPDOWN:
-        return <Dropdown color="white" type={formType} />
-      case FormTypes.AREA:
-        return <div type={formType} />
-      case FormTypes.CHECKBOX:
-        return <Checkbox type={formType} />
-      case FormTypes.RADIO:
-        return <RadioField type={formType} />
+        return <DragAndDrop />
       case FormTypes.SLIDER:
         return <DiscreteSlider type={formType} />
+      case FormTypes.DROPDOWN:
+        return <Dropdown color="white" />
+      case FormTypes.CHECKBOX:
+        return <Checkbox />
+      case FormTypes.RADIO:
+        return <RadioField />
+      case FormTypes.AREA:
+        return <TypeInput as="textarea" type={formType} />
       default:
         return <TypeInput type={formType} />
     }
