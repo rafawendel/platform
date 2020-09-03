@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { FormField, FormTypes } from '../Fields'
 import { PrimaryActionButton, SubmitButton, SecondaryActionButton } from '../Buttons'
 import { validateCPFAsync } from '../../../utils/cpf'
-import { DragAndDrop } from '../Fields/DragAndDrop'
-import { QuoteApp } from '../Fields/tmp'
 
 const getGroupOptions = () => {
   return [
@@ -64,7 +62,6 @@ const fields = [
     options: getGroups(),
     withValuesOptionsCb: (values, options) => {
       // here add the logic that changes the options according to the values
-      console.log(values)
       return options
     }
   }

@@ -23,7 +23,6 @@ export default function Subscribe({ fields }) {
       .post('/api/login', values)
       .then(res => {
         const { user } = res.data
-        console.log(user)
         if (user) {
           setUser({ ...user })
           login()
