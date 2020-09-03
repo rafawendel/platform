@@ -11,7 +11,7 @@ export const fields = [
     description: 'Seu nome completo',
     formType: 'text',
     validator: Yup.string().required('Não pode ser deixado em branco'),
-    placeholder: 'José Silva',
+    placeholder: 'Jayden Smith',
     autoComplete: 'name'
   },
   {
@@ -51,7 +51,7 @@ export const fields = [
       { label: 'Não-binário', value: 'nonbinary' },
       { label: 'Prefiro não identificar', value: 'n/a' }
     ],
-    validator: Yup.string().oneOf(['male', 'female', 'nonbinary']).required()
+    validator: Yup.string().oneOf(['male', 'female', 'nonbinary', 'n/a']).required()
   },
   {
     type: FormTypes.INPUT,
