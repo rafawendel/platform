@@ -37,11 +37,11 @@ export const TextInput = ({ label, tooltip, ...props }) => {
   )
 }
 
-export const TypeInput = ({ children, field, meta, ...props }) => {
+export const TypeInput = ({ children, field, meta, className, ...props }) => {
   return (
     <div className="w-full">
       <input
-        className="text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm w-full focus:outline-none shadow-none"
+        className={`text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm focus:outline-none shadow-none w-full ${className}`}
         {...field}
         {...props}
       />
