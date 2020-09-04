@@ -27,7 +27,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
   }, [activeFieldIndex, fields])
 
   return (
-    <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
+    <div className="flex flex-col items-start justify-start md:items-center md:py-8 px-6 md:px-12">
       <h5>{title}</h5>
       <div className="w-full md:w-3/4 lg:w-1/2">
         <Formik

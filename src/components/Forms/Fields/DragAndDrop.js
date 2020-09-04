@@ -1,50 +1,90 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useState, useCallback, useEffect } from 'react'
 import { ErrorMessage } from 'formik'
+import PlainModal from '../../common/Modals/PlainModal'
 
-function DragHandle(props) {
+function DragHandle({ ...props }) {
   return (
-    <>
-      <div className="h-10 w-10 -mt-2 -ml-8 absolute z-10" {...props} />
-      <div className="absolute -ml-4 flex flex-col justify-center">
-        <span className="h-1 text-sm">&bull;&bull;</span>
-        <span className="h-1 text-sm">&bull;&bull;</span>
-        <span className="h-1 text-sm">&bull;&bull;</span>
+    <div {...props}>
+      <div className="absolute -ml-4">
+        <div className="opacity-75 text-sm align-top">
+          <div>&bull;&bull;</div>
+          <div>&bull;&bull;</div>
+          <div>&bull;&bull;</div>
+          <style jsx>{`
+            div {
+              height: 0.4rem;
+            }
+          `}</style>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 export function Group({ group, index, isOrdered }) {
+  const [showModal, setShowModal] = useState(false)
   const clickHandler = () => {
-    alert(group.description)
+    setShowModal(true)
   }
 
   return (
     <div className="my-2">
+      <PlainModal
+        title={group.title}
+        subtitle={group.leaders}
+        show={showModal}
+        setActive={setShowModal}
+      >
+        <div className="mb-3">
+          <h6>Horários</h6>
+          <p>
+            {group.weekDay}: {group.startsAt} - {group.endsAt}
+          </p>
+        </div>
+        <div className="mb-3">
+          <h6>Especialidade</h6>
+          <ul>
+            {group.specialty.map((spec, i) => (
+              <li key={`specialty-${i + 1}`}>
+                <p>{spec}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-3">
+          <h6>Descrição</h6>
+          <p>{group.description}</p>
+        </div>
+        <div className="mb-3">
+          <h6>Descrição</h6>
+          <p>{group.description}</p>
+        </div>
+      </PlainModal>
       <Draggable draggableId={group.id} index={index}>
         {(provided, snapshot) => (
           <div
             type="button"
             className={`border-2 border-darker ${
-              snapshot.isDragging ? 'text-light font-medium bg-darker' : 'bg-light'
-            } rounded transition-colors duration-50 ease-out select-none h-16`}
+              snapshot.isDragging ? 'text-light font-medium bg-darker' : 'bg-lighter'
+            } rounded transition-colors duration-50 ease-out select-none`}
             ref={provided.innerRef}
             {...provided.draggableProps}
           >
             <div
               role="button"
               onClick={clickHandler}
-              className="flex justify-between items-center h-full px-6 pl-8 py-2 overflow-hidden"
+              className="h-full px-6 pl-8 py-2 overflow-hidden"
             >
-              <div className="text-left flex-1">
-                <DragHandle {...provided.dragHandleProps} />
-                <h6>
-                  {isOrdered && <strong>{`${index + 1}. `}</strong>}
+              <DragHandle className="h-6" {...provided.dragHandleProps} />
+              <div className="text-left flex-1 flex items-stretch">
+                <h6 className="">
+                  {isOrdered && <b>{`${index + 1}. `}</b>}
                   {group.title}
                 </h6>
               </div>
-              <small className="text-right flex-1">{group.leaders}</small>
+              <small className="text-right opacity-75 flex-1">{group.leaders}</small>
             </div>
+            {isOrdered && <hl className="border-2 border-lighter mt-2 w-full" />}
           </div>
         )}
       </Draggable>
@@ -65,7 +105,7 @@ export function List({ list, groups, isDropDisabled }) {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              <h5 className="text-light pb-2">{list.title}</h5>
+              <h5 className="text-white pb-2">{list.title}</h5>
               {list.groupIds.map((groupId, index) => {
                 const group = groups.find(g => g.id === groupId)
                 return (
