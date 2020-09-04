@@ -1,38 +1,39 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import SubscriptionForm from '../components/Forms/Subscription'
-import { AuthContext } from '../context/auth'
+import TypingForm from '../components/Forms/TypingForm'
+import { fields, research } from '../components/Forms/Subscription/fields'
 
-export default function Subscribe({ fields }) {
+export default function Subscribe() {
   const router = useRouter()
-  const { isLoggedIn, login, logout, user, setUser } = useContext(AuthContext)
+  const [currentForm, setCurrentForm] = useState(0)
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      // setLoading(false)
-      alert(`Bem vindo, ${user.fullname.split(' ')[0]}!`)
-      router.push('/videos/[id]', `/videos/${user.currentVideo.id}`)
-    }
-  }, [isLoggedIn, router, user])
+  // const onSubmit = async (values, { setSubmitting }) => {
+  //   // setLoading(true)
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    // setLoading(true)
+  //   await axios
+  //     .post('/api/login', values)
+  //     .then(res => {
+  //       const { user } = res.data
+  //       if (user) {
+  //         setUser({ ...user })
+  //         login()
+  //       } else {
+  //         logout()
+  //       }
+  //     })
+  //     .catch(e => alert('Os dados inseridos são inválidos'))
+  //   // setLoading(false)
+  //   setSubmitting(false)
+  // }
 
-    await axios
-      .post('/api/login', values)
-      .then(res => {
-        const { user } = res.data
-        if (user) {
-          setUser({ ...user })
-          login()
-        } else {
-          logout()
-        }
-      })
-      .catch(e => alert('Os dados inseridos são inválidos'))
-    // setLoading(false)
-    setSubmitting(false)
+  const onSubmit = (values, { setSubmitting }) => {
+    setSubmitting(true)
+    setTimeout(() => {
+      alert(JSON.stringify(values))
+      setSubmitting(false)
+      setCurrentForm(p => p + 1)
+    }, 200)
   }
 
   return (
@@ -41,23 +42,11 @@ export default function Subscribe({ fields }) {
         <title>Inscreva-se no GEDAAM</title>
       </Head>
       <main className="bg-light text-darker w-full min-h-screen pt-20">
-        <div className="flex flex-col items-start justify-start md:items-center py-8 px-12">
-          <h5>Inscrição GEDAAM</h5>
-          <div className="w-full md:w-3/4 lg:w-1/2">
-            <SubscriptionForm onSubmit={onSubmit} fields={fields} />
-          </div>
-        </div>
+        {[
+          { title: 'Inscrição GEDAAM', fields: [{}] },
+          { title: 'Motirõ GEDAAM', fields: research }
+        ].map((p, i) => i === currentForm && <TypingForm onSubmit={onSubmit} {...p} />)}
       </main>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const fields = []
-
-  return {
-    props: {
-      fields
-    }
-  }
 }

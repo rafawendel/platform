@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { FormTypes } from '../TypingForm'
+import { FormTypes } from '../TypingForm/FormField'
 import { validateCPFAsync } from '../../../utils/cpf'
 import { getGroups } from './groups'
 
@@ -100,10 +100,10 @@ export const fields = [
     description: 'A sua faculdade ou universidade',
     formType: 'text',
     validator: Yup.string().required('Não pode ser deixado em branco'),
-    placeholder: () => {
+    placeholder: (() => {
       const rnd = Math.random()
       return rnd >= 2 / 3 ? 'UFMG' : rnd >= 1 / 3 ? 'UniBH' : 'UFVJM'
-    }
+    })()
   },
   {
     type: FormTypes.RADIO,
@@ -149,11 +149,9 @@ export const fields = [
     onlyDisplayIf: values => values.isNewbie === 'false', // a conditional element can never be the last element
     formType: 'number',
     min: 0,
-    validator: Yup.string()
-      .matches(/^[0-9]{1,2}$/, {
-        message: 'Um número inteiro'
-      })
-      .required('Não pode ser deixado em branco'),
+    validator: Yup.string().matches(/^[0-9]{1,2}$/, {
+      message: 'Um número inteiro'
+    }),
     placeholder: '0'
   },
   {
@@ -172,7 +170,7 @@ export const fields = [
     ]
   },
   {
-    type: FormTypes.DROPDOWN,
+    type: FormTypes.CHECKBOX,
     name: 'topicsOfInterest',
     label: 'Quais dos seguintes tópicos você gostaria de uma abordagem no seu percurso GEDAAM?',
     description: 'Isso poderá ser usado para orientação do seu coordenador',
@@ -187,28 +185,43 @@ export const fields = [
       { label: 'Dinâmicas de grupo', value: 'Dinâmicas de grupo' },
       { label: 'Tutoria e orientação', value: 'Tutoria e orientação' },
       { label: 'Saúde mental', value: 'Saúde mental' }
-    ] /* ,
-    withValuesOptionsCb: (_, options) => {
-      return options.sort(() => Math.random() > 0.5)
-    } */
+    ].sort(() => Math.random() > 0.5),
+    initialValue: []
+  },
+  {
+    title: 'Seleção de grupo',
+    innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.<br/>
+    Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.`
   },
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
     options: getGroups(),
-    // withValuesOptionsCb: (values, options) => {
-    //   // here add the logic that changes the options according to the values
-    //   return options
-    // },
+    withValuesOptionsCb: (values, options) => {
+      // here add the logic that changes the options according to the values
+      return options
+    },
     validator: Yup.array().min(2, 'Selecione duas opções').required()
   }
 ]
+
+const genMarksArray = (begin, end, step, withLabel) =>
+  [...Array(end / step).keys()].map(i => ({
+    value: i * step + begin,
+    label: withLabel && `${i * step + begin}`
+  }))
+const array1To10Marks = genMarksArray(1, 10, 1, true)
+
 export const research = [
-  // The groups go here
+  {
+    title: 'Pesquisa GEDAAM',
+    innerHTML: `As perguntas a seguir serão utilizadas anonimamente para análise do perfil demográfico do GEDAAM, com finalidade científica 👨‍🔬.`
+  },
   {
     type: FormTypes.CHECKBOX,
     name: 'ingressoFaculdade',
     label: 'Qual foi a sua forma de ingresso na faculdade?',
+    description: 'Selecione todas as opções que se aplicam',
     options: [
       { label: 'Ampla concorrência', value: 'ampla' },
       { label: 'Cota para estudante de escola pública', value: 'cota_escola' },
@@ -235,7 +248,8 @@ export const research = [
       { label: 'Parda', value: 'parda' },
       { label: 'Outras', value: 'outra' }
     ],
-    initialValue: 'negra'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -246,7 +260,8 @@ export const research = [
       { label: 'Heterossexual', value: 'hetero' },
       { label: 'Homossexual', value: 'homo' },
       { label: 'Assexual', value: 'assex' }
-    ]
+    ],
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -255,10 +270,11 @@ export const research = [
     description: 'Uma aproximação de quanto em salários mínimos por pessoa a sua família produz',
     options: [
       { label: 'Menos de um salário mínimo (R$ 1.045,00)', value: '<1' },
-      { label: 'Entre 1 e 3 salários (R$R$ 1.045,00 até R$3.135,00)', value: '1-3' },
+      { label: 'Entre 1 e 3 salários (R$ 1.045,00 até R$3.135,00)', value: '1-3' },
       { label: 'Entre 3 e 5 salários (R$3.136,00 até R$5.225,00)', value: '3-5' },
       { label: 'Maior que 5 salários (R$5.225,00)', value: '>5' }
-    ]
+    ],
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -271,14 +287,27 @@ export const research = [
       { label: 'Minas Gerais', value: 'mg' },
       { label: 'Outro estado, na Região Sudeste', value: 'se' },
       { label: 'Outra', value: 'outro' }
-    ]
+    ],
+    validator: Yup.mixed().required()
   },
-
-  //   TÉCNICAS DE ESTUDOS E ATIVIDADES EXTRACURRICULARES (incluir essa porra aqui)
-  // Quais técnicas de estudo você utiliza? (marque mais de uma opção se necessário)
-
-  // tá faltando um krl de pergunta aqui
-
+  {
+    type: FormTypes.CHECKBOX,
+    name: 'studyTechnique',
+    label: 'Quais das seguintes técnicas você utiliza nos estudos?',
+    description: 'Selecione todas as opções que se aplicam',
+    options: [
+      { label: 'Flashcards', value: 'Flashcards' },
+      { label: 'Pomodoro', value: 'Pomodoro' },
+      { label: 'Mapas mentais', value: 'Mapas mentais' },
+      { label: 'Resumos', value: 'Resumos' },
+      { label: 'Apenas leitura', value: 'Apenas leitura' },
+      { label: 'Esquemas', value: ' Esquemas' },
+      { label: 'Método de anotação de Cornell', value: 'Método de anotação de Cornell' },
+      { label: 'Estudo em grupo', value: 'Estudo em grupo' },
+      { label: 'Perguntas e exercícios', value: 'Perguntas e exercícios' }
+    ],
+    initialValue: []
+  },
   {
     type: FormTypes.RADIO,
     name: 'methodEvaluation',
@@ -290,39 +319,25 @@ export const research = [
       { label: 'Eficiente', value: '4' },
       { label: 'Muito eficiente', value: '5' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
     name: 'studyHours',
-    label:
-      'Quantas horas, por semana, você dedica para estudo, excetuando o tempo em sala de aula?',
+    label: 'Quantas horas por semana você dedica para estudo, excetuando o tempo em sala de aula?',
     description: 'O tempo de estudo extraclasse, em horas',
     options: {
       min: 0,
       max: 10,
       step: 0.5,
+      defaultValue: 5,
       minLabel: '0 horas',
       maxLabel: '10 ou mais horas',
-      unity: 'horas'
-    }
-  },
+      marks: genMarksArray(0, 10, 0.5, false)
+    },
 
-  // bem confuso
-  {
-    type: FormTypes.RADIO,
-    name: 'timeManagement',
-    label: 'Considerando a técnica que você mais utiliza, como você a avalia?',
-    options: [
-      { label: 'Muito ruim', value: '1' },
-      { label: 'Ruim', value: '2' },
-      { label: 'Nem boa, nem ruim', value: '3' },
-      { label: 'Boa', value: '4' },
-      { label: 'Muito boa', value: '5' }
-    ],
-    initialValue: '3',
-    formType: 'radio',
-    validator: Yup.string().oneOf(['true', 'false']).required()
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -332,12 +347,16 @@ export const research = [
     options: [
       { label: 'Sim', value: 'true' },
       { label: 'Não', value: 'false' }
-    ]
+    ],
+    validator: Yup.mixed().required()
   },
-
-  //   EXPECTATIVAS
-  // Baseado em suas expectativas ao ingressar no GEDAAM, indique quais contribuíram para a sua inscrição e o 'Quanto foi a contribuição. Marque sua resposta em uma escala de (0) a (5), considerando um contínuo “entre não contribuiu” e “contribuiu muito”. Não existem respostas certas ou erradas. Suas respostas são confidenciais. Por favor, não deixe itens em branco
-
+  {
+    title: 'Expectativas',
+    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, indique <strong>quais contribuíram</strong> para a sua inscrição e o <strong>quanto</strong> foi a contribuição. 
+    <br/>Marque sua resposta em uma escala de (0) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
+    <p>Não existem respostas certas ou erradas.
+    Suas respostas são confidenciais.</p>`
+  },
   {
     type: FormTypes.RADIO,
     name: 'expectations1',
@@ -349,7 +368,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -362,7 +382,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -375,7 +396,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -388,7 +410,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -401,7 +424,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -414,7 +438,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -427,7 +452,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -440,7 +466,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -453,7 +480,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -466,7 +494,7 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -479,7 +507,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -492,7 +521,8 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.RADIO,
@@ -505,11 +535,16 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-    initialValue: '3'
+
+    validator: Yup.mixed().required()
   },
-
-  // AUTOEFICÁCIA
-
+  {
+    title: 'Autoeficácia',
+    innerHTML: `Indique o quanto você <strong>se percebe capaz</strong> de realizar as situações propostas em cada uma das questões que se seguem, considerando sua experiência de formação atual.
+    <br/><br/>Marque sua resposta em uma escala de (1) a (10), considerando um contínuo entre pouco e muito.
+    <br/><br/><p>As perguntas a seguir foram desenvolvidas para auxiliar na identificação da auto eficácia acadêmica de estudantes do ensino superior.</p>
+    <p>Não existem respostas certas ou erradas. Suas respostas são confidenciais.</p>`
+  },
   {
     type: FormTypes.SLIDER,
     name: 'selfEfficacy1',
@@ -518,10 +553,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -532,10 +570,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -546,10 +587,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -559,10 +603,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -573,10 +620,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -587,10 +637,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -601,10 +654,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -614,10 +670,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -627,10 +686,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -641,10 +703,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -655,10 +720,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -669,10 +737,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -682,10 +753,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -695,10 +769,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -709,10 +786,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -722,10 +802,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -735,10 +818,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -748,10 +834,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -762,10 +851,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -776,10 +868,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -789,10 +884,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -802,10 +900,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -815,10 +916,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -828,10 +932,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -841,10 +948,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -854,10 +964,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -867,10 +980,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -880,10 +996,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -893,10 +1012,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -906,10 +1028,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -919,10 +1044,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -932,10 +1060,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -946,10 +1077,13 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
-    initialValue: 5
+    initialValue: 5,
+    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.SLIDER,
@@ -960,9 +1094,124 @@ export const research = [
       min: 1,
       max: 10,
       step: 1,
-      minLabel: 'Totalmente incapaz',
-      maxLabel: 'Totalmente capaz'
+      minLabel: 'Total. incapaz',
+      maxLabel: 'Total. capaz',
+      defaultValue: 5,
+      marks: array1To10Marks
     },
     initialValue: 5
+  },
+  {
+    title: 'Suporte social',
+    innerHTML: `Considerando uma escala de (1) a (5), representando um contínuo entre “discordo totalmente” e “concordo totalmente”, selecione a que melhor qualifica a sua forma de pensar.
+    <p>Não existem respostas certas ou erradas.
+    Suas respostas são confidenciais.</p>`
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport1',
+    label:
+      'Mesmo nas situações mais embaraçosas, se precisar de apoio de emergência tenho várias pessoas a quem posso recorrer',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport2',
+    label:
+      'Às vezes sinto falta de alguém verdadeiramente íntimo que me compreenda e com quem possa desabafar sobre coisas íntimas',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport3',
+    label: 'Estou satisfeito(a) com a forma como me relaciono com a minha família',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport4',
+    label: 'Estou satisfeito(a) com a quantidade de tempo que passo com a minha família',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport5',
+    label: 'Estou satisfeito(a) com o que faço em conjunto com a minha família',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport6',
+    label: 'Não saio com amigos tantas vezes quantas eu gostaria',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport7',
+    label: 'Sinto falta de atividades sociais que me satisfaçam',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport8',
+    label: 'Gostava de participar mais em atividades de organizações',
+    description: 'Ex. clubes desportivos, escoteiros, partidos políticos, etc.',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
   }
 ]

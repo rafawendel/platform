@@ -3,6 +3,7 @@ import { useField, useFormikContext } from 'formik'
 
 import { ButtonSet } from './ButtonSet'
 import { FieldElement } from './FieldElement'
+import { Label } from './Label'
 
 export const FieldWrapper = React.memo(function FieldWrapper({
   id,
@@ -16,7 +17,9 @@ export const FieldWrapper = React.memo(function FieldWrapper({
   children,
   ...props
 }) {
-  const { name, label, description } = props
+  const { name, title, label, description } = props
+  const labelProps = { title, label, description, name, id }
+
   const { values } = useFormikContext()
   const [field, meta, helper] = useField(name)
   const [isFieldHidden, setFieldHidden] = useState(true)
@@ -46,7 +49,7 @@ export const FieldWrapper = React.memo(function FieldWrapper({
       setFieldHidden(true)
     }
     // console.log(name, isFieldHidden)
-  }, [activeFieldIndex, id, values])
+  }, [activeFieldIndex, advanceForm, id, onlyDisplayIf, previousFieldIndex, recedeForm, values])
 
   const fieldRef = useRef(null)
   useEffect(() => {
@@ -60,10 +63,7 @@ export const FieldWrapper = React.memo(function FieldWrapper({
   return (
     <div className={isFieldHidden ? 'hidden' : ''}>
       <div ref={fieldRef} className="flex flex-col items-start mt-16 w-full">
-        <label className="mb-2" htmlFor={id || name}>
-          <h5>{label}</h5>
-          <p>{description}</p>
-        </label>
+        <Label {...labelProps} />
         <FieldElement formProps={{ field, meta, helper, values }} {...props}>
           {children}
         </FieldElement>

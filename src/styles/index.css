@@ -50,6 +50,10 @@ small {
   @apply text-sm;
 }
 
+strong {
+  @apply font-bold
+}
+
 input, button {
   @apply bg-lighter outline-none;
   transition: all 0.2s ease;
