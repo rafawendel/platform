@@ -12,7 +12,7 @@ export default function PlainModal({
       <>
         <div className={className}>
           <div className="flex justify-center items-center overflow-x-hidden my-2 fixed inset-0 outline-none focus:outline-none z-50">
-            <div className="relative w-full max-h-full my-4 mx-2 md:mx-auto max-w-3xl overflow-y-scroll z-50">
+            <div className="relative w-full max-h-full my-4 mx-2 md:mx-auto max-w-3xl overflow-y-auto z-50">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <div className="flex flex-col">

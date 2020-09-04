@@ -96,7 +96,7 @@ export const getGroupOptions = () => {
     {
       id: '2020207',
       leaders: 'Ana Paula (6° UniBH), Fernanda Melo (6° UniBH) e Mariana Ferreira (6° UniBH)',
-      title: 'GETARC- Grupo de Estudos, Técnicas de Apresentação e Raciocínio Clínico ',
+      title: 'Grupo de Estudos, Técnicas de Apresentação e Raciocínio Clínico ',
       specialty: [
         'Resolução de casos clínicos',
         'Técnicas de estudo',

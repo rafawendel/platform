@@ -6,14 +6,15 @@ import PlainModal from '../../common/Modals/PlainModal'
 function DragHandle({ ...props }) {
   return (
     <div {...props}>
-      <div className="absolute -ml-4">
-        <div className="opacity-75 text-sm align-top">
-          <div>&bull;&bull;</div>
-          <div>&bull;&bull;</div>
-          <div>&bull;&bull;</div>
+      <div className="flex items-center justify-center z-10 h-full">
+        <div className="flex flex-col -mt-6 opacity-75 text-sm tracking-tighter">
+          <div>&bull;&nbsp;&bull;</div>
+          <div>&bull;&nbsp;&bull;</div>
+          <div>&bull;&nbsp;&bull;</div>
           <style jsx>{`
             div {
-              height: 0.4rem;
+              height: 0.45rem;
+              letter-spacing: -0.1em;
             }
           `}</style>
         </div>
@@ -54,7 +55,11 @@ export function Group({ group, index, isOrdered }) {
         <div className="mb-3">
           <h6>Descrição</h6>
           <p>{group.description}</p>
-        </div>
+        </div>{' '}
+        <div className="mb-3">
+          <h6>Descrição</h6>
+          <p>{group.description}</p>
+        </div>{' '}
         <div className="mb-3">
           <h6>Descrição</h6>
           <p>{group.description}</p>
@@ -62,30 +67,40 @@ export function Group({ group, index, isOrdered }) {
       </PlainModal>
       <Draggable draggableId={group.id} index={index}>
         {(provided, snapshot) => (
-          <div
-            type="button"
-            className={`border-2 border-darker ${
-              snapshot.isDragging ? 'text-light font-medium bg-darker' : 'bg-lighter'
-            } rounded transition-colors duration-50 ease-out select-none`}
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-          >
+          <>
             <div
-              role="button"
-              onClick={clickHandler}
-              className="h-full px-6 pl-8 py-2 overflow-hidden"
+              className={`border-2 border-darker ${
+                snapshot.isDragging ? 'text-light font-medium bg-darker' : 'bg-lighter'
+              } rounded transition-colors duration-50 ease-out select-none`}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
             >
-              <DragHandle className="h-6" {...provided.dragHandleProps} />
-              <div className="text-left flex-1 flex items-stretch">
-                <h6 className="">
-                  {isOrdered && <b>{`${index + 1}. `}</b>}
-                  {group.title}
-                </h6>
+              <div
+                role="button"
+                onClick={clickHandler}
+                className="flex h-full w-full px-6 pl-8 py-2 overflow-hidden"
+              >
+                <DragHandle className="w-8 -ml-6" {...provided.dragHandleProps} />
+                <div className="flex flex-wrap lg:flex-no-wrap justify-between flex-auto">
+                  <div className="text-left">
+                    <h6>
+                      {isOrdered && <b>{`${index + 1}. `}</b>}
+                      {group.title}
+                    </h6>
+                    <small className="opacity-75">{group.leaders}</small>
+                  </div>
+                  <p className="text-right">
+                    <b>{group.weekDay}</b> {group.startsAt}
+                  </p>
+                </div>
               </div>
-              <small className="text-right opacity-75 flex-1">{group.leaders}</small>
             </div>
-            {isOrdered && <hl className="border-2 border-lighter mt-2 w-full" />}
-          </div>
+            {isOrdered && (
+              <div className="border-b border-current text-darker">
+                {index === 0 ? 'Primera' : 'Segunda'} opção
+              </div>
+            )}
+          </>
         )}
       </Draggable>
     </div>
