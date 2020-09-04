@@ -1,5 +1,6 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useState, useCallback, useEffect } from 'react'
+import { ErrorMessage } from 'formik'
 
 function DragHandle(props) {
   return (
@@ -15,7 +16,7 @@ function DragHandle(props) {
 }
 export function Group({ group, index, isOrdered }) {
   const clickHandler = () => {
-    alert(group.details)
+    alert(group.description)
   }
 
   return (
@@ -26,16 +27,23 @@ export function Group({ group, index, isOrdered }) {
             type="button"
             className={`border-2 border-darker ${
               snapshot.isDragging ? 'text-light font-medium bg-darker' : 'bg-light'
-            } rounded transition-colors duration-50 ease-out select-none`}
+            } rounded transition-colors duration-50 ease-out select-none h-16`}
             ref={provided.innerRef}
             {...provided.draggableProps}
           >
-            <div role="button" onClick={clickHandler} className="text-left px-6 pl-8 py-2 ">
-              <DragHandle {...provided.dragHandleProps} />
-              <h6>
-                {isOrdered && <strong>{`${index + 1}. `}</strong>}
-                {group.label}
-              </h6>
+            <div
+              role="button"
+              onClick={clickHandler}
+              className="flex justify-between items-center h-full px-6 pl-8 py-2 overflow-hidden"
+            >
+              <div className="text-left flex-1">
+                <DragHandle {...provided.dragHandleProps} />
+                <h6>
+                  {isOrdered && <strong>{`${index + 1}. `}</strong>}
+                  {group.title}
+                </h6>
+              </div>
+              <small className="text-right flex-1">{group.leaders}</small>
             </div>
           </div>
         )}
@@ -101,7 +109,7 @@ const changeLists = (originList, destinationList, startIndex, endIndex) => {
 
   return [originIds, destinationIds]
 }
-export function DragAndDrop({ options, helper }) {
+export function DragAndDrop({ options, helper, meta }) {
   const [lists, setLists] = useState(options.lists)
   const [groups, setGroups] = useState(options.groups)
   const [draggableOrigin, setDraggableOrigin] = useState(null)
@@ -177,6 +185,9 @@ export function DragAndDrop({ options, helper }) {
           }
         />
       ))}
+      <div className="ml-px w-full h-12 md:h-6">
+        {(meta.value || meta.touched) && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
+      </div>
     </DragDropContext>
   )
 }

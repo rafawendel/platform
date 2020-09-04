@@ -43,7 +43,7 @@ export default function Subscribe() {
       </Head>
       <main className="bg-light text-darker w-full min-h-screen pt-20">
         {[
-          { title: 'Inscrição GEDAAM', fields: [{}] },
+          { title: 'Inscrição GEDAAM', fields },
           { title: 'Motirõ GEDAAM', fields: research }
         ].map((p, i) => i === currentForm && <TypingForm onSubmit={onSubmit} {...p} />)}
       </main>

@@ -5,6 +5,24 @@ import { getGroups } from './groups'
 
 export const fields = [
   {
+    title: 'Seleção de grupo',
+    innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.<br/>
+    Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.`
+  },
+  {
+    type: FormTypes.DRAG_AND_DROP,
+    name: 'selectedGroup',
+    options: getGroups(),
+    withValuesOptionsCb: (values, options) => {
+      // here add the logic that changes the options according to the values
+      return options
+    },
+    validator: Yup.array().min(2, 'Selecione duas opções').required()
+  }
+]
+/* 
+const fields = [
+  {
     type: FormTypes.INPUT,
     name: 'name',
     label: 'Primeiramente, como você se chama?',
@@ -203,7 +221,7 @@ export const fields = [
     },
     validator: Yup.array().min(2, 'Selecione duas opções').required()
   }
-]
+] */
 
 const genMarksArray = (begin, end, step, withLabel) =>
   [...Array(end / step).keys()].map(i => ({
@@ -248,7 +266,6 @@ export const research = [
       { label: 'Parda', value: 'parda' },
       { label: 'Outras', value: 'outra' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -319,7 +336,6 @@ export const research = [
       { label: 'Eficiente', value: '4' },
       { label: 'Muito eficiente', value: '5' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -336,7 +352,6 @@ export const research = [
       maxLabel: '10 ou mais horas',
       marks: genMarksArray(0, 10, 0.5, false)
     },
-
     validator: Yup.mixed().required()
   },
   {
@@ -368,7 +383,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -382,7 +396,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -396,7 +409,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -410,7 +422,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -424,7 +435,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -438,7 +448,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -452,7 +461,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -466,7 +474,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -480,7 +487,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -507,7 +513,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -521,7 +526,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
@@ -535,7 +539,6 @@ export const research = [
       { label: 'Contribuiu pouco', value: '2' },
       { label: 'Não contribuiu', value: '1' }
     ],
-
     validator: Yup.mixed().required()
   },
   {
