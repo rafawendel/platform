@@ -48,7 +48,6 @@ export const FieldWrapper = React.memo(function FieldWrapper({
     } else {
       setFieldHidden(true)
     }
-    // console.log(name, isFieldHidden)
   }, [activeFieldIndex, advanceForm, id, onlyDisplayIf, previousFieldIndex, recedeForm, values])
 
   const fieldRef = useRef(null)

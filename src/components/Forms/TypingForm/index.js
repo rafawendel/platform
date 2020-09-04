@@ -1,9 +1,7 @@
 import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
 import { useState, useCallback, useEffect } from 'react'
 import { FormField } from './FormField'
-import { Label } from './Label'
-import { ButtonSet } from './ButtonSet'
+import { getInitialValues, getValidationSchema } from '../Subscription/utils'
 
 export default function TypingForm({ title, fields, onSubmit }) {
   const [activeFieldIndex, setActiveFieldIndex] = useState(0)
@@ -31,47 +29,26 @@ export default function TypingForm({ title, fields, onSubmit }) {
       <h5>{title}</h5>
       <div className="w-full md:w-3/4 lg:w-1/2">
         <Formik
-          initialValues={fields.reduce((values, { name, initialValue }) => {
-            values[name] = initialValue || ''
-            return values
-          }, {})}
-          validationSchema={Yup.object(
-            fields.reduce((schema, { name, validator }) => {
-              schema[name] = validator
-              return schema
-            }, {})
-          )}
+          initialValues={getInitialValues(fields)}
+          validationSchema={getValidationSchema(fields)}
           onSubmit={onSubmit}
         >
           {({ isSubmitting }) => (
             <Form>
-              {fields.map(({ type, ...properties }, i) =>
-                type ? (
-                  <FormField
-                    key={properties.id || properties.name}
-                    id={i}
-                    type={type}
-                    activeFieldIndex={activeFieldIndex}
-                    previousFieldIndex={previousFieldIndex}
-                    isSubmitting={isSubmitting}
-                    autoFocus={i === 0}
-                    buttonProps={buttonProps}
-                    advanceForm={advanceForm}
-                    recedeForm={recedeForm}
-                    {...properties}
-                  />
-                ) : (
-                  <div className={`${i !== activeFieldIndex && 'hidden'} mt-16 w-full`}>
-                    <Label {...properties} />
-                    <ButtonSet
-                      {...buttonProps}
-                      advanceForm={advanceForm}
-                      recedeForm={recedeForm}
-                      value
-                    />
-                  </div>
-                )
-              )}
+              {fields.map((properties, i) => (
+                <FormField
+                  key={`field-${i + 1}`}
+                  id={i}
+                  activeFieldIndex={activeFieldIndex}
+                  previousFieldIndex={previousFieldIndex}
+                  isSubmitting={isSubmitting}
+                  autoFocus={i === 0}
+                  buttonProps={buttonProps}
+                  advanceForm={advanceForm}
+                  recedeForm={recedeForm}
+                  {...properties}
+                />
+              ))}
             </Form>
           )}
         </Formik>

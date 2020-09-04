@@ -1,39 +1,37 @@
-import { useEffect, useContext, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import axios from 'axios'
 import TypingForm from '../components/Forms/TypingForm'
-import { fields, research } from '../components/Forms/Subscription/fields'
+import { getFormSchemaByName } from '../components/Forms/Subscription/utils'
 
-export default function Subscribe() {
-  const router = useRouter()
-  const [currentForm, setCurrentForm] = useState(0)
+export default function Subscribe({ setLoading }) {
+  const forms = [
+    { title: 'Inscrição GEDAAM', id: 'primary' },
+    { title: 'Motirõ GEDAAM', id: 'research' }
+  ]
+  const [currentFormIndex, setCurrentFormIndex] = useState(0)
 
-  // const onSubmit = async (values, { setSubmitting }) => {
-  //   // setLoading(true)
-
-  //   await axios
-  //     .post('/api/login', values)
-  //     .then(res => {
-  //       const { user } = res.data
-  //       if (user) {
-  //         setUser({ ...user })
-  //         login()
-  //       } else {
-  //         logout()
-  //       }
-  //     })
-  //     .catch(e => alert('Os dados inseridos são inválidos'))
-  //   // setLoading(false)
-  //   setSubmitting(false)
-  // }
-
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting }) => {
+    setLoading(true)
     setSubmitting(true)
-    setTimeout(() => {
-      alert(JSON.stringify(values))
-      setSubmitting(false)
-      setCurrentForm(p => p + 1)
-    }, 200)
+
+    // await axios
+    //   .post('/api/submit', {})
+    //   .then(res => {
+    //     const { user } = res.data
+    //   })
+    //   .catch(e => alert('Os dados inseridos são inválidos'))
+    await new Promise(resolve => {
+      setTimeout(() => {
+        console.log(values)
+        resolve(true)
+      }, 500)
+    })
+
+    setCurrentFormIndex(p => p + 1)
+    setLoading(false)
+    setSubmitting(false)
   }
 
   return (
@@ -42,10 +40,18 @@ export default function Subscribe() {
         <title>Inscreva-se no GEDAAM</title>
       </Head>
       <main className="bg-light text-darker w-full min-h-screen pt-20">
-        {[
-          { title: 'Inscrição GEDAAM', fields },
-          { title: 'Motirõ GEDAAM', fields: research }
-        ].map((p, i) => i === currentForm && <TypingForm onSubmit={onSubmit} {...p} />)}
+        {forms.map(
+          (form, i) =>
+            currentFormIndex === i && (
+              <TypingForm
+                id={form.id}
+                key={`form-${form.id}-i`}
+                fields={getFormSchemaByName(form.id)}
+                title={form.title}
+                onSubmit={onSubmit}
+              />
+            )
+        )}
       </main>
     </>
   )

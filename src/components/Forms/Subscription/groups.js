@@ -10,13 +10,13 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '21:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 5, 4: 1, 5: 1, 6: 1 },
+      preferenceByYear: { 1: [4, 5, 6], 2: [], 3: [], 4: [], 5: [1, 2, 3] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG', 'FCMMG'] }
     },
     {
       id: '2020202',
       leaders: 'Lídia Duarte (7° UFMG) e Eduardo Médici (8° UFMG)',
-      title: 'GEDAAM Regular',
+      title: 'GEDAAM Raciocínio Clínico',
       specialty: [
         'Resolução de casos clínicos',
         'Medicina baseada em evidências, raciocínio clínico'
@@ -26,7 +26,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 1, 2: 1, 3: 5, 4: 5, 5: 5, 6: 5 },
+      preferenceByYear: { 1: [1, 2], 2: [], 3: [], 4: [], 5: [3, 4, 5, 6] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
     },
     {
@@ -39,7 +39,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 3, 2: 4, 3: 4, 4: 5, 5: 2, 6: 1 },
+      preferenceByYear: { 1: [6], 2: [5], 3: [1], 4: [2, 3], 5: [4] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
     },
     {
@@ -52,7 +52,7 @@ export const getGroupOptions = () => {
       startsAt: '17:00:00',
       endsAt: '18:20:00',
       lang: 'Português',
-      preferenceByYear: { 1: 2, 2: 3, 3: 4, 4: 4, 5: 4, 6: 3 },
+      preferenceByYear: { 1: [], 2: [1], 3: [2, 6], 4: [3, 4, 5], 5: [] },
       preferenceByCollege: { type: 'prefers', institutions: ['UEMG'] }
     },
     {
@@ -69,7 +69,7 @@ export const getGroupOptions = () => {
       startsAt: '16:00:00',
       endsAt: '17:00:00',
       lang: 'Inglês',
-      preferenceByYear: { 1: 3, 2: 3, 3: 3, 4: 3, 5: 3, 6: 3 },
+      preferenceByYear: { 1: [], 2: [], 3: [1, 2, 3, 4, 5, 6], 4: [], 5: [] },
       preferenceByCollege: {
         type: 'any',
         institutions: ['UFMG', 'Universidade de Rio Verde']
@@ -77,7 +77,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020206',
-      leaders: 'Thierry (5° UFMG)',
+      leaders: 'Thierry (5° UFMG) e Pedro Cunha (5° UFMG)',
       title: 'Soft Skills',
       specialty: [
         'Gerenciamento de tempo',
@@ -90,7 +90,7 @@ export const getGroupOptions = () => {
       startsAt: '11:00:00',
       endsAt: '12:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 4, 2: 4, 3: 5, 4: 4, 5: 4, 6: 4 },
+      preferenceByYear: { 1: [], 2: [], 3: [], 4: [1, 2, 4, 5, 6], 5: [3] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
     },
     {
@@ -108,7 +108,7 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:30:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 4, 4: 2, 5: 1, 6: 1 },
+      preferenceByYear: { 1: [5, 6], 2: [4], 3: [], 4: [3], 5: [1, 2] },
       preferenceByCollege: { type: 'restricts', institutions: ['UniBH'] }
     },
     {
@@ -126,7 +126,7 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:20:00',
       lang: 'Português',
-      preferenceByYear: { 1: 4, 2: 4, 3: 4, 4: 4, 5: 2, 6: 2 },
+      preferenceByYear: { 1: [], 2: [5, 6], 3: [], 4: [1, 2, 3, 4], 5: [] },
       preferenceByCollege: { type: 'prefers', institutions: ['UFMG'] }
     },
     {
@@ -139,7 +139,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:30:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 4, 3: 4, 4: 3, 5: 2, 6: 2 },
+      preferenceByYear: { 1: [], 2: [5, 6], 3: [4], 4: [2, 3], 5: [1] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
     },
     {
@@ -155,7 +155,7 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 5, 4: 3, 5: 2, 6: 1 },
+      preferenceByYear: { 1: [6], 2: [5], 3: [4], 4: [], 5: [1, 2, 3] },
       preferenceByCollege: { type: 'any', institutions: ['UniBH'] }
     },
     {
@@ -168,7 +168,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 4, 2: 4, 3: 4, 4: 3, 5: 2, 6: 2 },
+      preferenceByYear: { 1: [], 2: [5, 6], 3: [4], 4: [1, 2, 3], 5: [] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
     },
     {
@@ -186,7 +186,7 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:30:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 4, 4: 2, 5: 2, 6: 2 },
+      preferenceByYear: { 1: [], 2: [4, 5, 6], 3: [], 4: [3], 5: [1, 2] },
       preferenceByCollege: { type: 'restricts', institutions: ['UFVJM'] }
     },
     {
@@ -199,7 +199,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 4, 4: 4, 5: 3, 6: 3 },
+      preferenceByYear: { 1: [], 2: [], 3: [5, 6], 4: [3, 4], 5: [1, 2] },
       preferenceByCollege: { type: 'prefers', institutions: ['Unipam'] }
     },
     {
@@ -217,7 +217,7 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:30:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1 },
+      preferenceByYear: { 1: [6], 2: [5], 3: [4], 4: [3], 5: [1, 2] },
       preferenceByCollege: { type: 'prefers', institutions: ['UniBH'] }
     },
     {
@@ -235,7 +235,7 @@ export const getGroupOptions = () => {
       startsAt: '18:00:00',
       endsAt: '19:20:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 4, 3: 4, 4: 3, 5: 3, 6: 3 },
+      preferenceByYear: { 1: [], 2: [], 3: [4, 5, 6], 4: [2, 3], 5: [1] },
       preferenceByCollege: { type: 'any', institutions: ['FCMMG'] }
     },
     {
@@ -252,8 +252,11 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:00:00',
       lang: 'Português',
-      preferenceByYear: { 1: 1, 2: 1, 3: 1, 4: 2, 5: 3, 6: 5 },
-      preferenceByCollege: ''
+      preferenceByYear: { 1: [1, 2, 3], 2: [4], 3: [5], 4: [], 5: [6] },
+      preferenceByCollege: {
+        type: 'prefers',
+        institutions: ['Suprema', 'Faculdade de Ciências Médicas e da Saúde de Juiz de Fora']
+      }
     },
     {
       id: '2020217',
@@ -271,8 +274,8 @@ export const getGroupOptions = () => {
       startsAt: '19:00:00',
       endsAt: '20:30:00',
       lang: 'Português',
-      preferenceByYear: { 1: 5, 2: 5, 3: 1, 4: 1, 5: 1, 6: 1 },
-      preferenceByCollege: ''
+      preferenceByYear: { 1: [3, 4, 5, 6], 2: [], 3: [], 4: [], 5: [1, 2] },
+      preferenceByCollege: { type: 'prefers', institutions: ['PUC'] }
     }
   ]
 }
@@ -288,7 +291,9 @@ export const getGroups = () => {
       unselected: {
         id: 'unselected',
         title: 'Opções de grupos',
-        groupIds: getGroupOptions().map(g => g.id)
+        groupIds: getGroupOptions()
+          .map(g => g.id)
+          .sort(() => 0.5 - Math.random())
       }
     },
     groups: getGroupOptions()

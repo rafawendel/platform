@@ -3,25 +3,7 @@ import { FormTypes } from '../TypingForm/FormField'
 import { validateCPFAsync } from '../../../utils/cpf'
 import { getGroups } from './groups'
 
-export const fields = [
-  {
-    title: 'Seleção de grupo',
-    innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.<br/>
-    Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.`
-  },
-  {
-    type: FormTypes.DRAG_AND_DROP,
-    name: 'selectedGroup',
-    options: getGroups(),
-    withValuesOptionsCb: (values, options) => {
-      // here add the logic that changes the options according to the values
-      return options
-    },
-    validator: Yup.array().min(2, 'Selecione duas opções').required()
-  }
-]
-/* 
-const fields = [
+export const primary = [
   {
     type: FormTypes.INPUT,
     name: 'name',
@@ -94,7 +76,7 @@ const fields = [
     name: 'phoneNumber',
     label: 'Qual é o seu número de celular?',
     description: 'Seu coordenador entrará em contato via WhatsApp',
-    formType: 'tel-national',
+    formType: 'tel',
     validator: Yup.string()
       .matches(/^[0-9]{11}$/, {
         message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
@@ -112,12 +94,33 @@ const fields = [
     placeholder: 'Medicina'
   },
   {
-    type: FormTypes.INPUT,
+    type: FormTypes.DROPDOWN,
     name: 'college',
     label: 'E onde você está cursando?',
     description: 'A sua faculdade ou universidade',
     formType: 'text',
-    validator: Yup.string().required('Não pode ser deixado em branco'),
+    options: [
+      { label: 'UFMG', value: 'UFMG' },
+      { label: 'UniBH', value: 'UniBH' },
+      { label: 'UFVJM', value: 'UFVJM' },
+      { label: 'Unipam', value: 'Unipam' },
+      { label: 'FCMMG', value: 'FCMMG' },
+      { label: 'PUC', value: 'PUC' },
+      { label: 'Unifenas', value: 'Unifenas' },
+      { label: 'Faminas', value: 'Faminas' },
+      { label: 'FASEH', value: 'FASEH' },
+      { label: 'UEMG', value: 'UEMG' },
+      { label: 'Suprema', value: 'Suprema' },
+      { label: 'Outra', value: 'null' }
+    ],
+    validator: Yup.string().required('Não pode ser deixado em branco')
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'otherCollege',
+    label: 'Especifique',
+    formType: 'text',
+    onlyDisplayIf: values => values.college === 'null',
     placeholder: (() => {
       const rnd = Math.random()
       return rnd >= 2 / 3 ? 'UFMG' : rnd >= 1 / 3 ? 'UniBH' : 'UFVJM'
@@ -208,20 +211,18 @@ const fields = [
   },
   {
     title: 'Seleção de grupo',
-    innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.<br/>
-    Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.`
+    innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.
+      <br/>Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.
+      <br/><br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
+    `
   },
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
     options: getGroups(),
-    withValuesOptionsCb: (values, options) => {
-      // here add the logic that changes the options according to the values
-      return options
-    },
-    validator: Yup.array().min(2, 'Selecione duas opções').required()
+    validator: Yup.array().min(1, 'Selecione ao menos uma opção').required()
   }
-] */
+]
 
 const genMarksArray = (begin, end, step, withLabel) =>
   [...Array(end / step).keys()].map(i => ({
@@ -321,7 +322,9 @@ export const research = [
       { label: 'Esquemas', value: ' Esquemas' },
       { label: 'Método de anotação de Cornell', value: 'Método de anotação de Cornell' },
       { label: 'Estudo em grupo', value: 'Estudo em grupo' },
-      { label: 'Perguntas e exercícios', value: 'Perguntas e exercícios' }
+      { label: 'Auto-teste', value: 'Auto-teste' },
+      { label: 'Auto-explicação', value: 'Auto-explicação' },
+      { label: 'Método de Feynman', value: 'Método de Feynman' }
     ],
     initialValue: []
   },
@@ -343,11 +346,11 @@ export const research = [
     name: 'studyHours',
     label: 'Quantas horas por semana você dedica para estudo, excetuando o tempo em sala de aula?',
     description: 'O tempo de estudo extraclasse, em horas',
+    min: 0,
+    max: 10,
+    step: 0.5,
+    defaultValue: 5,
     options: {
-      min: 0,
-      max: 10,
-      step: 0.5,
-      defaultValue: 5,
       minLabel: '0 horas',
       maxLabel: '10 ou mais horas',
       marks: genMarksArray(0, 10, 0.5, false)
@@ -367,7 +370,7 @@ export const research = [
   },
   {
     title: 'Expectativas',
-    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, indique <strong>quais contribuíram</strong> para a sua inscrição e o <strong>quanto</strong> foi a contribuição. 
+    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, indique <strong>quais contribuíram</strong.> para a sua inscrição e o <strong>quanto</strong> foi a contribuição. 
     <br/>Marque sua resposta em uma escala de (0) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
     <p>Não existem respostas certas ou erradas.
     Suas respostas são confidenciais.</p>`
@@ -552,13 +555,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy1',
     label: 'Quanto eu sou capaz de aprender os conteúdos que são necessários à minha formação?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -569,13 +572,13 @@ export const research = [
     name: 'selfEfficacy2',
     label:
       'Quanto eu sou capaz de utilizar estratégias cognitivas para facilitar minha aprendizagem?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -586,13 +589,13 @@ export const research = [
     name: 'selfEfficacy3',
     label:
       'Quanto eu sou capaz de demonstrar, nos momentos de avaliação, o que aprendi durante meu curso?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -602,13 +605,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy4',
     label: 'Quanto eu sou capaz de entender as exigências do meu curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -619,13 +622,13 @@ export const research = [
     name: 'selfEfficacy5',
     label:
       'Quanto eu sou capaz de expressar minha opinião quando outro colega de sala discorda de mim?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -636,13 +639,13 @@ export const research = [
     name: 'selfEfficacy6',
     label:
       'Quanto eu sou capaz de pedir ajuda, quando necessário, aos colegas nas atividades do curso?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -653,13 +656,13 @@ export const research = [
     name: 'selfEfficacy7',
     label:
       'Quanto eu sou capaz de reivindicar atividades extracurriculares relevantes para a minha formação?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -669,13 +672,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy8',
     label: 'Quanto eu sou capaz de planejar ações para atingir minhas metas profissionais?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -685,13 +688,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy9',
     label: 'Quanto eu sou capaz de refletir sobre a realização de minhas metas de formação?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -702,13 +705,13 @@ export const research = [
     name: 'selfEfficacy10',
     label:
       'Quanto eu sou capaz de selecionar, dentre os recursos oferecidos pela instituição, o mais apropriado à minha formação?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -719,13 +722,13 @@ export const research = [
     name: 'selfEfficacy11',
     label:
       'Quanto eu sou capaz de aplicar o conhecimento aprendido no curso em situações práticas?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -736,13 +739,13 @@ export const research = [
     name: 'selfEfficacy12',
     label:
       'Quanto eu sou capaz de estabelecer condições para o desenvolvimento dos trabalhos solicitados pelo curso?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -752,13 +755,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy13',
     label: 'Quanto eu sou capaz de trabalhar em grupo?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -768,13 +771,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy14',
     label: 'Quanto eu sou capaz de compreender os conteúdos abordados no curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -785,13 +788,13 @@ export const research = [
     name: 'selfEfficacy15',
     label:
       'Quanto eu sou capaz de manter-me atualizado sobre as novas tendências profissionais na minha área de formação?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -801,13 +804,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy16',
     label: 'Quanto eu sou capaz de tomar decisões relacionadas à minha formação?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -817,13 +820,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy17',
     label: 'Quanto eu sou capaz de cooperar com os colegas nas atividades do curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -833,13 +836,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy18',
     label: 'Quanto eu sou capaz de esforçar-me nas atividades acadêmicas?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -850,13 +853,13 @@ export const research = [
     name: 'selfEfficacy19',
     label:
       'Quanto eu sou capaz de definir, com segurança, o que pretendo seguir dentre as diversas possibilidades de atuação profissional que existem na minha área de formação?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -867,13 +870,13 @@ export const research = [
     name: 'selfEfficacy20',
     label:
       'Quanto eu sou capaz de procurar auxílio dos professores para o desenvolvimento de atividades do curso?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -883,13 +886,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy21',
     label: 'Quanto eu sou capaz de motivar-me para fazer as atividades ligadas ao curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -899,13 +902,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy22',
     label: 'Quanto eu sou capaz de estabelecer minhas metas profissionais?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -915,13 +918,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy23',
     label: 'Quanto eu sou capaz de estabelecer bom relacionamento com meus professores?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -931,13 +934,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy24',
     label: 'Quanto eu sou capaz de cumprir o desempenho exigido para a aprovação no curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -947,13 +950,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy25',
     label: 'Quanto eu sou capaz de contribuir com ideias para a melhoria do meu curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -963,13 +966,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy26',
     label: 'Quanto eu sou capaz de terminar trabalhos do curso dentro do prazo estabelecido?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -979,13 +982,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy27',
     label: 'Quanto eu sou capaz de planejar a realização das atividades solicitadas pelo curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -995,13 +998,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy28',
     label: 'Quanto eu sou capaz de perguntar quando tenho dúvida?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1011,13 +1014,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy29',
     label: 'Quanto eu sou capaz de estabelecer amizades com os colegas do curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1027,13 +1030,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy30',
     label: 'Quanto eu sou capaz de atualizar os conhecimentos adquiridos no curso?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1043,13 +1046,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy31',
     label: 'Quanto eu sou capaz de resolver problemas inesperados relacionados à minha formação?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1059,13 +1062,13 @@ export const research = [
     type: FormTypes.SLIDER,
     name: 'selfEfficacy32',
     label: 'Quanto eu sou capaz de preparar-me para as avaliações?',
+    max: 10,
+    step: 1,
+    min: 1,
+    defaultValue: 5,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1076,13 +1079,13 @@ export const research = [
     name: 'selfEfficacy33',
     label:
       'Quanto eu sou capaz de aproveitar as oportunidades de participar em atividades extracurriculares?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1093,13 +1096,13 @@ export const research = [
     name: 'selfEfficacy34',
     label:
       'Quanto eu sou capaz de buscar informações sobre os recursos ou programas oferecidos pela minha instituição?',
+    defaultValue: 5,
+    min: 1,
+    max: 10,
+    step: 1,
     options: {
-      min: 1,
-      max: 10,
-      step: 1,
       minLabel: 'Total. incapaz',
       maxLabel: 'Total. capaz',
-      defaultValue: 5,
       marks: array1To10Marks
     },
     initialValue: 5

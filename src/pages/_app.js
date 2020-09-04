@@ -24,7 +24,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Ektélesi | I Semana GEDAAM</title>
+        <title>GEDAAM</title>
       </Head>
       <NextProgress isLoading={isLoading} />
       <AuthContext.Provider value={{ isLoggedIn, login, logout, user, setUser, videos, setVideos }}>

@@ -1,6 +1,7 @@
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { useState, useCallback, useEffect } from 'react'
-import { ErrorMessage } from 'formik'
+import { get } from 'lodash'
+import { ErrorMessage } from '../Messages'
 import PlainModal from '../../common/Modals/PlainModal'
 
 function DragHandle({ ...props }) {
@@ -43,6 +44,25 @@ export function Group({ group, index, isOrdered }) {
           </p>
         </div>
         <div className="mb-3">
+          <h6>Público-alvo</h6>
+          <p>
+            {(() => {
+              const prefers =
+                group.preferenceByYear[5].length >= 3 || group.preferenceByYear[4].length >= 3
+                  ? group.preferenceByYear[5]
+                  : [...group.preferenceByYear[5], ...group.preferenceByYear[4]]
+
+              return prefers[0]
+                ? `Preferível ${prefers
+                    .sort((a, b) => a - b)
+                    .map(i => `${i}°`)
+                    .join(', ')
+                    .replace(/(.+)(, )(.+)$/, '$1 e $3')} ano${prefers.length > 1 ? 's' : ''}`
+                : 'Qualquer interessado'
+            })()}
+          </p>
+        </div>
+        <div className="mb-3">
           <h6>Especialidade</h6>
           <ul>
             {group.specialty.map((spec, i) => (
@@ -52,14 +72,6 @@ export function Group({ group, index, isOrdered }) {
             ))}
           </ul>
         </div>
-        <div className="mb-3">
-          <h6>Descrição</h6>
-          <p>{group.description}</p>
-        </div>{' '}
-        <div className="mb-3">
-          <h6>Descrição</h6>
-          <p>{group.description}</p>
-        </div>{' '}
         <div className="mb-3">
           <h6>Descrição</h6>
           <p>{group.description}</p>
@@ -78,6 +90,8 @@ export function Group({ group, index, isOrdered }) {
               <div
                 role="button"
                 onClick={clickHandler}
+                tabIndex={0}
+                onKeyPress={clickHandler}
                 className="flex h-full w-full px-6 pl-8 py-2 overflow-hidden"
               >
                 <DragHandle className="w-8 -ml-6" {...provided.dragHandleProps} />
@@ -164,7 +178,14 @@ const changeLists = (originList, destinationList, startIndex, endIndex) => {
 
   return [originIds, destinationIds]
 }
-export function DragAndDrop({ options, helper, meta }) {
+
+const listComparisonByInclusion = (itemA, itemB, property, comparator) => {
+  const listA = get(itemA, property)
+  const listB = get(itemB, property)
+  if (!listA || !listB || !comparator) return 0
+  return listB.includes(comparator) - listA.includes(comparator)
+}
+export function DragAndDrop({ options, helper, meta, values }) {
   const [lists, setLists] = useState(options.lists)
   const [groups, setGroups] = useState(options.groups)
   const [draggableOrigin, setDraggableOrigin] = useState(null)
@@ -172,6 +193,37 @@ export function DragAndDrop({ options, helper, meta }) {
   useEffect(() => {
     helper.setValue(lists.selected.groupIds)
   }, [lists.selected.groupIds])
+
+  useEffect(() => {
+    setLists(lists => {
+      lists.unselected.groupIds.sort((groupIdA, groupIdB) => {
+        const groupA = groups.find(({ id }) => id === groupIdA)
+        const groupB = groups.find(({ id }) => id === groupIdB)
+        return (
+          listComparisonByInclusion(
+            groupA,
+            groupB,
+            'preferenceByCollege.institutions',
+            values.college
+          ) ||
+          listComparisonByInclusion(
+            groupA,
+            groupB,
+            'preferenceByYear.5',
+            Math.ceil(values.semester / 2)
+          ) ||
+          listComparisonByInclusion(
+            groupA,
+            groupB,
+            'preferenceByYear.4',
+            Math.ceil(values.semester / 2)
+          )
+        )
+      })
+
+      return lists
+    })
+  }, [groups, values.college, values.semester])
 
   const onDragStart = start => {
     setDraggableOrigin(start.source.droppableId)
@@ -241,7 +293,7 @@ export function DragAndDrop({ options, helper, meta }) {
         />
       ))}
       <div className="ml-px w-full h-12 md:h-6">
-        {(meta.value || meta.touched) && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
+        {meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
       </div>
     </DragDropContext>
   )
