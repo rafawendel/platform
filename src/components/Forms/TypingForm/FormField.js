@@ -24,17 +24,17 @@ const getField = (type, formType) => {
     case FormTypes.DRAG_AND_DROP:
       return <DragAndDrop />
     case FormTypes.SLIDER:
-      return <DiscreteSlider type={formType} />
+      return <DiscreteSlider />
     case FormTypes.DROPDOWN:
-      return <Dropdown color="white" />
+      return <Dropdown />
     case FormTypes.CHECKBOX:
       return <Checkbox />
     case FormTypes.RADIO:
       return <RadioField />
     case FormTypes.AREA:
-      return <TypeInput as="textarea" type={formType} />
+      return <TypeInput as="textarea" />
     case FormTypes.INPUT:
-      return <TypeInput type={formType} />
+      return <TypeInput />
     default:
       return <span />
   }
@@ -87,7 +87,7 @@ export const FormField = ({
             isFieldHidden={isFieldHidden}
             {...props}
           >
-            {getField(type, formType)}
+            {getField(type)}
           </FieldWrapper>
         )}
         <ButtonSet

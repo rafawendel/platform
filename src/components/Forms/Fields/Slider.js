@@ -20,7 +20,7 @@ export function DiscreteSlider({ options, helper, ...props }) {
 
   const classes = useStyles()
   return (
-    <div className="w-full mt-4 py-6">
+    <div className="w-full mt-4 py-6 px-4">
       <Slider
         className={classes.root}
         getAriaValueText={valuetext}

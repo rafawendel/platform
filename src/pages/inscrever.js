@@ -24,7 +24,8 @@ export default function Subscribe({ setLoading }) {
         formId: forms[currentFormIndex].id
       })
       .then(res => {
-        const { user } = res.data
+        const { message } = res.data
+        alert(message)
         window.localStorage.clear()
         setCurrentFormIndex(p => p + 1)
       })
@@ -39,7 +40,7 @@ export default function Subscribe({ setLoading }) {
       <Head>
         <title>Inscreva-se no GEDAAM</title>
       </Head>
-      <main className="bg-light text-darker w-full min-h-screen overflow-x-hidden overflow-y-auto pt-20">
+      <main className="bg-light text-darker w-full min-h-screen overflow-x-hidden overflow-y-auto py-20">
         {forms.map(
           (form, i) =>
             currentFormIndex === i && (

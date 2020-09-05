@@ -354,7 +354,7 @@ export const research = [
     defaultValue: 5,
     options: {
       minLabel: '0 horas',
-      maxLabel: '10 ou mais horas',
+      maxLabel: '10 ou mais',
       marks: genMarksArray(0, 10, 0.5, false)
     },
     validator: Yup.mixed().required()
@@ -562,8 +562,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -579,8 +579,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -596,8 +596,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -612,8 +612,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -629,8 +629,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -646,8 +646,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -663,8 +663,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -679,8 +679,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -695,8 +695,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -712,8 +712,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -729,8 +729,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -746,8 +746,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -762,8 +762,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -778,8 +778,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -795,8 +795,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -811,8 +811,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -827,8 +827,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -843,8 +843,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -860,8 +860,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -877,8 +877,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -893,8 +893,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -909,8 +909,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -925,8 +925,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -941,8 +941,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -957,8 +957,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -973,8 +973,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -989,8 +989,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1005,8 +1005,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1021,8 +1021,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1037,8 +1037,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1053,8 +1053,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1069,8 +1069,8 @@ export const research = [
     min: 1,
     defaultValue: 5,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1086,8 +1086,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5,
@@ -1103,8 +1103,8 @@ export const research = [
     max: 10,
     step: 1,
     options: {
-      minLabel: 'Total. incapaz',
-      maxLabel: 'Total. capaz',
+      minLabel: 'Min.',
+      maxLabel: 'Máx.',
       marks: array1To10Marks
     },
     initialValue: 5
