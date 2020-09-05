@@ -18,8 +18,7 @@ export default function List({ list, groups, isDropDisabled }) {
               {list.groupIds.map((groupId, index) => {
                 const group = groups.find(g => g.id === groupId)
                 return (
-                  group &&
-                  index < 8 && (
+                  group && ( // index < 8 && this should make only interesting groups appear, but it needs improvements
                     <Group
                       key={group.id}
                       group={group}
