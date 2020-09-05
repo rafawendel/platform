@@ -228,7 +228,10 @@ export const primary = [
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
     options: getGroups(),
-    validator: Yup.array().min(1, 'Selecione ao menos uma opção').required()
+    validator: Yup.array()
+      .min(1, 'Selecione ao menos uma opção')
+      .max(2)
+      .required('Selecione ao menos uma opção')
   }
 ]
 
