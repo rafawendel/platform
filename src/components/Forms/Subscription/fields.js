@@ -5,6 +5,13 @@ import { getGroups } from './groups'
 
 export const primary = [
   {
+    title: 'Bem vindo!',
+    innerHTML: `Bem-vindo ao GEDAAM.
+    <br/>Este é o formulário de inscrição para o Grupo e deve tomar 6 a 10 minutos.
+    <br/><br/>Para uma experiência ótima, use o computador. Você pode passar os campos com "enter" e usar as setas do teclado para selecionar as opções.
+  `
+  },
+  {
     type: FormTypes.INPUT,
     name: 'name',
     label: 'Primeiramente, como você se chama?',
@@ -212,13 +219,14 @@ export const primary = [
     ].sort(() => Math.random() > 0.5),
     initialValue: []
   },
-  /* {
+  {
     title: 'Seleção de grupo',
     innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.
     <br/>Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.
+    <br/><br/>Para fazer isso, basta arrastar os cartões pela borda esquerda até a lista no topo.
     <br/><br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
   `
-  }, */
+  },
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',

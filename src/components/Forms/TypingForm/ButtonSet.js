@@ -8,6 +8,7 @@ export const ButtonSet = ({
   isSubmitting,
   showRecedeButton,
   isTransition,
+  isStepped,
   value,
   error
 }) => {
@@ -21,16 +22,18 @@ export const ButtonSet = ({
           Enviar
         </PrimaryActionButton>
       ) : (
-        <PrimaryActionButton
-          onClick={advanceForm}
-          clickOnKey="Enter"
-          isActive={isActive}
-          disabled={isTransition ? false : !value || error}
-        >
-          Ok
-        </PrimaryActionButton>
+        isStepped && (
+          <PrimaryActionButton
+            onClick={advanceForm}
+            clickOnKey="Enter"
+            isActive={isActive}
+            disabled={isTransition ? false : !value || error}
+          >
+            Ok
+          </PrimaryActionButton>
+        )
       )}
-      {showRecedeButton && (
+      {showRecedeButton && isStepped && (
         <SecondaryActionButton onClick={recedeForm}>Voltar</SecondaryActionButton>
       )}
     </div>

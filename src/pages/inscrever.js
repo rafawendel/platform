@@ -33,11 +33,15 @@ export default function Subscribe({ setLoading }) {
 
       countdown5s()
         .then(() => {
-          setModalMessage('Fechando a página em 5 segundos...')
-          return countdown5s()
+          if (showButton) {
+            setModalMessage('Fechando a página em 5 segundos...')
+            return countdown5s()
+          }
         })
         .then(() => {
-          router.push('/eventos')
+          if (showButton) {
+            router.push('/eventos')
+          }
         })
     }
   }, [currentFormIndex, forms.length, router])
@@ -63,8 +67,6 @@ export default function Subscribe({ setLoading }) {
         console.log(message)
         setModalMessage('Obrigado!')
         setShowModal(true)
-        window.localStorage.setItem('lastFieldIndex', '')
-        window.sessionStorage.setItem('lastFieldIndex', '')
         countdown(3000)().then(() => {
           setShowModal(false)
           setCurrentFormIndex(p => p + 1)
@@ -97,8 +99,9 @@ export default function Subscribe({ setLoading }) {
           (form, i) =>
             currentFormIndex === i && (
               <TypingForm
-                id={form.id}
-                key={`form-${form.id}-i`}
+                id={i}
+                currentFormIndex={currentFormIndex}
+                key={form.id}
                 fields={getFormSchemaByName(form.id)}
                 title={form.title}
                 onSubmit={onSubmit}

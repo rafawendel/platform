@@ -19,7 +19,7 @@ export const FormTypes = {
   SLIDER: 'SLIDER',
   DRAG_AND_DROP: 'DRAG_AND_DROP'
 }
-const getField = (type, formType) => {
+const getField = type => {
   switch (type) {
     case FormTypes.DRAG_AND_DROP:
       return <DragAndDrop />
@@ -41,7 +41,6 @@ const getField = (type, formType) => {
 }
 export const FormField = ({
   type,
-  formType,
   id,
   name,
   activeFieldIndex,
@@ -52,6 +51,7 @@ export const FormField = ({
   values,
   buttonProps,
   isSubmitting,
+  isStepped,
   ...props
 }) => {
   const [field, meta, helper] = useField(name)
@@ -95,6 +95,7 @@ export const FormField = ({
           advanceForm={advanceForm}
           recedeForm={recedeForm}
           isSubmitting={isSubmitting}
+          isStepped
           isTransition={!type}
           {...meta}
           {...buttonProps}

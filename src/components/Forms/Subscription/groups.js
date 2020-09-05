@@ -2,7 +2,7 @@ export const getGroupOptions = () => {
   return [
     {
       id: '2020201',
-      leaders: 'Nogueira (7° UFMG) e Thaís Pimenta (5° FCMMG)',
+      leaders: 'Nogueira (7°, UFMG) e Thaís Pimenta (5°, FCMMG)',
       title: 'GEDAAM Pesquisa',
       specialty: ['Ciência, eventos científicos, escrita acadêmica'],
       description: `As reuniões irão abordar temas típicos do GEDAAM, como gestão de tempo, técnicas de estudos, raciocínio clínico, técnicas de apresentação e saúde mental. Além disso, será abordado o tema pesquisa, ocorrendo diversos encontros sobre sites para coleta de dados, softwares, conhecimento sobre metodologia científica, dicas para a escrita e leitura de artigos e sites para a divulgação de artigos.`,
@@ -15,7 +15,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020202',
-      leaders: 'Lídia Duarte (7° UFMG) e Eduardo Médici (8° UFMG)',
+      leaders: 'Lídia Duarte (7°, UFMG) e Eduardo Médici (8°, UFMG)',
       title: 'GEDAAM Raciocínio Clínico',
       specialty: [
         'Resolução de casos clínicos',
@@ -31,7 +31,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020203',
-      leaders: 'Eduardo Médici (8° UFMG)',
+      leaders: 'Eduardo Médici (8°, UFMG)',
       title: 'Incubadora de líderes',
       specialty: ['Liderança'],
       description: `Será um grupo dedicado à diretoria e aos coordenadores para desenvolverem conhecimentos de liderança e gestão de equipes.`,
@@ -44,7 +44,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020204',
-      leaders: 'Mari (5° UEMG) e Maryana Tomas (7° UEMG)',
+      leaders: 'Mari (5°, UEMG) e Maryana Tomas (7°, UEMG)',
       title: 'GEDAAM Regular',
       specialty: ['Resolução de casos clínicos', 'Técnicas de estudo', 'Gerenciamento de tempo'],
       description: `Grupo de estudos com enfoque em um melhor aproveitamento do curso por meio de técnicas de estudo e organização do tempo. O conhecimento médico deve ser abordado em encontros eventuais para discussão de casos clínicos.`,
@@ -57,7 +57,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020205',
-      leaders: 'João Duarte (3° UFMG) e Isa Professora (5° Universidade de Rio Verde)',
+      leaders: 'João Duarte (3°, UFMG) e Isa Professora (5°, Universidade de Rio Verde)',
       title: 'USMLE Study Group',
       specialty: [
         'Resolução de casos clínicos',
@@ -77,7 +77,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020206',
-      leaders: 'Thierry (5° UFMG) e Pedro Cunha (5° UFMG)',
+      leaders: 'Thierry (5°, UFMG) e Pedro Cunha (5°, UFMG)',
       title: 'Soft Skills',
       specialty: [
         'Gerenciamento de tempo',
@@ -95,7 +95,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020207',
-      leaders: 'Ana Paula (6° UniBH), Fernanda Melo (6° UniBH) e Mariana Ferreira (6° UniBH)',
+      leaders: 'Ana Paula (6°, UniBH), Fernanda Melo (6°, UniBH) e Mariana Ferreira (6°, UniBH)',
       title: 'Grupo de Estudos, Técnicas de Apresentação e Raciocínio Clínico ',
       specialty: [
         'Resolução de casos clínicos',
@@ -113,7 +113,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020208',
-      leaders: 'Júlia Cerqueira (5° UFMG) e Augusto Coimbra 156 (4° UFMG)',
+      leaders: 'Júlia Cerqueira (5°, UFMG) e Augusto Coimbra 156 (4°, UFMG)',
       title: 'GEDAAM Regular',
       specialty: [
         'Resolução de casos clínicos',
@@ -131,7 +131,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020209',
-      leaders: 'Andre (5° UFMG), Isabela MG (8° UFMG) e Lucas Sampaio (3° UFMG)',
+      leaders: 'Andre (5°, UFMG), Isabela MG (8°, UFMG) e Lucas Sampaio (3°, UFMG)',
       title: 'GEDAAM Regular',
       specialty: ['Resolução de casos clínicos', 'Técnicas de estudo'],
       description: `Um grupo para apresentar técnicas de estudo voltado para nossa realidade, aumentando a eficiência do estudante de medicina. Também serão discutidos e desenvolvidos habilidades de raciocínio por meio de casos clínicos.`,
@@ -144,7 +144,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020210',
-      leaders: 'Larissa Marques (7° UniBH) e Lavínia (7° UniBH)',
+      leaders: 'Larissa Marques (7°, UniBH) e Lavínia (7°, UniBH)',
       title: 'Raciocínio Clínico',
       specialty: [
         'Resolução de casos clínicos',
@@ -160,7 +160,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020211',
-      leaders: 'Wendel (8° UFMG), Raquel Lemos (4° UFMG) e Alair (9° UFMG)',
+      leaders: 'Wendel (8°, UFMG), Raquel Lemos (4°, UFMG) e Alair (9°, UFMG)',
       title: 'MINT Medicina, Informação e Tecnologia',
       specialty: ['Tecnologia, informação', 'Dados, estatística'],
       description: `O Mint é um espaço para discutir aplicações de programação e ciência de dados na saúde, voltado para o público com conhecimento prévio ou interesse de aprender mais sobre a área. Teremos instrução de estudantes com experiência nas áreas, mas o autodidatismo é essencial.`,
@@ -173,7 +173,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020212',
-      leaders: 'Carol (5° UFVJM), Luíza Coimbra (5° UFVJM) e MarcD2 (2° UFVJM)',
+      leaders: 'Carol (5°, UFVJM), Luíza Coimbra (5°, UFVJM) e MarcD2 (2°, UFVJM)',
       title: 'GEDAAM Regular',
       specialty: [
         'Técnicas de estudo',
@@ -191,7 +191,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020213',
-      leaders: 'Isabella (11° Unipam), Vitoria (6° Unipam) e João Gabriel (4° Unipam)',
+      leaders: 'Isabella (11°, Unipam), Vitoria (6°, Unipam) e João Gabriel (4°, Unipam)',
       title: 'GEDAAM na UNIPAM',
       specialty: ['Resolução de casos clínicos', 'Técnicas de estudo', 'Gerenciamento de tempo'],
       description: `Grupo destinado à masterização do aprendizado e da alta performance pessoal e profissional, com desenvolvimento ativo de técnicas de estudo, raciocínio clínico e gestão de tempo.`,
@@ -204,7 +204,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020214',
-      leaders: 'Ronaldo Abreu (5° UniBH) e Roger Savio (5° UniBH)',
+      leaders: 'Ronaldo Abreu (5°, UniBH) e Roger Savio (5°, UniBH)',
       title: 'GEDAAM Regular',
       specialty: [
         'Resolução de casos clínicos',
@@ -222,7 +222,7 @@ export const getGroupOptions = () => {
     },
     {
       id: '2020215',
-      leaders: 'Grupo da Fernanda (5° FCMMG) e Flávia Costa (5° FCMMG)',
+      leaders: 'Grupo da Fernanda (5°, FCMMG) e Flávia Costa (5°, FCMMG)',
       title: 'GEDAAM Fernanda e Flávia',
       specialty: [
         'Resolução de casos clínicos',
@@ -241,7 +241,7 @@ export const getGroupOptions = () => {
     {
       id: '2020216',
       leaders:
-        'Lavínia (7° Suprema) e Arthur Egidio (8° Faculdade de Ciências Médicas e da Saúde de Juiz de Fora)',
+        'Lavínia (7°, Suprema) e Arthur Egidio (8°, Faculdade de Ciências Médicas e da Saúde de Juiz de Fora)',
       title: 'MedCases',
       specialty: [
         'Resolução de casos clínicos',
@@ -261,7 +261,7 @@ export const getGroupOptions = () => {
     {
       id: '2020217',
       leaders:
-        'Luiza Vilela (4° PUC), Jéssica Aguilar (4° PUC), Júlia Rocha (4° PUC) e Bruna Martins (4° PUC)',
+        'Luiza Vilela (4°, PUC), Jéssica Aguilar (4°, PUC), Júlia Rocha (4°, PUC) e Bruna Martins (4°, PUC)',
       title: 'GEDAAM Regular',
       specialty: [
         'Resolução de casos clínicos',

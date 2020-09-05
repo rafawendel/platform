@@ -4,7 +4,7 @@ import { FormField } from './FormField'
 import { getInitialValues, getValidationSchema } from '../Subscription/utils'
 import { useStorage } from '../../../hooks/useStorage'
 
-export default function TypingForm({ title, fields, onSubmit }) {
+export default function TypingForm({ title, currentFormIndex, id, fields, onSubmit }) {
   const [activeFieldIndex, setActiveFieldIndex] = useState(0)
   const [previousFieldIndex, setPreviousFieldIndex] = useState(0)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
@@ -22,9 +22,11 @@ export default function TypingForm({ title, fields, onSubmit }) {
   const buttonProps = { showSubmitButton, showRecedeButton: activeFieldIndex > 0 }
 
   const retrieveFieldIndex = index => {
-    if (index < fields.length - 1) setActiveFieldIndex(index)
+    if (index < fields.length - 1) return
+    if (currentFormIndex !== id) return
+    setActiveFieldIndex(index)
   }
-  useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex, true)
+  useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex)
 
   useEffect(() => {
     setShowSubmitButton(activeFieldIndex >= fields.length - 1)
@@ -41,7 +43,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
         >
           {({ isSubmitting, values }) => (
             <Form>
-              {fields.map((properties, i) => (
+              {fields.map((props, i) => (
                 <FormField
                   key={`field-${i + 1}`}
                   id={i}
@@ -53,7 +55,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
                   advanceForm={advanceForm}
                   recedeForm={recedeForm}
                   values={values}
-                  {...properties}
+                  {...props}
                 />
               ))}
             </Form>
