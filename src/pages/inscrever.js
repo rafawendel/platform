@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import axios from 'axios'
 import TypingForm from '../components/Forms/TypingForm'
 import { getFormSchemaByName } from '../components/Forms/Subscription/utils'
+import { useStorage } from '../hooks/useStorage'
 
 export default function Subscribe({ setLoading }) {
   const forms = [
@@ -11,6 +12,8 @@ export default function Subscribe({ setLoading }) {
     { title: 'Motirõ GEDAAM', id: 'research' }
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
+
+  useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
 
   const onSubmit = async (values, { setSubmitting }) => {
     setLoading(true)
@@ -26,6 +29,7 @@ export default function Subscribe({ setLoading }) {
       setTimeout(() => {
         console.log(values)
         resolve(true)
+        // window.sessionStorage.clear()
       }, 500)
     })
 

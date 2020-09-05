@@ -29,7 +29,6 @@ export default async (req, res) => {
         }
 
         const { user } = dbRes.data
-        // res.setHeader('Set-Cookie', [`gedaamId=`])
         const workshopIndices = [1, 3]
         const videoIds = ['1', workshops[user.fst_opt], '2', workshops[user.snd_opt], '3', '4']
         const extraVideoId =

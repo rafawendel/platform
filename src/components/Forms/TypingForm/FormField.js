@@ -1,12 +1,14 @@
+import React, { useEffect, useState } from 'react'
+import { useField } from 'formik'
 import { TypeInput } from '../Fields/Inputs'
 import { RadioField } from '../Fields/Radio'
 import { Dropdown } from '../Fields/Dropdown'
 import { Checkbox } from '../Fields/Checkbox'
 import { DiscreteSlider } from '../Fields/Slider'
-import { DragAndDrop } from '../Fields/DragAndDrop'
 import { FieldWrapper } from './FieldWrapper'
 import { ButtonSet } from './ButtonSet'
 import { Label } from './Label'
+import { DragAndDrop } from '../DragAndDrop'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -37,13 +39,66 @@ const getField = (type, formType) => {
       return <span />
   }
 }
-export const FormField = ({ type, formType, ...props }) => {
-  return type ? (
-    <FieldWrapper {...props}>{getField(type, formType)}</FieldWrapper>
-  ) : (
-    <div className={`${props.id !== props.activeFieldIndex && 'hidden'} mt-16 w-full`}>
-      <Label {...props} />
-      <ButtonSet {...props.buttonProps} {...props} value />
-    </div>
+export const FormField = ({
+  type,
+  formType,
+  id,
+  name,
+  activeFieldIndex,
+  previousFieldIndex,
+  advanceForm,
+  recedeForm,
+  onlyDisplayIf,
+  values,
+  buttonProps,
+  isSubmitting,
+  ...props
+}) => {
+  const [field, meta, helper] = useField(name)
+  const [isFieldHidden, setFieldHidden] = useState(true)
+
+  const { title, label, description } = props
+  const labelProps = { title, label, description, name, id }
+
+  useEffect(() => {
+    if (id === activeFieldIndex) {
+      if (typeof onlyDisplayIf === 'function' && !onlyDisplayIf(values)) {
+        if (previousFieldIndex > activeFieldIndex) {
+          recedeForm()
+        } else {
+          advanceForm()
+        }
+      } else {
+        setFieldHidden(false)
+      }
+    } else {
+      setFieldHidden(true)
+    }
+  }, [activeFieldIndex, advanceForm, id, onlyDisplayIf, previousFieldIndex, recedeForm, values])
+
+  return (
+    !isFieldHidden && (
+      <div className="flex flex-col items-start mt-16 w-full">
+        <Label {...labelProps} />
+        {type && (
+          <FieldWrapper
+            formProps={{ name, field, meta, helper, values }}
+            buttonProps={buttonProps}
+            isFieldHidden={isFieldHidden}
+            {...props}
+          >
+            {getField(type, formType)}
+          </FieldWrapper>
+        )}
+        <ButtonSet
+          isActive={!isFieldHidden}
+          advanceForm={advanceForm}
+          recedeForm={recedeForm}
+          isSubmitting={isSubmitting}
+          {...meta}
+          {...buttonProps}
+        />
+      </div>
+    )
   )
 }

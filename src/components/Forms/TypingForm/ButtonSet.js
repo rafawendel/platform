@@ -2,7 +2,7 @@ import { PrimaryActionButton, SecondaryActionButton } from '../Buttons'
 
 export const ButtonSet = ({
   showSubmitButton,
-  isFieldHidden,
+  isActive,
   advanceForm,
   recedeForm,
   isSubmitting,
@@ -20,7 +20,7 @@ export const ButtonSet = ({
         <PrimaryActionButton
           onClick={advanceForm}
           clickOnKey="Enter"
-          isActive={!isFieldHidden}
+          isActive={isActive}
           disabled={!value || error}
         >
           Ok

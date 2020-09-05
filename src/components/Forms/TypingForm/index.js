@@ -2,6 +2,7 @@ import { Formik, Form } from 'formik'
 import { useState, useCallback, useEffect } from 'react'
 import { FormField } from './FormField'
 import { getInitialValues, getValidationSchema } from '../Subscription/utils'
+import { useStorage } from '../../../hooks/useStorage'
 
 export default function TypingForm({ title, fields, onSubmit }) {
   const [activeFieldIndex, setActiveFieldIndex] = useState(0)
@@ -20,7 +21,18 @@ export default function TypingForm({ title, fields, onSubmit }) {
 
   const buttonProps = { showSubmitButton, showRecedeButton: activeFieldIndex > 0 }
 
+  const retrieveFieldIndex = index => {
+    if (index < fields.length - 1) setActiveFieldIndex(index)
+  }
+  useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex)
+
   useEffect(() => {
+    // if (isFirstRender) {
+    //   const lastFieldIndex = +window.sessionStorage.getItem()
+    //    setActiveFieldIndex(lastFieldIndex)
+    //   setFirstRender(false)
+    // }
+    // window.sessionStorage.setItem('lastFieldIndex', activeFieldIndex - 1)
     setShowSubmitButton(activeFieldIndex >= fields.length - 1)
   }, [activeFieldIndex, fields])
 
@@ -33,7 +45,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
           validationSchema={getValidationSchema(fields)}
           onSubmit={onSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, values }) => (
             <Form>
               {fields.map((properties, i) => (
                 <FormField
@@ -46,6 +58,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
                   buttonProps={buttonProps}
                   advanceForm={advanceForm}
                   recedeForm={recedeForm}
+                  values={values}
                   {...properties}
                 />
               ))}

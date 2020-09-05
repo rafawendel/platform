@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useKeyPress } from '../../hooks/useKeyPress'
 
 export const PrimaryActionButton = ({
@@ -10,11 +11,15 @@ export const PrimaryActionButton = ({
   isActive,
   ...props
 }) => {
-  useKeyPress(clickOnKey, () => {
-    if (typeof onClick !== 'function') return
-    if (!isActive) return
-    if (!disabled) onClick()
-  })
+  useKeyPress(
+    clickOnKey,
+    useCallback(() => {
+      if (typeof onClick !== 'function') return
+      if (!isActive) return
+      if (disabled) return
+      onClick()
+    }, [disabled, isActive, onClick])
+  )
 
   return (
     <div className={`${className} text-center`}>

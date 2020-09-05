@@ -113,6 +113,8 @@ export const primary = [
       { label: 'Suprema', value: 'Suprema' },
       { label: 'Outra', value: 'null' }
     ],
+    placeholder: 'Sua faculdade',
+    initialValue: 'UFMG',
     validator: Yup.string().required('Não pode ser deixado em branco')
   },
   {
@@ -120,7 +122,7 @@ export const primary = [
     name: 'otherCollege',
     label: 'Especifique',
     formType: 'text',
-    onlyDisplayIf: values => values.college === 'null',
+    onlyDisplayIf: ({ college }) => college === 'null',
     placeholder: (() => {
       const rnd = Math.random()
       return rnd >= 2 / 3 ? 'UFMG' : rnd >= 1 / 3 ? 'UniBH' : 'UFVJM'
@@ -146,10 +148,9 @@ export const primary = [
       label: `${i + 1}° período`,
       value: `${i + 1}`
     })),
-    validator: Yup.string()
-      .matches(/^[0-9]{1,2}$/)
-      .required(),
-    placeholder: 'Seu período'
+    initialValue: '1° período',
+    placeholder: 'Seu período',
+    validator: Yup.string().required()
   },
   {
     type: FormTypes.RADIO,
@@ -167,7 +168,7 @@ export const primary = [
     name: 'semestersInvolved',
     label: 'Há quantos semestres você tem algum envolvimento com o grupo?',
     description: 'Considere envolvimento a participação como membro, coordenadora ou diretora',
-    onlyDisplayIf: values => values.isNewbie === 'false', // a conditional element can never be the last element
+    onlyDisplayIf: ({ isNewbie }) => isNewbie === 'false', // a conditional element can never be the last element
     formType: 'number',
     min: 0,
     validator: Yup.string().matches(/^[0-9]{1,2}$/, {
@@ -188,7 +189,9 @@ export const primary = [
       { label: 'Outros eventos', value: 'Outros eventos' },
       { label: 'Colegas', value: 'Colegas' },
       { label: 'Amostra do DAAB', value: 'Amostra do DAAB' }
-    ]
+    ],
+    placeholder: 'De onde você nos conhece',
+    initialValue: 'Eventos do GEDAAM'
   },
   {
     type: FormTypes.CHECKBOX,
@@ -209,13 +212,13 @@ export const primary = [
     ].sort(() => Math.random() > 0.5),
     initialValue: []
   },
-  {
+  /* {
     title: 'Seleção de grupo',
     innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.
-      <br/>Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.
-      <br/><br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
-    `
-  },
+    <br/>Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.
+    <br/><br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
+  `
+  }, */
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
@@ -254,8 +257,7 @@ export const research = [
     name: 'birthdate',
     label: 'Qual é a sua data de nascimento?',
     formType: 'date',
-    initialValue: new Date().toLocaleDateString(),
-    validator: Yup.string().required('Não pode ser deixado em branco')
+    validator: Yup.mixed().required('Não pode ser deixado em branco')
   },
   {
     type: FormTypes.RADIO,
