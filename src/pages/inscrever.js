@@ -63,7 +63,8 @@ export default function Subscribe({ setLoading }) {
         console.log(message)
         setModalMessage('Obrigado!')
         setShowModal(true)
-        window.localStorage.clear()
+        window.localStorage.setItem('lastFieldIndex', '')
+        window.sessionStorage.setItem('lastFieldIndex', '')
         countdown(3000)().then(() => {
           setShowModal(false)
           setCurrentFormIndex(p => p + 1)
