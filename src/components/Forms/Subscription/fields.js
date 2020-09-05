@@ -256,7 +256,9 @@ export const research = [
       { label: 'Ampla concorrência', value: 'ampla' },
       { label: 'Cota para estudante de escola pública', value: 'cota_escola' },
       { label: 'Cota para renda mensal menor que 1,5 salários', value: 'cota_renda' },
-      { label: 'Cota para negros, pardos, indígenas e deficientes', value: 'cota_racial' }
+      { label: 'Cota para negros, pardos, indígenas e deficientes', value: 'cota_racial' },
+      { label: 'Fies / Prouni', value: 'fies_prouni' },
+      { label: 'Transferência', value: 'transfer' }
     ],
     initialValue: []
   },
