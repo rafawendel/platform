@@ -248,6 +248,31 @@ export const research = [
     innerHTML: `As perguntas a seguir serão utilizadas anonimamente para análise do perfil demográfico do GEDAAM, com finalidade científica 👨‍🔬.`
   },
   {
+    title: 'Termo de consentimento livre e esclarecido',
+    innerHTML: `Prezado(a) Estudante(a),
+      <p>
+      Você esta sendo convidado a participar da pesquisa <strong>MOTIRÕ - GEDAAM</strong>: expectativas, suporte social e auto eficácia de participantes do Grupo de Estudos em Didática Aplicada ao Aprendizado da Medicina. Este estudo tem como objetivo avaliar as repercussões da participação em atividades do GEDAAM na percepção de qualidade de vida, auto eficácia e resiliência de estudantes de medicina da UFMG. 
+      </p><p>
+      Precisamos saber se realmente o GEDAAM impacta nestes aspectos e como isso acontece. Para isto, gostaríamos de contar com a sua colaboração respondendo a um questionário com perguntas sobre você, seus modos de vida, relacionamentos, sentimentos e opiniões.
+      <p/><p>
+      A aplicação deste questionário ocorrerá na plataforma Google Docs (online) e o tempo de duração do preenchimento pode variar entre 25 e 30 minutos. Toda informação obtida por meio de suas respostas será considerada CONFIDENCIAL e sua identificação será mantida como informação sigilosa. Os relatórios e resultados deste estudo serão apresentados sem nenhuma forma de identificação individual e serão utilizados para fins científicos. 
+      <p/><p>
+      Você não terá qualquer tipo de despesa para participar da pesquisa e não receberá remuneração por sua participação. O principal benefício para você ao aceitar participar é o de colaborar para o entendimento do papel do GEDAAM como um possível instrumento de apoio e suporte aos estudantes ao longo do curso. Este conhecimento poderá ser utilizado para efetivar a expansão ou formalização das ações desenvolvidas pelo GEDAAM e a sugerir adequações necessárias no currículo e nas atividades desenvolvidas na formação médica da UFMG. 
+      <p/><p>
+      Você não corre nenhum risco ao responder ao questionário, a não ser o desconforto gerado por permanecer muito tempo na mesma posição para a leitura das perguntas e algum tipo de constrangimento por responder questões que mexam com suas emoções. Para minimizar estes desconfortos, você poderá se levantar a qualquer momento ou trocar de posição se assim desejar ou até deixar de responder alguma questão. Sua participação é voluntária, isto é, ela não é obrigatória, e você tem a liberdade para decidir se quer ou não participar, bem como retirar sua participação a qualquer momento. Você não terá prejuízo algum caso decida não participar, ou desistir da mesma. No entanto, sua participação é muito importante.
+      <p/><p>
+      Caso sinta necessidade de contatar o pesquisador durante e/ou após a coleta de dados, poderá fazê-lo pelos telefones (31) 3409-9803 / (31) 991177907 ou e-mail: grazilage.oliveira@gmail.com (Professora Graziella Lage Oliveira). Da mesma forma, você poderá se comunicar com o Comitê de Ética em Pesquisa da UFMG (COEP) pelo telefone (31) 3409-4592 ou pelo e-mail: coep@prpq.ufmg.br quando tiver dúvidas sobre aspectos éticos.
+      <p/><p>
+      Certos de contar com o seu apoio, reiteramos nosso apreço e agradecimento e solicitamos que você declare o seu consentimento livre e esclarecido neste documento.
+      <p/>`
+  },
+  {
+    title: 'Termo de consentimento livre e esclarecido',
+    innerHTML: `
+      Ao clicar em OK abaixo você declara ter lido e aceitado participar da pesquisa de indicadores do GEDAAM.
+    `
+  },
+  {
     type: FormTypes.CHECKBOX,
     name: 'ingressoFaculdade',
     label: 'Qual foi a sua forma de ingresso na faculdade?',

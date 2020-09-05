@@ -54,7 +54,7 @@ export const FormField = ({
   isStepped,
   ...props
 }) => {
-  const [field, meta, helper] = useField(name)
+  const [field, meta, helper] = useField(name || Math.random()) // dummy fallback
   const [isFieldHidden, setFieldHidden] = useState(true)
 
   const { title, label, description } = props
