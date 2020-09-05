@@ -12,7 +12,6 @@ export default function Subscribe({ setLoading }) {
     { title: 'Motirõ GEDAAM', id: 'research' }
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
-
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
 
   const onSubmit = async (values, { setSubmitting }) => {

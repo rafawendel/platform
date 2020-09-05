@@ -27,12 +27,6 @@ export default function TypingForm({ title, fields, onSubmit }) {
   useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex)
 
   useEffect(() => {
-    // if (isFirstRender) {
-    //   const lastFieldIndex = +window.sessionStorage.getItem()
-    //    setActiveFieldIndex(lastFieldIndex)
-    //   setFirstRender(false)
-    // }
-    // window.sessionStorage.setItem('lastFieldIndex', activeFieldIndex - 1)
     setShowSubmitButton(activeFieldIndex >= fields.length - 1)
   }, [activeFieldIndex, fields])
 

@@ -58,7 +58,7 @@ export const FormField = ({
   const [isFieldHidden, setFieldHidden] = useState(true)
 
   const { title, label, description } = props
-  const labelProps = { title, label, description, name, id }
+  const labelProps = { title, label, description, name }
 
   useEffect(() => {
     if (id === activeFieldIndex) {
@@ -79,7 +79,7 @@ export const FormField = ({
   return (
     !isFieldHidden && (
       <div className="flex flex-col items-start mt-16 w-full">
-        <Label {...labelProps} />
+        <Label {...labelProps} {...props} />
         {type && (
           <FieldWrapper
             formProps={{ name, field, meta, helper, values }}
@@ -95,6 +95,7 @@ export const FormField = ({
           advanceForm={advanceForm}
           recedeForm={recedeForm}
           isSubmitting={isSubmitting}
+          isTransition={!type}
           {...meta}
           {...buttonProps}
         />

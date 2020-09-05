@@ -5,23 +5,22 @@ import { ErrorMessage } from '../Messages'
 import List from './DroppableList'
 import { listUpdateHandler, moveInsideList, moveBetweenLists } from './utils'
 
-export function DragAndDrop({ name, options }) {
+export function DragAndDrop({ options, meta, helper }) {
   const [lists, setLists] = useState(options.lists)
   const { groups } = options
-  const [, meta, helper] = useField(name)
   const { values } = useFormikContext()
 
   // Updates lists according to previous form data
-  // useEffect(() => {
-  //   setLists(prevLists =>
-  //     listUpdateHandler(prevLists, groups, { college: values.college, semester: values.semester })
-  //   )
-  // }, [groups, values.college, values.semester])
+  useEffect(() => {
+    setLists(prevLists =>
+      listUpdateHandler(prevLists, groups, { college: values.college, semester: values.semester })
+    )
+  }, [groups, values.college, values.semester])
 
   // Updates selected values when the selected list changes (via onDragEnd)
   useEffect(() => {
     helper.setValue(lists.selected.groupIds)
-  }, [lists.selected.groupIds])
+  }, [lists.selected.groupIds]) // adding helper causes infinite loop
 
   const [draggableOrigin, setDraggableOrigin] = useState(null)
 

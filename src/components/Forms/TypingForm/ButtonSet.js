@@ -7,13 +7,17 @@ export const ButtonSet = ({
   recedeForm,
   isSubmitting,
   showRecedeButton,
+  isTransition,
   value,
   error
 }) => {
   return (
     <div className="flex justify-between items-center mt-3 w-full">
       {showSubmitButton ? (
-        <PrimaryActionButton type="submit" disabled={isSubmitting || !value || error}>
+        <PrimaryActionButton
+          type="submit"
+          disabled={isTransition ? false : isSubmitting || !value || error}
+        >
           Enviar
         </PrimaryActionButton>
       ) : (
@@ -21,7 +25,7 @@ export const ButtonSet = ({
           onClick={advanceForm}
           clickOnKey="Enter"
           isActive={isActive}
-          disabled={!value || error}
+          disabled={isTransition ? false : !value || error}
         >
           Ok
         </PrimaryActionButton>

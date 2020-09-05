@@ -18,7 +18,8 @@ export default function List({ list, groups, isDropDisabled }) {
               {list.groupIds.map((groupId, index) => {
                 const group = groups.find(g => g.id === groupId)
                 return (
-                  group && (
+                  group &&
+                  index < 8 && (
                     <Group
                       key={group.id}
                       group={group}
