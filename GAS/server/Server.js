@@ -1,52 +1,25 @@
 /**
  * @OnlyCurrentDoc
  */
-const SHEET_NAME = 'Database'
+const SHEET_NAME = 'Form'
 const SCRIPT_PROP = PropertiesService.getScriptProperties()
 
-function validateUser(user, validatorObj = {}) {
-  Object.entries(validatorObj).forEach(([key, value]) => {
-    if (!value) return
-    if (!(key in user)) return
-    if (user[key] != value) throw new Error('User is inconsistent')
+function mapRow(header, indexedData) {
+  return header.map(h => {
+    if (h === 'timestamp') return new Date()
+    return JSON.stringify(indexedData[h])
   })
 }
 
-function getUserByRegister(users, register) {
-  const user = users.find(user => user.register.toString() === register.toString())
-  if (!user) throw new Error('User not found')
-
-  return { user }
+function setHeader(header, sheet) {
+  const range = sheet.getRange(1, 1, 1, header.length)
+  range.setValues([header])
 }
 
-function getDataAsObj(headers, sheetData) {
-  const dataObj = sheetData.reduce((objList, row, j) => {
-    if (!row[0]) return acc // skips empty rows (first cell in row is reference)
-
-    objList[j] = headers.reduce((datum, header, i) => {
-      if (i === 0) datum.row = j + 2 // this adds a "row" property that points to the actual sheet row of origin
-      datum[header] = row[i]
-      return datum
-    }, {})
-
-    return objList
-  }, [])
-
-  return dataObj
-}
-
-function getRequestedUser(payload, sheetDataAsObj) {
-  const user = getUserByRegister(users, payload.register)
-  validateUser(user, { email: payload.email })
-
-  return user
-}
-
-function registerEvent(row, col) {
-  const eventsRange = sheet.getRange(row, col)
-  const events = JSON.parse(range.getValues()[0][0])
-  events.push(new Date())
-  range.setValue(JSON.stringify(events))
+function getHeader(sheet) {
+  const dataRange = sheet.getDataRange()
+  const [header] = dataRange.getValues()
+  return header
 }
 
 function postWithSheet(event, sheet) {
@@ -55,14 +28,13 @@ function postWithSheet(event, sheet) {
   if (postData.length <= 0) throw new Error('Empty payload')
   const payload = JSON.parse(postData.contents)
 
-  const dataRange = sheet.getDataRange()
-  const [headers, ...sheetData] = dataRange.getValues()
+  const header = getHeader(sheet)
+  const newHeader = [...header, ...Object.keys(payload).filter(k => !header.includes(k))]
+  setHeader(newHeader, sheet)
+  const newRow = mapRow(newHeader, payload)
+  sheet.appendRow(newRow)
 
-  const users = getDataAsObj(headers, sheetData)
-  const user = getRequestedUser(payload, users)
-  registerEvent(user.row, headers.indexOf('events') + 1)
-
-  return { user }
+  return {}
 }
 
 function handleResponse(event, withSheetCb) {

@@ -18,21 +18,18 @@ export default function Subscribe({ setLoading }) {
     setLoading(true)
     setSubmitting(true)
 
-    // await axios
-    //   .post('/api/submit', {})
-    //   .then(res => {
-    //     const { user } = res.data
-    //   })
-    //   .catch(e => alert('Os dados inseridos são inválidos'))
-    await new Promise(resolve => {
-      setTimeout(() => {
-        console.log(values)
-        resolve(true)
-        // window.sessionStorage.clear()
-      }, 500)
-    })
+    await axios
+      .post('/api/submit', {
+        ...values,
+        formId: forms[currentFormIndex].id
+      })
+      .then(res => {
+        const { user } = res.data
+        window.localStorage.clear()
+        setCurrentFormIndex(p => p + 1)
+      })
+      .catch(e => alert('Os dados inseridos são inválidos'))
 
-    setCurrentFormIndex(p => p + 1)
     setLoading(false)
     setSubmitting(false)
   }
@@ -42,7 +39,7 @@ export default function Subscribe({ setLoading }) {
       <Head>
         <title>Inscreva-se no GEDAAM</title>
       </Head>
-      <main className="bg-light text-darker w-full min-h-screen pt-20">
+      <main className="bg-light text-darker w-full min-h-screen overflow-x-hidden overflow-y-auto pt-20">
         {forms.map(
           (form, i) =>
             currentFormIndex === i && (

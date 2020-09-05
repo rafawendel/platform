@@ -1,66 +1,26 @@
 import axios from 'axios'
-import { getVideoData, validateVideoPremieres } from '../../lib/videos'
-import { getEventProps } from '../../lib/event'
 import { getValidationSchema, getFormSchemaByName } from '../../components/Forms/Subscription/utils'
 
 const DB_URL = `https://script.google.com/macros/s/${process.env.DB_ID}/exec`
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
-      const schema = getValidationSchema(getFormSchemaByName(req.body.formSchema))
+      const { formId, payload } = req.body
+      const schema = getValidationSchema(getFormSchemaByName(formId))
 
-      const isValid = await schema.isValid(req.body)
+      const isValid = await schema.isValid(payload)
       if (!isValid) throw new Error('Invalid data format')
 
-      const dbRes = await axios.post(DB_URL, {
-        ...req.body
-      })
+      const dbRes = await axios.post(DB_URL, payload)
 
       if (dbRes.error) throw new Error(dbRes.error)
       if (dbRes.data.error) {
         res.status(404).json(dbRes.data)
       } else {
-        const workshops = {
-          time_management: '13',
-          clinical: '9',
-          presentation: '11',
-          study: '12',
-          public_speak: '10'
-        }
-
         const { user } = dbRes.data
-        const workshopIndices = [1, 3]
-        const videoIds = ['1', workshops[user.fst_opt], '2', workshops[user.snd_opt], '3', '4']
-        const extraVideoId =
-          user.course !== 'Medicina'
-            ? '6'
-            : user.college === 'Unipam'
-            ? '5'
-            : user.college === 'UFVJM'
-            ? '7'
-            : ''
-
-        const { day0TimeInMs } = getEventProps()
-        const videos = validateVideoPremieres(
-          videoIds.map((videoId, i) => {
-            const videoData = getVideoData(videoId)
-            return workshopIndices.includes(i)
-              ? { ...videoData, premiereDay: i.toString() }
-              : videoData
-          }),
-          day0TimeInMs
-        )
-        const currentVideo = videos.reverse().find(({ isPremiered }) => isPremiered)
 
         res.status(200).json({
-          user: {
-            ...user,
-            events: null,
-            videos,
-            extraVideo:
-              extraVideoId && validateVideoPremieres(getVideoData(extraVideoId), day0TimeInMs)[0],
-            currentVideo
-          }
+          user: {}
         })
       }
     } catch (error) {

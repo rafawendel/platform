@@ -24,7 +24,7 @@ export default function TypingForm({ title, fields, onSubmit }) {
   const retrieveFieldIndex = index => {
     if (index < fields.length - 1) setActiveFieldIndex(index)
   }
-  useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex)
+  useStorage('lastFieldIndex', activeFieldIndex, retrieveFieldIndex, true)
 
   useEffect(() => {
     setShowSubmitButton(activeFieldIndex >= fields.length - 1)
