@@ -178,9 +178,6 @@ export const primary = [
     onlyDisplayIf: ({ isNewbie }) => isNewbie === 'false', // a conditional element can never be the last element
     formType: 'number',
     min: 0,
-    validator: Yup.string().matches(/^[0-9]{1,2}$/, {
-      message: 'Um número inteiro'
-    }),
     placeholder: '0'
   },
   {
