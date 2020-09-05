@@ -5,7 +5,10 @@ import axios from 'axios'
 import TypingForm from '../components/Forms/TypingForm'
 import { getFormSchemaByName } from '../components/Forms/Subscription/utils'
 import { useStorage } from '../hooks/useStorage'
+import PlainModal from '../components/common/Modals/PlainModal'
+import { PrimaryActionButton } from '../components/Forms/Buttons'
 
+const countdown = time => () => new Promise(resolve => setTimeout(resolve, time))
 export default function Subscribe({ setLoading }) {
   const forms = [
     { title: 'Inscrição GEDAAM', id: 'primary' },
@@ -13,6 +16,38 @@ export default function Subscribe({ setLoading }) {
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
+  const router = useRouter()
+
+  const [showModal, setShowModal] = useState(false)
+  const [modalMessage, setModalMessage] = useState('Obrigado!')
+  const [showButton, setShowButton] = useState(false)
+
+  useEffect(() => {
+    const countdown5s = countdown(5000)
+    if (currentFormIndex >= forms.length) {
+      setModalMessage(
+        'Você já submeteu este formulário, gostaria de submeter novamente? Isto acarretará no anulamento da resposta anterior.'
+      )
+      setShowButton(true)
+      setShowModal(true)
+
+      countdown5s()
+        .then(() => {
+          setModalMessage('Fechando a página em 5 segundos...')
+          return countdown5s()
+        })
+        .then(() => {
+          router.push('/eventos')
+        })
+    }
+  }, [currentFormIndex, forms.length, router])
+
+  const clearState = () => {
+    setShowButton(false)
+    setShowModal(false)
+    window.sessionStorage.clear()
+    setCurrentFormIndex(0)
+  }
 
   const onSubmit = async (values, { setSubmitting }) => {
     setLoading(true)
@@ -25,11 +60,19 @@ export default function Subscribe({ setLoading }) {
       })
       .then(res => {
         const { message } = res.data
-        alert(message)
+        console.log(message)
+        setModalMessage('Obrigado!')
+        setShowModal(true)
         window.localStorage.clear()
-        setCurrentFormIndex(p => p + 1)
+        countdown(3000)().then(() => {
+          setShowModal(false)
+          setCurrentFormIndex(p => p + 1)
+        })
       })
-      .catch(e => alert('Os dados inseridos são inválidos'))
+      .catch(_e => {
+        setModalMessage('Os dados inseridos são inválidos')
+        setShowModal(true)
+      })
 
     setLoading(false)
     setSubmitting(false)
@@ -41,6 +84,14 @@ export default function Subscribe({ setLoading }) {
         <title>Inscreva-se no GEDAAM</title>
       </Head>
       <main className="bg-light text-darker w-full min-h-screen overflow-x-hidden overflow-y-auto py-20">
+        <PlainModal show={showModal} setActive={setShowModal}>
+          <h5 className="px-2 lg:px-6 py-8 text-center">{modalMessage}</h5>
+          {showButton && (
+            <PrimaryActionButton type="button" onClick={clearState}>
+              Reiniciar
+            </PrimaryActionButton>
+          )}
+        </PlainModal>
         {forms.map(
           (form, i) =>
             currentFormIndex === i && (
