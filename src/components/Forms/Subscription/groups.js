@@ -41,7 +41,7 @@ export const getGroupOptions = () => {
       lang: 'Português',
       preferenceByYear: { 1: [6], 2: [5], 3: [1], 4: [2, 3], 5: [4] },
       preferenceByCollege: { type: 'any', institutions: ['UFMG'] }
-    },
+    } /* 
     {
       id: '2020204',
       leaders: 'Mari (5°, UEMG) e Maryana Tomas (7°, UEMG)',
@@ -54,7 +54,7 @@ export const getGroupOptions = () => {
       lang: 'Português',
       preferenceByYear: { 1: [], 2: [1], 3: [2, 6], 4: [3, 4, 5], 5: [] },
       preferenceByCollege: { type: 'prefers', institutions: ['UEMG'] }
-    },
+    }, */,
     {
       id: '2020205',
       leaders: 'João Duarte (3°, UFMG) e Isa Professora (5°, Universidade de Rio Verde)',
