@@ -16,6 +16,8 @@ export default function Subscribe({ setLoading }) {
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
+  const [uid, setUid] = useState(Math.random().toString(36))
+  useStorage('uid', uid, setUid, true)
   const router = useRouter()
 
   const [showModal, setShowModal] = useState(false)
@@ -60,6 +62,7 @@ export default function Subscribe({ setLoading }) {
     await axios
       .post('/api/submit', {
         ...values,
+        id: uid,
         formId: forms[currentFormIndex].id
       })
       .then(res => {
