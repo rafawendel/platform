@@ -11,7 +11,7 @@ export default async (req, res) => {
       const isValid = await schema.isValid(payload)
       if (!isValid) throw new Error('Invalid data format')
 
-      const dbRes = await axios.post(DB_URL, { ...payload, id })
+      const dbRes = await axios.post(DB_URL, { ...payload, id, formId })
 
       if (dbRes.error) throw new Error(dbRes.error)
       if (dbRes.data.error) {
