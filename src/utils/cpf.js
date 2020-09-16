@@ -14,16 +14,14 @@ export function validateCPF(cpf) {
   if (repeatedDigitTester) throw new Error('A CPF cannot be a sequence of a single number')
 
   const parse10Or11As0 = num => (num === 10 || num === 11 ? 0 : num)
+  const cpfReducer = constant =>
+    (cpfDigits.reduce((sum, d, i) => sum + d * (constant - i), 0) * 10) % 11
 
   const secondActualValidator = cpfDigits.pop()
-  const secondValidator = parse10Or11As0(
-    (cpfDigits.reduce((sum, d, i) => sum + d * (11 - i), 0) * 10) % 11
-  )
+  const secondValidator = parse10Or11As0(cpfReducer(11))
 
   const firstActualValidator = cpfDigits.pop()
-  const firstValidator = parse10Or11As0(
-    (cpfDigits.reduce((sum, d, i) => sum + d * (10 - i), 0) * 10) % 11
-  )
+  const firstValidator = parse10Or11As0(cpfReducer(10))
 
   if (firstActualValidator !== firstValidator)
     return "Invalid CPF, the first validator doesn't add up"

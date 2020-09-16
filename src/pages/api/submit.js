@@ -5,7 +5,6 @@ const DB_URL = `https://script.google.com/macros/s/${process.env.DB_ID}/exec`
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
-      res.status(403).json({ message: 'inscrições encerradas' })
       const { formId, id, ...payload } = req.body
       const schema = getValidationSchema(getFormSchemaByName(formId))
 

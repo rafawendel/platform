@@ -155,7 +155,7 @@ export const primary = [
       label: `${i + 1}° período`,
       value: `${i + 1}`
     })),
-    initialValue: '1° período',
+    initialValue: '1',
     placeholder: 'Seu período',
     validator: Yup.string().required()
   },

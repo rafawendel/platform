@@ -72,6 +72,11 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'no-nested-ternary': 'off',
+    'no-unused-vars': ['error', {
+      // 'vars': 'local',
+      'argsIgnorePattern': '^_',
+      /* 'varsIgnorePattern': '^[A-Z0-9_]*$' */
+    }],
     // 'react/jsx-wrap-multilines': ['error', {'declaration': false, 'assignment': false}],
     // 'indent': ['error', 2],
     'arrow-parens': ['error', 'as-needed'],
