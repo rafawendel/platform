@@ -21,6 +21,15 @@ export default async (req, res) => {
         // })
 
         GROUPS = [...dbGroups]
+      } else {
+        // makes an asynchronous update
+        axios
+          .get(DB_URL)
+          .catch(err => console.error(err))
+          .then(({ data: { groups: dbGroups } }) => {
+            console.log('Updating groups asynchronously...')
+            GROUPS = [...dbGroups]
+          })
       }
       const groupIds = GROUPS.map(g => String(g.id))
       const groups =
