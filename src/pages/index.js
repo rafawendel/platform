@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div />
+  return <p className="w-screen text-center text-4xl h-screen align-middle">Em breve</p>
 }

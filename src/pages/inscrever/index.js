@@ -16,7 +16,7 @@ export default function Subscribe({ setLoading }) {
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
-  const [uid, setUid] = useState(Math.random().toString(36))
+  const [uid, setUid] = useState(Math.random().toString(36).substring(2))
   useStorage('uid', uid, setUid, true)
   const router = useRouter()
 

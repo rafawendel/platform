@@ -1,13 +1,13 @@
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useCallback, useEffect } from 'react'
-import { useFormikContext, useField } from 'formik'
+import { useFormikContext } from 'formik'
 import { ErrorMessage } from '../Messages'
 import List from './DroppableList'
 import { listUpdateHandler, moveInsideList, moveBetweenLists } from './utils'
 
 export function DragAndDrop({ options, meta, helper }) {
   const [lists, setLists] = useState(options.lists)
-  const { groups } = options
+  const [groups, setGroups] = useState(options.groups)
   const { values } = useFormikContext()
 
   // Updates lists according to previous form data

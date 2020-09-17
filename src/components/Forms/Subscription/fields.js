@@ -1,7 +1,14 @@
 import * as Yup from 'yup'
 import { FormTypes } from '../TypingForm/FormField'
 import { validateCPFAsync } from '../../../utils/cpf'
-import { getGroups } from './groups'
+import { getLists } from './groups'
+
+const genMarksArray = (begin, end, step, withLabel) =>
+  [...Array(end / step).keys()].map(i => ({
+    value: i * step + begin,
+    label: withLabel && `${i * step + begin}`
+  }))
+const array1To10Marks = genMarksArray(1, 10, 1, true)
 
 export const primary = [
   {
@@ -227,20 +234,13 @@ export const primary = [
   {
     type: FormTypes.DRAG_AND_DROP,
     name: 'selectedGroup',
-    options: getGroups(),
+    options: getLists(),
     validator: Yup.array()
       .min(1, 'Selecione ao menos uma opção')
       .max(2)
       .required('Selecione ao menos uma opção')
   }
 ]
-
-const genMarksArray = (begin, end, step, withLabel) =>
-  [...Array(end / step).keys()].map(i => ({
-    value: i * step + begin,
-    label: withLabel && `${i * step + begin}`
-  }))
-const array1To10Marks = genMarksArray(1, 10, 1, true)
 
 export const research = [
   {
