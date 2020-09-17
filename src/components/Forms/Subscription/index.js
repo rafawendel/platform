@@ -2,21 +2,21 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import axios from 'axios'
-import TypingForm from '../../components/Forms/TypingForm'
-import { getFormSchemaByName } from '../../components/Forms/Subscription/utils'
-import { useStorage } from '../../hooks/useStorage'
-import PlainModal from '../../components/common/Modals/PlainModal'
-import { PrimaryActionButton } from '../../components/Forms/Buttons'
+import TypingForm from '../TypingForm'
+import { getFormSchemaByName } from './utils'
+import { useStorage } from '../../../hooks/useStorage'
+import PlainModal from '../../common/Modals/PlainModal'
+import { PrimaryActionButton } from '../Buttons'
 
 const countdown = time => () => new Promise(resolve => setTimeout(resolve, time))
-export default function Subscribe({ setLoading }) {
+export default function SubscribeForm({ setLoading, ...props }) {
   const forms = [
     { title: 'Inscrição GEDAAM', id: 'primary' },
     { title: 'Motirõ GEDAAM', id: 'research' }
   ]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
-  const [uid, setUid] = useState(Math.random().toString(36))
+  const [uid, setUid] = useState(Math.random().toString(36).substring(2))
   useStorage('uid', uid, setUid, true)
   const router = useRouter()
 
@@ -108,6 +108,7 @@ export default function Subscribe({ setLoading }) {
                 fields={getFormSchemaByName(form.id)}
                 title={form.title}
                 onSubmit={onSubmit}
+                {...props}
               />
             )
         )}

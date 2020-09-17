@@ -1,14 +1,40 @@
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useCallback, useEffect } from 'react'
 import { useFormikContext } from 'formik'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 import { ErrorMessage } from '../Messages'
 import List from './DroppableList'
+import { ListType, GroupType } from '../Subscription/groups'
 import { listUpdateHandler, moveInsideList, moveBetweenLists } from './utils'
 
-export function DragAndDrop({ options, meta, helper }) {
+export function DragAndDrop({ meta, helper, options = { lists: ListType, groups: GroupType } }) {
   const [lists, setLists] = useState(options.lists)
   const [groups, setGroups] = useState(options.groups)
   const { values } = useFormikContext()
+
+  const router = useRouter()
+  const { gid } = router.query
+
+  // fetch groups from server and hydrate lists
+  useEffect(() => {
+    axios
+      .get(`/api/groups?gid=${gid}`)
+      .catch(err => {
+        console.error(err)
+        return err
+      })
+      .then(({ data: { groups: gps } = { groups: [] } }) => {
+        setGroups(gps)
+        setLists(prevLists => ({
+          ...prevLists,
+          unselected: {
+            ...prevLists.unselected,
+            groupIds: gps.map(g => g.id)
+          }
+        }))
+      })
+  }, [])
 
   // Updates lists according to previous form data
   useEffect(() => {

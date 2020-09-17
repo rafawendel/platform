@@ -228,7 +228,11 @@ export const primary = [
     innerHTML: `Agora você poderá se inscrever em um grupo do GEDAAM.
     <br/>Esteja atenta, só é possível selecionar <strong>2 opções</strong>, que devem ser posicionadas por <strong>prioridade</strong>.
     <br/><br/>Para fazer isso, basta arrastar os cartões pela borda esquerda até a lista no topo.
-    <br/><br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
+    <br/><br/>
+    <div style="display: flex; justify-content: center;">
+    <img src="https://lh3.googleusercontent.com/pw/ACtC-3cKO-d6V6NySd3FbBSFltNPASY2vrqcDD39xEUABEax792xBEdzvgqZuvTNlPlZ-Zl_TmzrrvJdHeWJFYoQ4BbnA81eRtnYUVmzjPam-bl-qeuAjlhpiTr1sFacqkbBnxD8n5y5DCgRoL6HpeO6zdNdeA=w966-h456-no" />
+    </div>
+    <br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
   `
   },
   {

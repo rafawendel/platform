@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { FieldElement } from './FieldElement'
 import { useStorage } from '../../../hooks/useStorage'
 
-export const FieldWrapper = React.memo(function FieldWrapper({ formProps, formType, ...props }) {
+export const FieldWrapper = function FieldWrapper({ formProps, formType, ...props }) {
   const { name, helper, meta } = formProps
   useStorage(name, meta.value, helper.setValue)
 
@@ -20,4 +20,4 @@ export const FieldWrapper = React.memo(function FieldWrapper({ formProps, formTy
       <FieldElement formProps={formProps} type={formType} {...props} />
     </div>
   )
-})
+}

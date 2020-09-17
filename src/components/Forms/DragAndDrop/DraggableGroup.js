@@ -31,7 +31,7 @@ export default function Group({ group, index, isOrdered }) {
   return (
     <div className="my-2">
       <GroupModal show={showModal} setActive={setShowModal} {...group} />
-      <Draggable draggableId={group.id} index={index}>
+      <Draggable draggableId={String(group.id)} index={index}>
         {(provided, snapshot) => (
           <>
             <div

@@ -9,12 +9,14 @@ export default function GroupModal({
   startsAt,
   endsAt,
   preferenceByYear,
+  openVacancies,
   show,
   setActive
 }) {
   const preference = (() => {
+    if (!preferenceByYear) return ''
     const prefers =
-      preferenceByYear[5].length >= 3 || preferenceByYear[4].length >= 3
+      preferenceByYear[5].length >= 3
         ? preferenceByYear[5]
         : [...preferenceByYear[5], ...preferenceByYear[4]]
 
@@ -28,7 +30,15 @@ export default function GroupModal({
   })()
 
   return (
-    <PlainModal title={title} subtitle={leaders} show={show} setActive={setActive}>
+    <PlainModal
+      title={title}
+      subtitle={`${leaders}${openVacancies}`}
+      show={show}
+      setActive={setActive}
+    >
+      <div className="mb-3">
+        <span>{+openVacancies === Infinity ? 'Ilimitadas' : openVacancies} vagas</span>
+      </div>
       <div className="mb-3">
         <h6>Horários</h6>
         <p>
