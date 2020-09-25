@@ -10,11 +10,18 @@ export default async (req, res) => {
     } = req
     // const schema = Yup.array().of(Yup.object(GroupType))
     // const areCachedGroupsValid = await schema.isValid(GROUPS)
+
+    const dbRequestConfig = {
+      params: {
+        operation: 'groups'
+      }
+    }
+
     try {
       if (!GROUPS[0]) {
         const {
           data: { groups: dbGroups }
-        } = await axios.get(DB_URL)
+        } = await axios.get(DB_URL, dbRequestConfig)
 
         // await schema.isValid(groups).then(isValid => {
         //   if (!isValid) throw new Error('Invalid data format')
@@ -24,7 +31,7 @@ export default async (req, res) => {
       } else {
         // makes an asynchronous update
         axios
-          .get(DB_URL)
+          .get(DB_URL, dbRequestConfig)
           .catch(err => console.error(err))
           .then(({ data: { groups: dbGroups } }) => {
             console.log('Updating groups asynchronously...')

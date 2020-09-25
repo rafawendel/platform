@@ -81,6 +81,14 @@ module.exports = {
     // 'indent': ['error', 2],
     'arrow-parens': ['error', 'as-needed'],
     'no-console': 'off',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'max-len': [
+      'error',
+      {
+        code: 100,
+        ignoreComments: true,
+        ignoreStrings: true
+      }
+    ]
   }
 }

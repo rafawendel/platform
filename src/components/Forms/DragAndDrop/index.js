@@ -19,11 +19,8 @@ export function DragAndDrop({ meta, helper, options = { lists: ListType, groups:
   // fetch groups from server and hydrate lists
   useEffect(() => {
     axios
-      .get(`/api/groups?gid=${gid}`)
-      .catch(err => {
-        console.error(err)
-        return err
-      })
+      .get('/api/groups', { params: { gid } })
+      .catch(err => console.error(err))
       .then(({ data: { groups: gps } = { groups: [] } }) => {
         setGroups(gps)
         setLists(prevLists => ({
