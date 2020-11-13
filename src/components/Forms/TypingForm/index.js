@@ -22,7 +22,7 @@ export default function TypingForm({ title, currentFormIndex, id, fields, onSubm
   const buttonProps = { showSubmitButton, showRecedeButton: activeFieldIndex > 0 }
 
   const retrieveFieldIndex = index => {
-    if (index < fields.length - 1) return
+    if (index > fields.length - 1) return
     if (currentFormIndex !== id) return
     setActiveFieldIndex(index)
   }

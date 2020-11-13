@@ -83,7 +83,7 @@ export const primary = [
           .then(v => v === 'Valid CPF')
       )
       .required('Não pode ser deixado em branco'),
-    placeholder: '11111111111'
+    placeholder: '12312312300'
   },
   {
     type: FormTypes.INPUT,
@@ -1294,19 +1294,36 @@ export const research2 = [
     `
   },
   {
-    type: FormTypes.CHECKBOX,
-    name: 'ingressoFaculdade',
-    label: 'Qual foi a sua forma de ingresso na faculdade?',
-    description: 'Selecione todas as opções que se aplicam',
-    options: [
-      { label: 'Ampla concorrência', value: 'ampla' },
-      { label: 'Cota para estudante de escola pública', value: 'cota_escola' },
-      { label: 'Cota para renda mensal menor que 1,5 salários', value: 'cota_renda' },
-      { label: 'Cota para negros, pardos, indígenas e deficientes', value: 'cota_racial' },
-      { label: 'Fies / Prouni', value: 'fies_prouni' },
-      { label: 'Transferência', value: 'transfer' }
-    ],
-    initialValue: []
+    type: FormTypes.INPUT,
+    name: 'register',
+    label: 'Qual é o seu Registro Acadêmico?',
+    description: 'Seu número de matrícula, sem pontos ou traços',
+    formType: 'text',
+    inputMode: 'numeric',
+    validator: Yup.string()
+      .matches(/^[0-9]{4,20}$/, {
+        message: 'Um número inteiro, sem pontos ou traços, entre 4 e 20 caracteres'
+      })
+      .required('Não pode ser deixado em branco'),
+    placeholder: ''
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'cpf',
+    label: 'Qual é o seu CPF?',
+    description: 'Será usado para certificação',
+    formType: 'text',
+    validator: Yup.string()
+      .matches(/^[0-9]{11}$/, {
+        message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
+      })
+      .test('CPF válido', 'O CPF inserido é inválido', async cpf =>
+        validateCPFAsync(cpf)
+          .catch(() => false)
+          .then(v => v === 'Valid CPF')
+      )
+      .required('Não pode ser deixado em branco'),
+    placeholder: '12312312300'
   },
   {
     type: FormTypes.INPUT,
@@ -1314,57 +1331,6 @@ export const research2 = [
     label: 'Qual é a sua data de nascimento?',
     formType: 'date',
     validator: Yup.mixed().required('Não pode ser deixado em branco')
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'color',
-    label: 'Com qual cor você se identifica?',
-    options: [
-      { label: 'Branca', value: 'branca' },
-      { label: 'Negra', value: 'negra' },
-      { label: 'Parda', value: 'parda' },
-      { label: 'Outras', value: 'outra' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'sexualOrientation',
-    label: 'Qual a sua orientação afetivo-sexual?',
-    options: [
-      { label: 'Bissexual', value: 'bi' },
-      { label: 'Heterossexual', value: 'hetero' },
-      { label: 'Homossexual', value: 'homo' },
-      { label: 'Assexual', value: 'assex' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'income',
-    label: 'Qual a renda mensal per capita sua família?',
-    description: 'Uma aproximação de quanto em salários mínimos por pessoa a sua família produz',
-    options: [
-      { label: 'Menos de um salário mínimo (R$ 1.045,00)', value: '<1' },
-      { label: 'Entre 1 e 3 salários (R$ 1.045,00 até R$3.135,00)', value: '1-3' },
-      { label: 'Entre 3 e 5 salários (R$3.136,00 até R$5.225,00)', value: '3-5' },
-      { label: 'Maior que 5 salários (R$5.225,00)', value: '>5' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'city',
-    label: 'De qual região você vem?',
-    description: 'Sua região de origem',
-    options: [
-      { label: 'Belo Horizonte', value: 'bh' },
-      { label: 'Região metropolitana de Belo Horizonte', value: 'grande_bh' },
-      { label: 'Minas Gerais', value: 'mg' },
-      { label: 'Outro estado, na Região Sudeste', value: 'se' },
-      { label: 'Outra', value: 'outro' }
-    ],
-    validator: Yup.mixed().required()
   },
   {
     type: FormTypes.CHECKBOX,
@@ -1428,7 +1394,7 @@ export const research2 = [
   },
   {
     title: 'Expectativas',
-    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, indique <strong>quais contribuíram</strong.> para a sua inscrição e o <strong>quanto</strong> foi a contribuição. 
+    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, avalie se <strong>foram atendidas</strong> 
     <br/>Marque sua resposta em uma escala de (1) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
     <p>Não existem respostas certas ou erradas.
     Suas respostas são confidenciais.</p>`
