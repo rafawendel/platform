@@ -10,7 +10,7 @@ import { PrimaryActionButton } from '../components/Forms/Buttons'
 
 const countdown = time => () => new Promise(resolve => setTimeout(resolve, time))
 export default function Motiro({ setLoading, ...props }) {
-  const forms = [{ title: 'Motirõ GEDAAM', id: 'research' }]
+  const forms = [{ title: 'Motirõ GEDAAM', id: 'research2' }]
   const [currentFormIndex, setCurrentFormIndex] = useState(0)
   useStorage('lastFormIndex', currentFormIndex, setCurrentFormIndex, true)
   const [uid, setUid] = useState(Math.random().toString(36).substring(2))
