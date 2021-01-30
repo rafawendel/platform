@@ -88,7 +88,7 @@ export const intro = [
       { label: 'Pomodoro', value: 'Pomodoro' },
       { label: 'Mapas mentais', value: 'Mapas mentais' },
       { label: 'Resumos', value: 'Resumos' },
-      { label: 'Apenas leitura', value: 'Apenas leitura' },
+      { label: 'Leitura de materiais', value: 'Leitura de materiais' },
       { label: 'Esquemas', value: ' Esquemas' },
       { label: 'Método de anotação de Cornell', value: 'Método de anotação de Cornell' },
       { label: 'Estudo em grupo', value: 'Estudo em grupo' },
@@ -895,6 +895,97 @@ export const socialSupport = [
   {
     type: FormTypes.RADIO,
     name: 'socialSupport1',
+    label: 'Os amigos não me procuram tantas vezes quantas eu gostaria',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport2',
+    label: 'Estou satisfeito(a) com a quantidade de amigos que tenho',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport3',
+    label: 'Estou satisfeito(a) com a quantidade de tempo que passo com os meus amigos',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport4',
+    label: 'Estou satisfeito(a) com as atividades e coisas que faço com o meu grupo de amigos',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport5',
+    label: 'Estou satisfeito(a) com o tipo de amigos que tenho',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport6',
+    label: 'Por vezes sinto-me só no mundo e sem apoio',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport7',
+    label: 'Quando preciso desabafar com alguém encontro facilmente amigos com quem o fazer',
+    options: [
+      { label: 'Concordo totalmente', value: '5' },
+      { label: 'Concordo na maior parte', value: '4' },
+      { label: 'Não concordo, nem discordo', value: '3' },
+      { label: 'Discordo na maior parte', value: '2' },
+      { label: 'Discordo totalmente', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'socialSupport8',
     label:
       'Mesmo nas situações mais embaraçosas, se precisar de apoio de emergência tenho várias pessoas a quem posso recorrer',
     options: [
@@ -908,7 +999,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport2',
+    name: 'socialSupport9',
     label:
       'Às vezes sinto falta de alguém verdadeiramente íntimo que me compreenda e com quem possa desabafar sobre coisas íntimas',
     options: [
@@ -922,7 +1013,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport3',
+    name: 'socialSupport10',
     label: 'Estou satisfeito(a) com a forma como me relaciono com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -935,7 +1026,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport4',
+    name: 'socialSupport11',
     label: 'Estou satisfeito(a) com a quantidade de tempo que passo com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -948,7 +1039,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport5',
+    name: 'socialSupport12',
     label: 'Estou satisfeito(a) com o que faço em conjunto com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -961,7 +1052,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport6',
+    name: 'socialSupport13',
     label: 'Não saio com amigos tantas vezes quantas eu gostaria',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -974,7 +1065,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport7',
+    name: 'socialSupport14',
     label: 'Sinto falta de atividades sociais que me satisfaçam',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -987,7 +1078,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport8',
+    name: 'socialSupport15',
     label: 'Gostava de participar mais em atividades de organizações',
     description: 'Ex. clubes desportivos, escoteiros, partidos políticos, etc.',
     options: [
