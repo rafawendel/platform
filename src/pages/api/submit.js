@@ -1,15 +1,15 @@
 import axios from 'axios'
-import { getValidationSchema, getFormSchemaByName } from '../../components/Forms/Subscription/utils'
+// import { getValidationSchema, getFormSchemaByName } from '../../components/Forms/Subscription/utils'
 
 const DB_URL = `https://script.google.com/macros/s/${process.env.DB_ID}/exec`
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
       const { formId, id, ...payload } = req.body
-      const schema = getValidationSchema(getFormSchemaByName(formId))
+      // const schema = getValidationSchema(getFormSchemaByName(formId))
 
-      const isValid = await schema.isValid(payload)
-      if (!isValid) throw new Error('Invalid data format')
+      // const isValid = await schema.isValid(payload)
+      // if (!isValid) throw new Error('Invalid data format')
 
       const dbRes = await axios.post(DB_URL, { ...payload, id, formId, operation: 'submit' })
 
