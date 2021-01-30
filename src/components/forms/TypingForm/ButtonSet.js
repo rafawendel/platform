@@ -12,13 +12,13 @@ export const ButtonSet = ({
   value,
   error
 }) => {
+  const shouldButtonBeDisabled = isTransition
+    ? false
+    : value === null || value === undefined || value === '' || error
   return (
     <div className="flex justify-between items-center mt-3 w-full">
       {showSubmitButton ? (
-        <PrimaryActionButton
-          type="submit"
-          disabled={isTransition ? false : isSubmitting || !value || error}
-        >
+        <PrimaryActionButton type="submit" disabled={shouldButtonBeDisabled || isSubmitting}>
           Enviar
         </PrimaryActionButton>
       ) : (
@@ -27,7 +27,7 @@ export const ButtonSet = ({
             onClick={advanceForm}
             clickOnKey="Enter"
             isActive={isActive}
-            disabled={isTransition ? false : !value || error}
+            disabled={shouldButtonBeDisabled}
           >
             Ok
           </PrimaryActionButton>
