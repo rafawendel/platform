@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { ErrorMessage } from '../Messages'
 import List from './DroppableList'
-import { ListType, GroupType } from '../Subscription/groups'
+import { ListType, GroupType } from '../../../lib/groups'
 import { listUpdateHandler, moveInsideList, moveBetweenLists } from './utils'
 
 export function DragAndDrop({ meta, helper, options = { lists: ListType, groups: GroupType } }) {

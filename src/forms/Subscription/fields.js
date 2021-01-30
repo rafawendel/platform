@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
-import { FormTypes } from '../TypingForm/FormField'
-import { validateCPFAsync } from '../../../utils/cpf'
-import { getLists } from './groups'
+import { FormTypes } from '../../components/forms/TypingForm/FormField'
+import { validateCPFAsync } from '../../utils/cpf'
+import { getLists } from '../../lib/groups'
 
 const genMarksArray = (begin, end, step, withLabel) =>
   [...Array(end / step).keys()].map(i => ({

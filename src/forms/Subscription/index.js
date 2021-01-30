@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import axios from 'axios'
-import TypingForm from '../TypingForm'
+import TypingForm from '../../components/forms/TypingForm'
 import { getFormSchemaByName } from './utils'
-import { useStorage } from '../../../hooks/useStorage'
-import PlainModal from '../../common/Modals/PlainModal'
-import { PrimaryActionButton } from '../Buttons'
+import { useStorage } from '../../hooks/useStorage'
+import PlainModal from '../../components/common/Modals/PlainModal'
+import { PrimaryActionButton } from '../../components/forms/Buttons'
 
 const countdown = time => () => new Promise(resolve => setTimeout(resolve, time))
-export default function SubscribeForm({ setLoading, ...props }) {
+export default function SubscriptionForm({ setLoading, ...props }) {
   const forms = [
     { title: 'Inscrição GEDAAM', id: 'primary' },
     { title: 'Motirõ GEDAAM', id: 'research' }
