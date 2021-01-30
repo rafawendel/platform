@@ -1,8 +1,8 @@
 import { Formik, Form } from 'formik'
 import { useState, useCallback, useEffect } from 'react'
 import { FormField } from './FormField'
-import { getInitialValues, getValidationSchema } from './utils'
 import { useStorage } from '../../../hooks/useStorage'
+import { getInitialValues, getValidationSchema } from '../../../lib/forms'
 
 export default function TypingForm({ title, currentFormIndex, id, fields, onSubmit, ...props }) {
   const [activeFieldIndex, setActiveFieldIndex] = useState(0)
