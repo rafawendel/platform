@@ -65,6 +65,6 @@
     "stylelint": "^13.5.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^3.0.0",
-    "tailwindcss": "^1.6.0"
+    "tailwindcss": "^2.0.2"
   }
 }
