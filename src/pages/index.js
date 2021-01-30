@@ -5,8 +5,9 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/motiro')
+    router.push('/inscrever')
   }, [])
 
-  return <p className="w-screen text-center text-4xl h-screen align-middle">Em breve</p>
+  return <div />
+  // <p className="w-screen text-center text-4xl h-screen align-middle">Em breve</p>
 }
