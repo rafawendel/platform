@@ -1,5 +1,6 @@
 import Slider from '@material-ui/core/Slider'
 import { makeStyles } from '@material-ui/core/styles'
+import { useEffect } from 'react'
 
 const useStyles = makeStyles({
   root: {
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
 })
 
 function valuetext(value) {
-  return `${value}°C`
+  return `${value}`
 }
 
 export function DiscreteSlider({ options, helper, ...props }) {
@@ -17,6 +18,10 @@ export function DiscreteSlider({ options, helper, ...props }) {
     marks[0].label = minLabel
     marks[marks.length - 1].label = maxLabel
   }
+
+  useEffect(() => {
+    document.querySelector('.MuiSlider-thumb').focus()
+  }, [])
 
   const classes = useStyles()
   return (
