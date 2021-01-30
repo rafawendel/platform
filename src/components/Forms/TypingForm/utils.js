@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import * as formFields from './fields'
+import * as formFields from '../../../forms/Subscription/fields'
 
 export const getInitialValues = fields => {
   return fields.reduce((values, { name, initialValue }) => {
