@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useStorage = (key, value, setter, local = false) => {
+export const useStorage = (key, value, setter, local = true) => {
   const [isFirstRender, setFirstRender] = useState(true)
   useEffect(() => {
     const storage = local ? window.localStorage : window.sessionStorage
