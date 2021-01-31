@@ -2,12 +2,11 @@ import * as Yup from 'yup'
 import { FormTypes } from '../../components/forms/TypingForm/FormField'
 import { validateCPFAsync } from '../../utils/cpf'
 
-const genMarksArray = (begin, end, step, withLabel) =>
+const genMarksArray = (begin, end, step = 1, withLabel = true) =>
   [...Array(end / step).keys()].map(i => ({
     value: i * step + begin,
     label: withLabel && `${i * step + begin}`
   }))
-const array1To10Marks = genMarksArray(1, 10, 1, true)
 
 export const intro = [
   {
@@ -140,184 +139,7 @@ export const intro = [
   }
 ]
 
-export const expectations = [
-  {
-    title: 'Expectativas',
-    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, avalie se <strong>foram atendidas</strong> 
-    <br/>Marque sua resposta em uma escala de (1) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
-    <p>Não existem respostas certas ou erradas.
-    Suas respostas são confidenciais.</p>`
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations1',
-    label: 'Possibilidade de aquisição de novos saberes a partir da experiência do outro',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations2',
-    label: 'Fazer amizades',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations3',
-    label: 'Adquirir conhecimento',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations4',
-    label: 'Fazer networking',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations5',
-    label: 'Preparação para o mercado de trabalho',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations6',
-    label: 'Melhorar o desempenho dentro da faculdade',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations7',
-    label: 'Melhorar o desempenho fora da faculdade',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations8',
-    label: 'Passar na residência',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations9',
-    label: 'Ter mais chances de aprender',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations10',
-    label: 'Certificação',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations11',
-    label: 'Auxílio à saúde mental',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations12',
-    label: 'Aprimorar o currículo',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  },
-  {
-    type: FormTypes.RADIO,
-    name: 'expectations13',
-    label: 'Desenvolvimento social e pessoal',
-    options: [
-      { label: 'Contribuiu muito', value: '5' },
-      { label: 'Contribuiu na maior parte', value: '4' },
-      { label: 'Contribuiu parcialmente', value: '3' },
-      { label: 'Contribuiu pouco', value: '2' },
-      { label: 'Não contribuiu', value: '1' }
-    ],
-    validator: Yup.mixed().required()
-  }
-]
+const array1To10Marks = genMarksArray(1, 10)
 
 export const selfEfficacy = [
   {
@@ -894,7 +716,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport1',
+    name: 'socialSupport',
     label: 'Os amigos não me procuram tantas vezes quantas eu gostaria',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -907,7 +729,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport2',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com a quantidade de amigos que tenho',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -920,7 +742,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport3',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com a quantidade de tempo que passo com os meus amigos',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -933,7 +755,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport4',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com as atividades e coisas que faço com o meu grupo de amigos',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -946,7 +768,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport5',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com o tipo de amigos que tenho',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -959,7 +781,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport6',
+    name: 'socialSupport',
     label: 'Por vezes sinto-me só no mundo e sem apoio',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -972,7 +794,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport7',
+    name: 'socialSupport',
     label: 'Quando preciso desabafar com alguém encontro facilmente amigos com quem o fazer',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -985,7 +807,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport8',
+    name: 'socialSupport',
     label:
       'Mesmo nas situações mais embaraçosas, se precisar de apoio de emergência tenho várias pessoas a quem posso recorrer',
     options: [
@@ -999,7 +821,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport9',
+    name: 'socialSupport',
     label:
       'Às vezes sinto falta de alguém verdadeiramente íntimo que me compreenda e com quem possa desabafar sobre coisas íntimas',
     options: [
@@ -1013,7 +835,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport10',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com a forma como me relaciono com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -1026,7 +848,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport11',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com a quantidade de tempo que passo com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -1039,7 +861,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport12',
+    name: 'socialSupport',
     label: 'Estou satisfeito(a) com o que faço em conjunto com a minha família',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -1052,7 +874,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport13',
+    name: 'socialSupport',
     label: 'Não saio com amigos tantas vezes quantas eu gostaria',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -1065,7 +887,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport14',
+    name: 'socialSupport',
     label: 'Sinto falta de atividades sociais que me satisfaçam',
     options: [
       { label: 'Concordo totalmente', value: '5' },
@@ -1078,7 +900,7 @@ export const socialSupport = [
   },
   {
     type: FormTypes.RADIO,
-    name: 'socialSupport15',
+    name: 'socialSupport',
     label: 'Gostava de participar mais em atividades de organizações',
     description: 'Ex. clubes desportivos, escoteiros, partidos políticos, etc.',
     options: [
@@ -1088,6 +910,930 @@ export const socialSupport = [
       { label: 'Discordo na maior parte', value: '2' },
       { label: 'Discordo totalmente', value: '1' }
     ],
+    validator: Yup.mixed().required()
+  }
+]
+
+export const expectations = [
+  {
+    title: 'Expectativas',
+    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, avalie se <strong>foram atendidas</strong> 
+    <br/>Marque sua resposta em uma escala de (1) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
+    <p>Não existem respostas certas ou erradas.
+    Suas respostas são confidenciais.</p>`
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations1',
+    label: 'Possibilidade de aquisição de novos saberes a partir da experiência do outro',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations2',
+    label: 'Fazer amizades',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations3',
+    label: 'Adquirir conhecimento',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations4',
+    label: 'Fazer networking',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations5',
+    label: 'Preparação para o mercado de trabalho',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations6',
+    label: 'Melhorar o desempenho dentro da faculdade',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations7',
+    label: 'Melhorar o desempenho fora da faculdade',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations8',
+    label: 'Passar na residência',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations9',
+    label: 'Ter mais chances de aprender',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations10',
+    label: 'Certificação',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations11',
+    label: 'Auxílio à saúde mental',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations12',
+    label: 'Aprimorar o currículo',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'expectations13',
+    label: 'Desenvolvimento social e pessoal',
+    options: [
+      { label: 'Contribuiu muito', value: '5' },
+      { label: 'Contribuiu na maior parte', value: '4' },
+      { label: 'Contribuiu parcialmente', value: '3' },
+      { label: 'Contribuiu pouco', value: '2' },
+      { label: 'Não contribuiu', value: '1' }
+    ],
+    validator: Yup.mixed().required()
+  }
+]
+
+export const qualityOfLife = [
+  {
+    title: 'Qualidade de vida',
+    innerHTML: `As questões a seguir se referem a sua qualidade de vida. Por favor, tenha em mente seus valores, aspirações, prazeres e preocupações. Nós estamos perguntando o que você acha de sua vida, tomando como referência as <strong>duas últimas semanas</strong>. Por favor, leia cada questão e marque aquela que lhe parece a melhor resposta.`
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife24',
+    label: 'Como você avalia sua qualidade de vida?',
+    options: [
+      { label: 'Muito ruim', value: '1' },
+      { label: 'Ruim', value: '2' },
+      { label: 'Nem ruim nem boa', value: '3' },
+      { label: 'Boa', value: '4' },
+      { label: 'Muito boa', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife25',
+    label: 'Quão satisfeito(a) você está com sua saúde?',
+    options: [
+      { label: 'Muito satisfeito', value: '1' },
+      { label: 'Satisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Insatisfeito', value: '4' },
+      { label: 'Muito insatisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife1',
+    label: 'Em que medida você acha que sua dor (física) o(a) impede de fazer o que precisa?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife2',
+    label: 'O quanto você precisa de algum tratamento médico para levar sua vida diária?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife3',
+    label: 'O quanto você aproveita a vida?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife4',
+    label: 'Em que medida você acha que a sua vida tem sentido?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife5',
+    label: 'O quanto você consegue se concentrar?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife6',
+    label: 'Quão seguro(a) você se sente em sua vida diária?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife7',
+    label: 'Quão saudável é o seu ambiente físico (clima, barulho, poluição, atrativos)?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife8',
+    label: 'Você tem energia suficiente para seu dia-a-dia?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Médio', value: '3' },
+      { label: 'Muito', value: '4' },
+      { label: 'Completamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife9',
+    label: 'Você é capaz de aceitar sua aparência física?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Médio', value: '3' },
+      { label: 'Muito', value: '4' },
+      { label: 'Completamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife10',
+    label: 'Você tem dinheiro suficiente para satisfazer suas necessidades?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Médio', value: '3' },
+      { label: 'Muito', value: '4' },
+      { label: 'Completamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife11',
+    label: 'Quão disponíveis para você estão as informações que precisa no seu dia-a-dia?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Médio', value: '3' },
+      { label: 'Muito', value: '4' },
+      { label: 'Completamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife12',
+    label: 'Em que medida você tem oportunidades de atividade de lazer?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Médio', value: '3' },
+      { label: 'Muito', value: '4' },
+      { label: 'Completamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife13',
+    label: 'Quão bem você é capaz de se locomover?',
+    options: [
+      { label: 'Muito ruim', value: '1' },
+      { label: 'Ruim', value: '2' },
+      { label: 'Nem ruim nem bom', value: '3' },
+      { label: 'Bom', value: '4' },
+      { label: 'Muito bom', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife14',
+    label: 'Quão satisfeito(a) você está com o seu sono?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife15',
+    label:
+      'Quão satisfeito(a) você está com sua capacidade de desempenhar as atividades do seu dia-a-dia?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife16',
+    label: 'Quão satisfeito(a) você está com sua capacidade para o trabalho?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife17',
+    label: 'Quão satisfeito(a) você está consigo mesmo?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife18',
+    label:
+      'Quão satisfeito(a) você está com suas relações pessoais (amigos, parentes, conhecidos, colegas)?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife19',
+    label: 'Quão satisfeito(a) você está com sua vida sexual?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife20',
+    label: 'Quão satisfeito(a) você está com o apoio que recebe de seus amigos?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife21',
+    label: 'Quão satisfeito(a) você está com as condições do local onde mora?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife22',
+    label: 'Quão satisfeito(a) você está com o seu acesso aos serviços de saúde?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'qualityOfLife23',
+    label: 'Quão satisfeito(a) você está com o seu meio de transporte?',
+    options: [
+      { label: 'Muito insatisfeito', value: '1' },
+      { label: 'Insatisfeito', value: '2' },
+      { label: 'Nem satisfeito nem insatisfeito', value: '3' },
+      { label: 'Satisfeito', value: '4' },
+      { label: 'Muito satisfeito', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  }
+]
+
+const array1To7Marks = genMarksArray(1, 7)
+
+export const resilience = [
+  {
+    title: 'Resiliência',
+    innerHTML: `Considerando uma escala de (1) a (7), representando um contínuo entre “discordo totalmente” e “concordo totalmente”, selecione a que melhor qualifica a sua forma de pensar.
+    <p>Não existem respostas certas ou erradas.
+    Suas respostas são confidenciais.</p>`
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience1',
+    label: 'Quando eu faço planos, eu levo eles até o fim.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience2',
+    label: 'Eu costumo lidar com os problemas de uma forma ou de outra.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience3',
+    label: 'Eu sou capaz de depender de mim mais do que qualquer outra pessoa.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience4',
+    label: 'Manter interesse nas coisas é importante para mim.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience5',
+    label: 'Eu posso estar por minha conta se eu precisar.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience6',
+    label: 'Eu sinto orgulho de ter realizado coisas em minha vida.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience7',
+    label: 'Eu costumo aceitar as coisas sem muita preocupação.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience8',
+    label: 'Eu sou amigo de mim mesmo.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience9',
+    label: 'Eu sinto que posso lidar com várias coisas ao mesmo tempo.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience10',
+    label: 'Eu sou determinado.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience11',
+    label: 'Eu raramente penso sobre o objetivo das coisas.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience12',
+    label: 'Eu faço as coisas um dia de cada vez.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience13',
+    label: 'Eu posso enfrentar tempos difíceis porque já experimentei dificuldades antes.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience14',
+    label: 'Eu sou disciplinado.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience15',
+    label: 'Eu mantenho interesse nas coisas.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience16',
+    label: 'Eu normalmente posso achar motivo para rir.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience17',
+    label: 'Minha crença em mim mesmo me leva a atravessar tempos difíceis.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience18',
+    label: 'Em uma emergência, eu sou uma pessoa em quem as pessoas podem contar.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience19',
+    label: 'Eu posso geralmente olhar uma situação em diversas maneiras.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience20',
+    label: 'Às vezes eu me obrigo a fazer coisas querendo ou não.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience21',
+    label: 'Minha vida tem sentido',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience22',
+    label: 'Eu não insisto em coisas as quais eu não posso fazer nada sobre elas.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience23',
+    label: 'Quando eu estou numa situação difícil, eu normalmente acho uma saída.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience24',
+    label: 'Eu tenho energia suficiente para fazer o que eu tenho que fazer.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.SLIDER,
+    name: 'resilience25',
+    label: 'Tudo bem se há pessoas que não gostam de mim.',
+    max: 7,
+    step: 1,
+    min: 1,
+    defaultValue: 4,
+    options: {
+      minLabel: 'Discordo totalmente',
+      maxLabel: 'Concordo totalmente',
+      marks: array1To7Marks
+    },
+    initialValue: 4,
     validator: Yup.mixed().required()
   }
 ]
