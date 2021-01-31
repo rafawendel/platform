@@ -122,7 +122,7 @@ export const fields = [
       { label: 'FASEH', value: 'FASEH' },
       { label: 'UEMG', value: 'UEMG' },
       { label: 'Suprema', value: 'Suprema' },
-      { label: 'Outra', value: 'null' }
+      { label: 'Outra', value: 'outro' }
     ],
     placeholder: 'Sua faculdade',
     initialValue: 'UFMG',
@@ -232,14 +232,14 @@ export const fields = [
     </div>
     <br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
   `
-  },
-  {
-    type: FormTypes.DRAG_AND_DROP,
-    name: 'selectedGroup',
-    options: getLists(),
-    validator: Yup.array()
-      .min(1, 'Selecione ao menos uma opção')
-      .max(2)
-      .required('Selecione ao menos uma opção')
   }
+  // {
+  //   type: FormTypes.DRAG_AND_DROP,
+  //   name: 'selectedGroup',
+  //   options: getLists(),
+  //   validator: Yup.array()
+  //     .min(1, 'Selecione ao menos uma opção')
+  //     .max(2)
+  //     .required('Selecione ao menos uma opção')
+  // }
 ]
