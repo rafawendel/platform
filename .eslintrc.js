@@ -1,13 +1,13 @@
 module.exports = {
   parserOptions: {
     allowImportExportEverywhere: true
-},
-  'env': {
-    'browser': true,
-    'es6': true,
-    'node': true
   },
-  'extends': [
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  extends: [
     'airbnb',
     'plugin:react/recommended',
     'prettier',
@@ -16,45 +16,40 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:jsx-a11y/recommended'
   ],
-  'globals': {
-    'Atomics': 'readonly',
-    'SharedArrayBuffer': 'readonly'
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
-  'settings': {
-    'react': {
-     'createClass': 'createReactClass',
-     'pragma': 'React',
-     'version': 'detect',
-     'flowVersion': '0.53'
+  settings: {
+    react: {
+      createClass: 'createReactClass',
+      pragma: 'React',
+      version: 'detect',
+      flowVersion: '0.53'
     },
-    'propWrapperFunctions': [
+    propWrapperFunctions: [
       'forbidExtraProps',
-      {'property': 'freeze', 'object': 'Object'},
-      {'property': 'myFavoriteWrapper'}
+      { property: 'freeze', object: 'Object' },
+      { property: 'myFavoriteWrapper' }
     ],
-    'linkComponents': [
-     'Hyperlink',
-     {'name': 'Link', 'linkAttribute': 'to'}
-    ]
-   },
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true
-    },
-    'ecmaVersion': 2018,
-    'sourceType': 'module'
+    linkComponents: ['Hyperlink', { name: 'Link', linkAttribute: 'to' }]
   },
-  'plugins': [
-    'prettier',
-    'react',
-    'react-hooks',
-    'import',
-    'jsx-a11y'
-  ],
-  'rules': {
-    'prettier/prettier': ['error', {}, {
-      'usePrettierrc': true
-     }],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module'
+  },
+  plugins: ['prettier', 'react', 'react-hooks', 'import', 'jsx-a11y'],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {},
+      {
+        usePrettierrc: true
+      }
+    ],
     'react/prop-types': 'off', // temporarily disabled
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
@@ -72,11 +67,14 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'no-nested-ternary': 'off',
-    'no-unused-vars': ['error', {
-      // 'vars': 'local',
-      'argsIgnorePattern': '^_',
-      /* 'varsIgnorePattern': '^[A-Z0-9_]*$' */
-    }],
+    'no-unused-vars': [
+      'error',
+      {
+        // 'vars': 'local',
+        argsIgnorePattern: '^_'
+        /* 'varsIgnorePattern': '^[A-Z0-9_]*$' */
+      }
+    ],
     // 'react/jsx-wrap-multilines': ['error', {'declaration': false, 'assignment': false}],
     // 'indent': ['error', 2],
     'arrow-parens': ['error', 'as-needed'],
@@ -87,7 +85,8 @@ module.exports = {
       {
         code: 100,
         ignoreComments: true,
-        ignoreStrings: true
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true
       }
     ]
   }
