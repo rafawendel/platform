@@ -5,7 +5,6 @@ import * as fields from './fields'
 
 export default function ResearchForm({ ...props }) {
   const amassedFields = reduce(fields, (acc, curr) => [...acc, ...curr], [])
-  // console.log(amassedFields.map(({ label } = { label: '' }) => label).join('|'))
 
   return (
     <>
