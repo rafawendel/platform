@@ -37,13 +37,18 @@ export const TextInput = ({ label, tooltip, ...props }) => {
   )
 }
 
-export const TypeInput = ({ children, field, meta, className, ...props }) => {
+export const TypeInput = ({ field, meta, className, allowedCharRegex, ...props }) => {
   return (
     <div className="w-full">
       <input
         className={`text-darker px-px pt-3 pb-1 placeholder-dark placeholder-opacity-75 bg-transparent border-b-2 border-dark text-sm focus:outline-none shadow-none w-full ${className}`}
         {...field}
         {...props}
+        onKeyPress={event => {
+          if (allowedCharRegex && new RegExp(allowedCharRegex, 'gi').test(event.key)) {
+            event.preventDefault()
+          }
+        }}
       />
       <div className="ml-px w-full h-12 md:h-6">
         {(meta.value || meta.touched) && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}

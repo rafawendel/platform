@@ -17,6 +17,7 @@ export const fields = [
     label: 'Primeiramente, como você se chama?',
     description: 'Seu nome completo',
     formType: 'text',
+    allowedCharRegex: '[^a-z0-9]',
     validator: Yup.string().required('Não pode ser deixado em branco'),
     placeholder: 'Jayden Smith',
     autoComplete: 'name'
@@ -38,6 +39,7 @@ export const fields = [
     label: 'Qual é o seu Registro Acadêmico?',
     description: 'Seu número de matrícula, sem pontos ou traços',
     formType: 'text',
+    allowedCharRegex: '[^0-9]',
     inputMode: 'numeric',
     validator: Yup.string()
       .matches(/^[0-9]{4,20}$/, {
@@ -66,6 +68,7 @@ export const fields = [
     label: 'Qual é o seu CPF?',
     description: 'Será usado para certificação',
     formType: 'text',
+    allowedCharRegex: '[^0-9]',
     validator: Yup.string()
       .matches(/^[0-9]{11}$/, {
         message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
@@ -84,6 +87,7 @@ export const fields = [
     label: 'Qual é o seu número de celular?',
     description: 'Seu coordenador entrará em contato via WhatsApp',
     formType: 'tel',
+    allowedCharRegex: '[^0-9]',
     validator: Yup.string()
       .matches(/^[0-9]{11}$/, {
         message: 'Não esqueça o nono digíto e o DDD. Não precisamos de espaços ou traços 😉'
@@ -176,6 +180,7 @@ export const fields = [
     label: 'Há quantos semestres você tem algum envolvimento com o grupo?',
     description: 'Considere envolvimento a participação como membro, coordenadora ou diretora',
     onlyDisplayIf: ({ isNewbie }) => isNewbie === 'false', // a conditional element can never be the last element
+    allowedCharRegex: '[^0-9]',
     formType: 'number',
     min: 0,
     placeholder: '0'
