@@ -45,6 +45,7 @@ export const intro = [
     description: 'Seu número de matrícula, sem pontos ou traços',
     formType: 'text',
     inputMode: 'numeric',
+    notAllowedCharRegex: '[^0-9]',
     validator: Yup.string()
       .matches(/^[0-9]{4,20}$/, {
         message: 'Um número inteiro, sem pontos ou traços, entre 4 e 20 caracteres'
@@ -58,6 +59,7 @@ export const intro = [
     label: 'Qual é o seu CPF?',
     description: 'Será usado para certificação',
     formType: 'text',
+    notAllowedCharRegex: '[^0-9]',
     validator: Yup.string()
       .matches(/^[0-9]{11}$/, {
         message: 'Um número inteiro de 11 dígitos, sem pontos ou traços'
@@ -72,7 +74,7 @@ export const intro = [
   },
   {
     type: FormTypes.INPUT,
-    name: 'birthdate',
+    name: 'birthday',
     label: 'Qual é a sua data de nascimento?',
     formType: 'date',
     validator: Yup.mixed().required('Não pode ser deixado em branco')
@@ -134,6 +136,86 @@ export const intro = [
     options: [
       { label: 'Sim', value: 'true' },
       { label: 'Não', value: 'false' }
+    ],
+    validator: Yup.mixed().required()
+  }
+]
+
+export const pandemics = [
+  {
+    type: FormTypes.INPUT,
+    name: 'pandemics_remote_return_month',
+    label: 'Em que mês, aproximadamente, retornaram suas atividades acadêmicas remotas?',
+    min: '2020-01',
+    max: '2021-01',
+    formType: 'month',
+    validator: Yup.mixed().required('Não pode ser deixado em branco')
+  },
+  {
+    type: FormTypes.CHECKBOX,
+    name: 'pandemics_activity',
+    label: 'Para o seu curso e período, como você avalia o retorno das atividades presenciais?',
+    description:
+      'Esta avaliação deve ressaltar atividades necessariamente presenciais, como estágios e práticas',
+    options: [
+      { label: 'Estágios foram retomados (parcialmente)', value: 'internship_total' },
+      { label: 'Estágios foram retomados (totalmente)', value: 'internship_partial' },
+      { label: 'Aulas práticas foram retomadas (totalmente)', value: 'practice_total' },
+      { label: 'Aulas práticas foram retomadas (parcialmente)', value: 'practice_partial' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.INPUT,
+    name: 'pandemics_in_person_return_month',
+    label: 'Em que mês, aproximadamente, retornaram suas atividades acadêmicas presenciais?',
+    min: '2020-01',
+    max: '2021-01',
+    formType: 'month',
+    onlyDisplayIf: ({ pandemics_activity }) => pandemics_activity.length > 0, // eslint-disable-line camelcase
+    validator: Yup.mixed()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'pandemics_health_impact',
+    label:
+      'Na sua percepção atual, o quanto você considera que a pandemia e isolamento social impactou a sua saúde física ou mental?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'pandemics_scholar_impact',
+    label:
+      'Na sua percepção atual, o quanto você considera que a pandemia e isolamento social impactou as suas atividades e rendimento acadêmicos?',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
+    ],
+    validator: Yup.mixed().required()
+  },
+  {
+    type: FormTypes.RADIO,
+    name: 'pandemics_home_school_aptitude',
+    label:
+      'O quanto você se considera apto a realizar as suas atividades acadêmicas de maneira remota, em comparação com o presencial?',
+    description:
+      'Considere tanto a sua estrutura de estudos quanto a sua capacidade de se concentrar apesar de interferências do ambiente doméstico',
+    options: [
+      { label: 'Nada', value: '1' },
+      { label: 'Muito pouco', value: '2' },
+      { label: 'Mais ou menos', value: '3' },
+      { label: 'Bastante', value: '4' },
+      { label: 'Extremamente', value: '5' }
     ],
     validator: Yup.mixed().required()
   }
