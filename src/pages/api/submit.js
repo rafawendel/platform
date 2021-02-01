@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { omit } from 'lodash'
 import { getFormSchemaByName, getValidationSchema } from '../../lib/forms'
 import { getIp } from '../../lib/network'
 
@@ -7,18 +8,19 @@ export default async (req, res) => {
   if (req.method === 'POST') {
     try {
       const { formId, id, ...payload } = req.body
+      const formData = omit(payload, ['undefined', 'null'])
       const userIp = getIp(req)
       const schema = getValidationSchema(getFormSchemaByName(formId))
 
-      const isValid = await schema.isValid(payload)
+      const isValid = await schema.isValid(formData)
       if (!isValid) throw new Error('Invalid data format')
 
       const dbRes = await axios.post(DB_URL, {
-        ...payload,
+        operation: 'submit',
+        formId,
         id,
         userIp,
-        formId,
-        operation: 'submit'
+        ...formData
       })
 
       if (dbRes.error) throw new Error(dbRes.error)
