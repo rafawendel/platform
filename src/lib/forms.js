@@ -19,10 +19,6 @@ export const getValidationSchema = fields => {
   )
 }
 
-const formFields = reduce(
-  merge(subscriptionFormFields, researchFormFields),
-  (acc, curr) => [...acc, ...curr],
-  []
-)
+const formFields = merge(subscriptionFormFields, researchFormFields)
 
 export const getFormSchemaByName = name => formFields[name]

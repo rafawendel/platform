@@ -3,7 +3,7 @@ import { FormTypes } from '../../components/forms/TypingForm/FormField'
 import { validateCPFAsync } from '../../utils/cpf'
 import { getLists } from '../../lib/groups'
 
-export const fields = [
+export const primary = [
   {
     title: 'Bem vindo!',
     innerHTML: `Bem-vindo ao GEDAAM.
