@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import '../styles/index.css'
 import '@fortawesome/fontawesome-free/css/all.css'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import NextProgress from '../components/common/NProgress'
 import { AuthContext } from '../context/auth'
 
