@@ -37,7 +37,7 @@ export const TextInput = ({ label, tooltip, ...props }) => {
   )
 }
 
-export const TypeInput = ({ field, meta, className, allowedCharRegex, ...props }) => {
+export const TypeInput = ({ field, meta, className, notAllowedCharRegex, ...props }) => {
   return (
     <div className="w-full">
       <input
@@ -45,7 +45,7 @@ export const TypeInput = ({ field, meta, className, allowedCharRegex, ...props }
         {...field}
         {...props}
         onKeyPress={event => {
-          if (allowedCharRegex && new RegExp(allowedCharRegex, 'gi').test(event.key)) {
+          if (notAllowedCharRegex && new RegExp(notAllowedCharRegex, 'gi').test(event.key)) {
             event.preventDefault()
           }
         }}
