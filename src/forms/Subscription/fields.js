@@ -218,7 +218,8 @@ export const primary = [
       { label: 'Tutoria e orientação', value: 'Tutoria e orientação' },
       { label: 'Saúde mental', value: 'Saúde mental' }
     ].sort(() => Math.random() > 0.5),
-    initialValue: []
+    initialValue: [],
+    validator: Yup.array()
   },
   {
     title: 'Seleção de grupo',

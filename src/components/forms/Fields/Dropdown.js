@@ -1,9 +1,9 @@
 import { Field } from 'formik'
 
-export function Dropdown({ options, name, ...props }) {
+export function Dropdown({ options, initialValue, name, ...props }) {
   return (
     <>
-      <div aria-labelledby={`${name}-dropdown`} className="w-1/2">
+      <div aria-label={`${name}-dropdown`} className="w-1/2">
         <Field
           as="select"
           name={name}

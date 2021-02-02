@@ -97,7 +97,8 @@ export const intro = [
       { label: 'Auto-explicação', value: 'Auto-explicação' },
       { label: 'Método de Feynman', value: 'Método de Feynman' }
     ],
-    initialValue: []
+    initialValue: [],
+    validator: Yup.array()
   },
   {
     type: FormTypes.RADIO,
@@ -163,7 +164,8 @@ export const pandemics = [
       { label: 'Aulas práticas foram retomadas (totalmente)', value: 'practice_total' },
       { label: 'Aulas práticas foram retomadas (parcialmente)', value: 'practice_partial' }
     ],
-    validator: Yup.mixed().required()
+    initialValue: [],
+    validator: Yup.array()
   },
   {
     type: FormTypes.INPUT,
@@ -244,7 +246,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -261,7 +262,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -278,7 +278,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -294,7 +293,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -311,7 +309,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -328,7 +325,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -345,7 +341,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -361,7 +356,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -377,7 +371,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -394,7 +387,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -411,7 +403,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -428,7 +419,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -444,7 +434,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -460,7 +449,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -477,7 +465,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -493,7 +480,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -509,7 +495,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -525,7 +510,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -542,7 +526,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -559,7 +542,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -575,7 +557,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -591,7 +572,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -607,7 +587,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -623,7 +602,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -639,7 +617,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -655,7 +632,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -671,7 +647,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -687,7 +662,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -703,7 +677,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -719,7 +692,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -735,7 +707,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -751,7 +722,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -768,7 +738,6 @@ export const selfEfficacy = [
       maxLabel: 'Máx.',
       marks: array1To10Marks
     },
-    initialValue: 5,
     validator: Yup.mixed().required()
   },
   {
@@ -1531,7 +1500,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1547,7 +1515,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1563,7 +1530,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1579,7 +1545,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1595,7 +1560,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1611,7 +1575,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1627,7 +1590,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1643,7 +1605,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1659,7 +1620,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1675,7 +1635,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1691,7 +1650,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1707,7 +1665,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1723,7 +1680,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1739,7 +1695,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1755,7 +1710,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1771,7 +1725,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1787,7 +1740,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1803,7 +1755,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1819,7 +1770,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1835,7 +1785,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1851,7 +1800,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1867,7 +1815,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1883,7 +1830,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1899,7 +1845,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   },
   {
@@ -1915,7 +1860,6 @@ export const resilience = [
       maxLabel: 'Concordo totalmente',
       marks: array1To7Marks
     },
-    initialValue: 4,
     validator: Yup.mixed().required()
   }
 ]

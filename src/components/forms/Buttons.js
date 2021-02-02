@@ -15,9 +15,16 @@ const ButtonWrapper = ({ children, onClick, clickOnKey, disabled, isActive }) =>
   return <>{children}</>
 }
 
-export const PrimaryActionButton = ({ children, className, type, ...props }) => {
+export const PrimaryActionButton = ({
+  children,
+  className,
+  type,
+  isActive,
+  clickOnKey,
+  ...props
+}) => {
   return (
-    <ButtonWrapper {...props}>
+    <ButtonWrapper isActive={isActive} clickOnKey={clickOnKey} {...props}>
       <div className={`${className} text-center`}>
         <button
           className="bg-dark text-lighter text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg"
@@ -31,9 +38,16 @@ export const PrimaryActionButton = ({ children, className, type, ...props }) => 
   )
 }
 
-export const SecondaryActionButton = ({ children, className, type, ...props }) => {
+export const SecondaryActionButton = ({
+  children,
+  className,
+  type,
+  isActive,
+  clickOnKey,
+  ...props
+}) => {
   return (
-    <ButtonWrapper {...props}>
+    <ButtonWrapper isActive={isActive} clickOnKey={clickOnKey} {...props}>
       <div className={`${className} text-center`}>
         <button
           className="bg-transparent text-dark border-2 border-dark hover:bg-dark hover:text-light text-xs font-bold uppercase rounded px-3 py-3"
