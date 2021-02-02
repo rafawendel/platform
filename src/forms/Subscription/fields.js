@@ -1,7 +1,6 @@
 import * as Yup from 'yup'
 import { FormTypes } from '../../components/forms/TypingForm/FormField'
 import { validateCPFAsync } from '../../utils/cpf'
-import { getLists } from '../../lib/groups'
 
 export const primary = [
   {
@@ -95,16 +94,21 @@ export const primary = [
     placeholder: '319XXXXXXXX'
   },
   {
-    type: FormTypes.INPUT,
+    type: FormTypes.AUTOCOMPLETE,
     name: 'course',
     label: 'Qual é o seu curso?',
     description: 'Curso em que você está matriculado',
     formType: 'text',
+    options: [
+      { label: 'Medicina', value: 'medicina' },
+      { label: 'Enfermagem', value: 'enfermagem' },
+      { label: 'Psicologia', value: 'psicologia' }
+    ],
     validator: Yup.string().required('Não pode ser deixado em branco'),
     placeholder: 'Medicina'
   },
   {
-    type: FormTypes.DROPDOWN,
+    type: FormTypes.AUTOCOMPLETE,
     name: 'college',
     label: 'E onde você está cursando?',
     description: 'A sua faculdade ou universidade',
@@ -228,7 +232,7 @@ export const primary = [
     <br/><br/>Para fazer isso, basta arrastar os cartões pela borda esquerda até a lista no topo.
     <br/><br/>
     <div style="display: flex; justify-content: center;">
-    <img src="https://lh3.googleusercontent.com/pw/ACtC-3cKO-d6V6NySd3FbBSFltNPASY2vrqcDD39xEUABEax792xBEdzvgqZuvTNlPlZ-Zl_TmzrrvJdHeWJFYoQ4BbnA81eRtnYUVmzjPam-bl-qeuAjlhpiTr1sFacqkbBnxD8n5y5DCgRoL6HpeO6zdNdeA=w966-h456-no" />
+    <img src="" />
     </div>
     <br/>Ao <b>tocar ou clicar</b> sobre uma opção você poderá ver os <b>detalhes</b> sobre a turma.
   `

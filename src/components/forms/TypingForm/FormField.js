@@ -9,6 +9,7 @@ import { FieldWrapper } from './FieldWrapper'
 import { ButtonSet } from './ButtonSet'
 import { Label } from './Label'
 import { DragAndDrop } from '../DragAndDrop'
+import { Autocomplete } from '../Fields/Autocomplete'
 
 export const FormTypes = {
   INPUT: 'INPUT',
@@ -16,6 +17,7 @@ export const FormTypes = {
   RADIO: 'RADIO',
   CHECKBOX: 'CHECKBOX',
   DROPDOWN: 'DROPDOWN',
+  AUTOCOMPLETE: 'AUTOCOMPLETE',
   SLIDER: 'SLIDER',
   DRAG_AND_DROP: 'DRAG_AND_DROP'
 }
@@ -27,6 +29,8 @@ const getField = type => {
       return <DiscreteSlider />
     case FormTypes.DROPDOWN:
       return <Dropdown />
+    case FormTypes.AUTOCOMPLETE:
+      return <Autocomplete />
     case FormTypes.CHECKBOX:
       return <Checkbox />
     case FormTypes.RADIO:
@@ -84,7 +88,6 @@ export const FormField = ({
           <FieldWrapper
             formProps={{ name, field, meta, helper, values }}
             buttonProps={buttonProps}
-            isFieldHidden={isFieldHidden}
             {...props}
           >
             {getField(type)}
