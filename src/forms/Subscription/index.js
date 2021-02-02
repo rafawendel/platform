@@ -1,16 +1,13 @@
-import Head from 'next/head'
-import TypingForm from '../../components/forms/TypingForm'
-import { fields } from './fields'
+import Form from '../wrapper'
+import { primary as fields } from './fields'
 
-export default function SubscriptionForm({ ...props }) {
-  return (
-    <>
-      <Head>
-        <title>Inscreva-se no GEDAAM</title>
-      </Head>
-      <main className="bg-light text-darker w-full min-h-screen overflow-x-hidden overflow-y-auto py-20">
-        <TypingForm id="primary" fields={fields} title="Inscrição GEDAAM" {...props} />
-      </main>
-    </>
-  )
+export default function SubscriptionForm(props) {
+  const form = {
+    id: 'primary',
+    fields,
+    title: 'Inscrição GEDAAM',
+    displayTitle: 'Inscreva-se no GEDAAM'
+  }
+
+  return <Form form={form} {...props} />
 }
