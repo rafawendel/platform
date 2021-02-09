@@ -5,7 +5,7 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('/inscrever')
+    router.push('/motiro')
   }, [])
 
   return <div />
