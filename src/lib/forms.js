@@ -1,7 +1,6 @@
-import { merge, reduce } from 'lodash'
 import * as Yup from 'yup'
-import * as subscriptionFormFields from '../forms/Subscription/fields'
-import * as researchFormFields from '../forms/Research/fields'
+import subscriptionForm from '../forms/Subscription/fields'
+import researchForm from '../forms/Research/fields'
 
 export const getInitialValues = fields => {
   return fields.reduce((values, { name, initialValue }) => {
@@ -19,6 +18,4 @@ export const getValidationSchema = fields => {
   )
 }
 
-const formFields = merge(subscriptionFormFields, researchFormFields)
-
-export const getFormSchemaByName = name => formFields[name]
+export const getFormById = id => [subscriptionForm, researchForm].find(f => f.id === id)

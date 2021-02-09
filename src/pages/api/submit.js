@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { omit } from 'lodash'
-import { getFormSchemaByName, getValidationSchema } from '../../lib/forms'
+import { getFormById, getValidationSchema } from '../../lib/forms'
 import { getIp } from '../../lib/network'
 
 const DB_URL = `https://script.google.com/macros/s/${process.env.DB_ID}/exec`
@@ -10,7 +10,7 @@ export default async (req, res) => {
       const { formId, id, ...payload } = req.body
       const formData = omit(payload, ['undefined', 'null'])
       const userIp = getIp(req)
-      const schema = getValidationSchema(getFormSchemaByName(formId))
+      const schema = getValidationSchema(getFormById(formId).fields)
 
       const isValid = await schema.isValid(formData)
       if (!isValid) throw new Error('Invalid data format')

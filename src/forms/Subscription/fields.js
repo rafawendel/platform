@@ -247,3 +247,12 @@ export const primary = [
   //     .required('Selecione ao menos uma opção')
   // }
 ]
+
+const fields = [...primary]
+
+export default {
+  id: 'primary',
+  fields,
+  title: 'Inscrição GEDAAM',
+  displayTitle: 'Inscreva-se no GEDAAM'
+}

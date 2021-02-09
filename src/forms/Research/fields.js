@@ -968,7 +968,7 @@ export const socialSupport = [
 export const expectations = [
   {
     title: 'Expectativas',
-    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, avalie se <strong>foram atendidas</strong> 
+    innerHTML: `Baseado em suas expectativas ao ingressar no GEDAAM, avalie se <strong>foram atendidas</strong>
     <br/>Marque sua resposta em uma escala de (1) a (5), considerando um contínuo entre “não contribuiu” e “contribuiu muito”.
     <p>Não existem respostas certas ou erradas.
     Suas respostas são confidenciais.</p>`
@@ -1863,3 +1863,20 @@ export const resilience = [
     validator: Yup.mixed().required()
   }
 ]
+
+const fields = [
+  ...intro,
+  ...pandemics,
+  ...selfEfficacy,
+  ...socialSupport,
+  ...expectations,
+  ...qualityOfLife,
+  ...resilience
+]
+
+export default {
+  id: 'research',
+  title: 'Motirõ GEDAAM',
+  displayTitle: 'Motirõ GEDAAM',
+  fields
+}
