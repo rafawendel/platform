@@ -1,5 +1,5 @@
 import Pros from './Pros'
-import SignupForm from '../../Forms/SignUp'
+import SignupForm from '../../forms/UserForm'
 import FormCard from '../../common/Cards/FormCard'
 
 const Dent = () => (

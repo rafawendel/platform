@@ -1,6 +1,6 @@
 import { CSSTransition } from 'react-transition-group'
 import PlainModal from '../../components/common/Modals/PlainModal'
-import LoginForm from '../../components/Forms/Login'
+import LoginForm from '../../components/forms/UserForm'
 
 export default function FormModal(props) {
   return (
